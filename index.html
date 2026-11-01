@@ -680,11 +680,38 @@ function api(fn, ...args){
     } else {
       /* Chạy trên GitHub Pages: gọi API Apps Script qua link /exec trong thẻ meta api-url */
       if(!API_URL){ ko('Chưa cấu hình link API (thẻ meta api-url trong index.html).'); return; }
-      fetch(API_URL, { method:'POST', redirect:'follow', headers:{ 'Content-Type':'text/plain;charset=utf-8' }, body: JSON.stringify({ fn, args }) })
-        .then(r => r.json()).then(j => j && j.ok ? ok(j.data) : ko(j && j.error || 'Lỗi máy chủ'))
-        .catch(e => ko('Không gọi được máy chủ: ' + (e && e.message || e)));
+      callHttp(fn, args).then(j => j && j.ok ? ok(j.data) : ko(j && j.error || 'Lỗi máy chủ')).catch(ko);
     }
   });
+}
+/** Gọi API Apps Script từ GitHub: POST trước; nếu nhận về trang HTML thì đoán nguyên nhân + thử lại bằng GET */
+function explainHtml(t){
+  const txt = String(t || '').replace(/<style[\s\S]*?<\/style>/gi,' ').replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  if(/authoriz|cấp quyền|ủy quyền|uỷ quyền|permission/i.test(txt)) return 'Apps Script cần CẤP QUYỀN lại: mở Apps Script → chọn hàm setup → Chạy → Cho phép; sau đó Triển khai → Quản lý tùy chọn triển khai → ✎ → Phiên bản mới.';
+  if(/accounts\.google|sign in|đăng nhập|ServiceLogin/i.test(t + txt)) return 'Link /exec chưa mở cho mọi người: Triển khai → Quản lý tùy chọn triển khai → ✎ → "Ai có quyền truy cập: Bất kỳ ai" → Triển khai.';
+  if(/function not found|không tìm thấy hàm|doPost/i.test(txt)) return 'Link /exec đang chạy Code.gs CŨ: dán Code.gs mới → Lưu → Triển khai → Quản lý tùy chọn triển khai → ✎ → Phiên bản mới.';
+  if(/not found|404|không tìm thấy/i.test(txt)) return 'Link /exec trong index.html bị sai hoặc bản triển khai đã bị xoá. Kiểm tra lại dòng api-url.';
+  return 'Máy chủ trả về trang lỗi: ' + txt.slice(0, 160);
+}
+async function callHttp(fn, args){
+  const body = JSON.stringify({ fn, args });
+  let txt = '';
+  try{
+    const r = await fetch(API_URL, { method:'POST', redirect:'follow', headers:{ 'Content-Type':'text/plain;charset=utf-8' }, body });
+    txt = await r.text();
+    return JSON.parse(txt);
+  }catch(e){
+    /* Thử lại bằng GET (chỉ với lệnh nhỏ, không phải tải ảnh) */
+    if(!/^upload/.test(fn)){
+      try{
+        const r2 = await fetch(API_URL + (API_URL.indexOf('?') >= 0 ? '&' : '?') + 'fn=' + encodeURIComponent(fn) + '&args=' + encodeURIComponent(JSON.stringify(args)), { redirect:'follow' });
+        const t2 = await r2.text();
+        try{ return JSON.parse(t2); }catch(e2){ txt = txt || t2; }
+      }catch(e3){}
+    }
+    if(txt) throw explainHtml(txt);
+    throw 'Không kết nối được máy chủ (' + (e && e.message || e) + '). Kiểm tra mạng hoặc link api-url.';
+  }
 }
 let _ldT1, _ldT2;
 /** Lớp chờ có chữ + spinner; sau 8s cho phép đóng để không bao giờ bị khoá màn hình */
@@ -744,7 +771,7 @@ async function ensureBoot(){
     let cached = null;
     try{ cached = JSON.parse(store.get('lcv_boot') || 'null'); }catch(e){}
     const fresh = api('getBoot', true).then(b => { S.boot = b; try{ store.set('lcv_boot', JSON.stringify(b)); }catch(e){} return b; });
-    if(cached && cached.qltpList){ S.boot = cached; fresh.catch(() => {}); }
+    if(cached && cached.qltpList){ S.boot = cached; fresh.catch(e => { setConn('bad', 'Đang dùng dữ liệu cũ trên máy – ' + e); }); }
     else S.boot = await fresh;
   }
   $('appName').textContent = S.boot.tenApp || 'Lịch Công Việc Miền';
