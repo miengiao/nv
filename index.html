@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Lịch CV Miền">
-<meta name="api-url" content="https://script.google.com/macros/s/AKfycbzVvYTaw2hjF9pbGIoAApuqtLCJZ9N-KtZJtFWd78te0VOHhxCScc-dLmEJ_kNwwyXcNA/exec">
+<meta name="api-url" content="DAN_LINK_EXEC_VAO_DAY">
 <title>Lịch Công Việc Miền</title>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -453,6 +453,31 @@ button:focus-visible,.inp:focus-visible{outline:3px solid rgba(18,161,80,.45);ou
 .tabs.t4 .tab{font-size:12.5px;padding:10px 2px 11px;white-space:nowrap;letter-spacing:-.01em}
 .tb .ttl b{font-size:15px}
 .lead{padding:0 10px}
+/* ---------- ĐĂNG NHẬP 1 BƯỚC ---------- */
+.rolesel button{font-size:13px}
+.pwbox{position:relative} .pwbox .inp{padding-right:48px}
+.eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:10px;font-size:16px;opacity:.6}
+.acclist{margin-top:8px;border:1px solid var(--line);border-radius:12px;max-height:300px;overflow:auto}
+.acclist div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-top:1px solid #eef2ef;font-size:13px}
+.acclist div:first-child{border-top:0}
+.acclist em{display:block;font-style:normal;font-size:11px;color:var(--mut)}
+.acclist button{font-size:12px;font-weight:700;padding:6px 10px;border-radius:8px;background:var(--orl);color:#a35400;white-space:nowrap}
+/* ---------- HIỆU ỨNG NỔI: CV RSM & SẮP TRỄ ---------- */
+.ln.rsm{background:linear-gradient(100deg,rgba(18,161,80,.10),rgba(18,161,80,.02) 55%,transparent);box-shadow:inset 4px 0 0 var(--g2)}
+.ln.rsm .stk.r{position:relative;animation:rsmGlow 2.2s ease-in-out infinite}
+.ln.rsm .stk.r::after{content:'★';margin-left:3px;font-size:9px}
+@keyframes rsmGlow{0%,100%{box-shadow:0 0 0 0 rgba(18,161,80,0)}50%{box-shadow:0 0 0 4px rgba(18,161,80,.28),0 0 12px rgba(18,161,80,.45)}}
+.ln.soon{background:linear-gradient(100deg,#fff1dc,#fff8ee 50%,#fff);box-shadow:inset 4px 0 0 var(--or)}
+.ln.soon .lt::before{content:'⏳ SẮP TRỄ';display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--or);border-radius:5px;padding:1px 6px;margin-right:6px;vertical-align:2px;animation:soonBlink 1.1s ease-in-out infinite}
+.ln.soon .dc.soon{animation:soonBlink 1.1s ease-in-out infinite}
+@keyframes soonBlink{0%,100%{opacity:1}50%{opacity:.45}}
+.ln.late:not(.done){background:linear-gradient(100deg,#fdecea,#fff 60%);box-shadow:inset 4px 0 0 var(--red)}
+.ln.late:not(.done) .lt::before{content:'⚠️ ĐÃ TRỄ';display:inline-block;font-size:10px;font-weight:800;color:#fff;background:var(--red);border-radius:5px;padding:1px 6px;margin-right:6px;vertical-align:2px}
+.ln.rsm.soon{box-shadow:inset 4px 0 0 var(--or),inset 8px 0 0 var(--g2)}
+.mini.rsmm{box-shadow:inset 3px 0 0 var(--g2)}
+.mini.soonm{border-color:#f3c46b;background:#fffaf0;animation:miniPulse 2s ease-in-out infinite}
+@keyframes miniPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,125,0,0)}50%{box-shadow:0 0 0 4px rgba(239,125,0,.18)}}
+@media (prefers-reduced-motion: reduce){.ln.rsm .stk.r,.ln.soon .lt::before,.ln.soon .dc.soon,.mini.soonm{animation:none}}
 @media(max-width:420px){
   .cell{min-height:64px;padding:4px 3px 3px}
   .cnt .n{font-size:17px}
@@ -470,66 +495,40 @@ button:focus-visible,.inp:focus-visible{outline:3px solid rgba(18,161,80,.45);ou
     <h1 id="appName">Lịch Công Việc Miền</h1>
     <p class="sub" id="appSub">Nhập mã kho để xem công việc của shop</p>
 
-    <!-- B1: nhập mã -->
+    <!-- B1: đăng nhập 1 màn hình -->
     <div id="stepMa">
+      <div class="seg rolesel" id="roleSel">
+        <button data-v="shop" class="on">🏪 Quản lý shop</button>
+        <button data-v="qltp">👤 QLTP / Admin</button>
+      </div>
+      <div class="field" style="margin-top:12px">
+        <label id="lbId">Mã kho siêu thị</label>
+        <input id="inMa" class="inp big" inputmode="numeric" maxlength="7" placeholder="VD: 31405" autocomplete="username">
+      </div>
       <div class="field">
-        <label>Mã kho siêu thị</label>
-        <input id="inMa" class="inp big" inputmode="numeric" maxlength="7" placeholder="VD: 31405" autocomplete="off">
+        <label>Mật khẩu</label>
+        <div class="pwbox"><input id="inPw" class="inp big" type="password" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="current-password"><button class="eye" id="btnEye" type="button" aria-label="Hiện mật khẩu">👁</button></div>
       </div>
-      <button class="btn pri block" id="btnFind">Tiếp tục →</button>
+      <p class="note" id="pwHint" style="margin-top:-4px">Lần đầu đăng nhập: mật khẩu là <b>mã kho</b>.</p>
+      <button class="btn pri block" id="btnFind">Đăng nhập →</button>
       <div class="err" id="errMa"></div>
+      <div class="lrow"><button class="link" id="btnAll">🌐 Xem lịch toàn miền</button><button class="link" id="btnForgot">Quên mật khẩu?</button></div>
+      <div class="forgot hide" id="forgotBox">🔒 <b>Quên mật khẩu?</b><br>Nhắn tin cho <b>admin KV 42995</b> kèm <b><span id="fgWhat">mã kho</span></b> để được đặt lại.<br>Sau khi đặt lại, mật khẩu trở về <b id="fgBack">mã kho</b>, đăng nhập rồi tạo mật khẩu mới.</div>
       <div class="conn" id="conn"><span class="cdot wait"></span><span id="connTxt">Đang khởi động ứng dụng…</span><button class="link hide" id="connRetry">Thử lại</button></div>
-      <div style="text-align:center;margin-top:8px"><button class="link" id="btnAll">🌐 Xem lịch toàn miền (không đăng nhập)</button></div>
-      <button class="btn line block" id="btnLeadLogin" style="margin-top:14px">✍️ Leader: Giao việc / CTKM</button>
     </div>
 
-    <!-- B1b: nhập mật khẩu -->
-    <div id="stepPass" class="hide">
-      <div class="shopbox">
-        <div class="ma" id="psMa"></div>
-        <div class="nm" id="psName"></div>
-        <div class="full" id="psQ"></div>
-      </div>
-      <div class="field"><label>Mật khẩu</label>
-        <input id="inPass" class="inp big" type="password" inputmode="numeric" maxlength="7" placeholder="••••" autocomplete="current-password"></div>
-      <p class="note" style="margin-top:-4px">Lần đầu đăng nhập: mật khẩu là <b>mã kho</b>.</p>
-      <button class="btn pri block" id="btnLogin">Đăng nhập</button>
-      <div class="err" id="errPs"></div>
-      <div class="lrow"><button class="link" id="btnBack3">← Nhập mã khác</button><button class="link" id="btnForgot">Quên mật khẩu?</button></div>
-      <div class="forgot hide" id="forgotBox">🔒 <b>Quên mật khẩu?</b><br>Nhắn tin cho <b>admin KV 42995</b> kèm <b>mã kho <span id="fgMa"></span></b> để được đặt lại.<br>Sau khi đặt lại, mật khẩu trở về <b>mã kho</b>, anh/chị đăng nhập và tạo mật khẩu mới.</div>
-    </div>
-
-    <!-- B1c: tạo mật khẩu mới -->
+    <!-- B1c: tạo mật khẩu mới (lần đầu / đổi mật khẩu) -->
     <div id="stepNew" class="hide">
       <div class="shopbox" style="background:var(--gl);border-color:#bfe8cd">
-        <b>🔐 Tạo mật khẩu mới cho shop <span id="nwName"></span></b>
-        <div class="note">Mật khẩu gồm <b>4 chữ số</b>, dùng cho các lần đăng nhập sau.</div>
+        <b>🔐 Tạo mật khẩu mới · <span id="nwName"></span></b>
+        <div class="note" id="nwHint">Mật khẩu gồm <b>4 chữ số</b>, dùng cho các lần đăng nhập sau.</div>
       </div>
-      <div class="field"><label>Mật khẩu mới (4 số)</label>
-        <input id="inNew1" class="inp big" type="password" inputmode="numeric" maxlength="4" placeholder="••••" autocomplete="new-password"></div>
+      <div class="field"><label>Mật khẩu mới</label>
+        <input id="inNew1" class="inp big" type="password" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="new-password"></div>
       <div class="field"><label>Nhập lại mật khẩu</label>
-        <input id="inNew2" class="inp big" type="password" inputmode="numeric" maxlength="4" placeholder="••••" autocomplete="new-password"></div>
-      <button class="btn pri block" id="btnSetPass">Lưu mật khẩu</button>
+        <input id="inNew2" class="inp big" type="password" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="new-password"></div>
+      <button class="btn pri block" id="btnSetPass">Lưu & vào trang chính →</button>
       <div class="err" id="errNw"></div>
-    </div>
-
-    <!-- B2: xác nhận shop -->
-    <div id="stepConfirm" class="hide">
-      <div class="shopbox">
-        <div class="ma" id="cfMa"></div>
-        <div class="nm" id="cfName"></div>
-        <div class="full" id="cfFull"></div>
-        <div class="kv"><span>QLTP đang làm: <b id="cfQ"></b></span><button class="btn warn" style="padding:7px 11px;font-size:12px" id="btnChgKV">Đổi</button></div>
-      </div>
-      <div id="chgBox" class="hide">
-        <div class="field"><label>Chọn QLTP mới</label><select id="chgQ" class="inp"></select></div>
-        <div class="field"><label>Mã PIN xác nhận</label><input id="chgPin" class="inp" type="password" inputmode="numeric" maxlength="8" placeholder="••••"></div>
-        <button class="btn warn block" id="btnChgSave">Xác nhận đổi QLTP</button>
-        <p class="note">Thay đổi sẽ cập nhật vào dữ liệu gốc (tab DS_SHOP) và được ghi log.</p>
-      </div>
-      <button class="btn pri block" id="btnEnter" style="margin-top:8px">Vào xem công việc</button>
-      <div class="err" id="errCf"></div>
-      <div class="lrow"><button class="link" id="btnBack1">← Đổi shop</button><button class="link" id="btnChgPass">🔐 Đổi mật khẩu</button></div>
     </div>
 
     <!-- B3: đăng ký shop mới -->
@@ -543,7 +542,7 @@ button:focus-visible,.inp:focus-visible{outline:3px solid rgba(18,161,80,.45);ou
         <div class="preview" id="rgPrev"></div>
       </div>
       <div class="field"><label>QLTP đang làm</label><select id="rgQ" class="inp"></select></div>
-      <button class="btn pri block" id="btnReg">Lưu &amp; vào app</button>
+      <button class="btn pri block" id="btnReg">Lưu & tạo mật khẩu →</button>
       <div class="err" id="errRg"></div>
       <div style="text-align:center;margin-top:6px"><button class="link" id="btnBack2">← Nhập mã khác</button></div>
     </div>
@@ -653,7 +652,7 @@ try {
 /* ================= STATE ================= */
 const S = {
   boot:null, data:null, shop:null, mode:'shop', qf:'',
-  view:'month', y:0, m:0, sel:'', admin:false, pin:'', token:null, stats:{}, st:{range:'month', view:'qltp', q:'', open:''}, detail:null, openG:{}, nt:{f:'due', q:'', open:''}, prog:{}, progBusy:{}, openPend:{}, openDesc:{}
+  view:'month', y:0, m:0, sel:'', admin:false, pin:'', token:null, auth:null, me:null, role:'', role0:'shop', stats:{}, st:{range:'month', view:'qltp', q:'', open:''}, detail:null, openG:{}, nt:{f:'due', q:'', open:''}, prog:{}, progBusy:{}, openPend:{}, openDesc:{}
 };
 const DOW = ['CN','T2','T3','T4','T5','T6','T7'];
 const DOWF = ['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
@@ -722,15 +721,14 @@ function qOptions(sel, cur){
   sel.innerHTML = '<option value="">— Chọn QLTP —</option>' + list.map(q =>
     `<option value="${esc(q.name)}" ${norm(q.name)===norm(cur)?'selected':''}>${esc(q.name)}${q.count?` (${q.count} ST)`:''}</option>`).join('');
 }
-function showStep(id){ ['stepMa','stepPass','stepNew','stepConfirm','stepReg'].forEach(s => $(s).classList.toggle('hide', s!==id)); }
+function showStep(id){ ['stepMa','stepNew','stepReg'].forEach(s => $(s).classList.toggle('hide', s!==id)); }
 
 async function boot(){
   /* Không khoá màn hình: hiện trang đăng nhập ngay, dữ liệu cấu hình tải ngầm */
-  const last = store.get('lcv_ma');
-  if(last){ $('inMa').value = last; }
+  setRole(store.get('lcv_role') === 'qltp' ? 'qltp' : 'shop');
   setConn('wait', 'Đang kết nối máy chủ…');
   if(BOOT && BOOT.error){ setConn('bad', 'Lỗi máy chủ: ' + BOOT.error); return; }
-  try{ await ensureBoot(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 11' : 'bản 11 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
+  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 12' : 'bản 12 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
   catch(e){ setConn('bad', 'Chưa kết nối được: ' + e); }
 }
 function setConn(st, txt){
@@ -763,92 +761,109 @@ function localShop(ma){
   const r = S.boot && S.boot.shops && S.boot.shops.find(x => String(x[0])===String(ma));
   return r ? {ma:r[0], short:r[1], full:r[2], qltp:r[3]} : null;
 }
+/* ---- ĐĂNG NHẬP 1 BƯỚC: vai trò + mã + mật khẩu ---- */
+function setRole(r){
+  S.role0 = r;
+  $('roleSel').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === r));
+  const shop = r === 'shop';
+  $('lbId').textContent = shop ? 'Mã kho siêu thị' : 'Mã nhân viên QLTP';
+  $('inMa').placeholder = shop ? 'VD: 31405' : 'VD: 42995';
+  $('pwHint').innerHTML = 'Lần đầu đăng nhập: mật khẩu là <b>' + (shop ? 'mã kho' : 'mã nhân viên') + '</b>.';
+  $('fgWhat').textContent = shop ? 'mã kho' : 'mã nhân viên'; $('fgBack').textContent = shop ? 'mã kho' : 'mã nhân viên';
+  $('errMa').textContent = '';
+  const last = store.get(shop ? 'lcv_ma' : 'lcv_qma'); $('inMa').value = last || '';
+}
 async function findMa(){
-  const ma = $('inMa').value.trim();
-  $('errMa').textContent='';
-  if(!/^\d{4,7}$/.test(ma)){ $('errMa').textContent='Mã kho gồm 4–7 chữ số.'; return; }
-  const local = localShop(ma);
-  if(local){ goPass(local); return; }   /* tìm tức thì, không gọi máy chủ */
-  loading(true, 'Đang tìm mã kho ' + ma + '…');
-  try{
-    await ensureBoot();
-    const s = await api('findShop', ma);
-    if(s){ loading(false); goPass(s); return; }
-    else { $('rgMaTxt').textContent = ma; $('rgFull').value=''; $('rgPrev').textContent=''; qOptions($('rgQ'), ((S.boot||{}).hints||{})[ma]||''); showStep('stepReg'); $('rgFull').focus(); }
-  }catch(e){ $('errMa').textContent = e; }
-  loading(false);
-}
-/* ---- Mật khẩu ---- */
-async function goPass(sh){
-  S.shop = sh; S.token = null;
-  $('psMa').textContent = 'Mã kho ' + sh.ma;
-  $('psName').textContent = sh.short || sh.full;
-  $('psQ').textContent = 'QLTP: ' + (sh.qltp || '—');
-  $('fgMa').textContent = sh.ma;
-  $('inPass').value = ''; $('errPs').textContent = ''; $('forgotBox').classList.add('hide');
-  const tok = store.get('lcv_tok_' + sh.ma);
-  if(tok){
-    loading(true, 'Đang đăng nhập…');
-    try{
-      const r = await api('loginShop', sh.ma, '', tok);
-      loading(false);
-      if(r && r.ok && !r.mustChange){ S.token = tok; if(r.shop) S.shop = r.shop; afterLogin(); return; }
-      store.del('lcv_tok_' + sh.ma);
-    }catch(e){ loading(false); }
+  const id = $('inMa').value.trim(), pw = $('inPw').value.trim(), role = S.role0 || 'shop';
+  $('errMa').textContent = '';
+  if(!/^\d{3,7}$/.test(id)){ $('errMa').textContent = role==='shop' ? 'Mã kho gồm 4–7 chữ số.' : 'Nhập mã nhân viên (chữ số).'; return; }
+  if(role === 'qltp') return loginQ(id, pw);
+  let sh = localShop(id);
+  if(!sh){
+    loading(true, 'Đang tìm mã kho ' + id + '…');
+    try{ await ensureBoot(); sh = await api('findShop', id); }catch(e){ loading(false); $('errMa').textContent = e; return; }
+    loading(false);
   }
-  showStep('stepPass'); setTimeout(() => $('inPass').focus(), 50);
-}
-async function doLogin(){
-  const pass = $('inPass').value.trim();
-  $('errPs').textContent = '';
-  if(!pass){ $('errPs').textContent = 'Nhập mật khẩu.'; return; }
+  if(!sh){ $('rgMaTxt').textContent = id; $('rgFull').value=''; $('rgPrev').textContent=''; qOptions($('rgQ'), ((S.boot||{}).hints||{})[id]||''); showStep('stepReg'); $('rgFull').focus(); return; }
+  S.shop = sh;
+  const tok = store.get('lcv_tok_' + id);
+  if(!pw && !tok){ $('errMa').textContent = 'Nhập mật khẩu.'; $('inPw').focus(); return; }
   loading(true, 'Đang đăng nhập…');
   try{
-    const r = await api('loginShop', S.shop.ma, pass, '');
+    const r = await api('loginShop', id, pw, pw ? '' : tok);
     loading(false);
+    if(!r || !r.ok){ store.del('lcv_tok_' + id); $('errMa').textContent = 'Phiên đã hết hạn, nhập mật khẩu để đăng nhập lại.'; $('inPw').focus(); return; }
     S.token = r.token; if(r.shop) S.shop = r.shop;
-    if(r.mustChange) showNewPass(); else { store.set('lcv_tok_' + S.shop.ma, S.token); afterLogin(); }
-  }catch(e){ loading(false); $('errPs').textContent = e; }
+    store.set('lcv_ma', id); store.set('lcv_role', 'shop');
+    if(r.mustChange) return showNewPass('shop');
+    store.set('lcv_tok_' + id, S.token); enterApp('shop');
+  }catch(e){ loading(false); $('errMa').textContent = e; }
 }
-function showNewPass(){
-  $('nwName').textContent = S.shop.short || S.shop.ma;
+async function loginQ(code, pw){
+  const tok = store.get('lcv_qtok_' + code);
+  if(!pw && !tok){ $('errMa').textContent = 'Nhập mật khẩu.'; $('inPw').focus(); return; }
+  loading(true, 'Đang đăng nhập quản trị…');
+  try{
+    await ensureBoot();
+    const r = await api('loginQltp', code, pw, pw ? '' : tok);
+    loading(false);
+    if(!r || !r.ok){ store.del('lcv_qtok_' + code); $('errMa').textContent = 'Phiên đã hết hạn, nhập mật khẩu để đăng nhập lại.'; $('inPw').focus(); return; }
+    S.auth = r.token; S.me = r.me;
+    store.set('lcv_qma', code); store.set('lcv_role', 'qltp');
+    if(r.mustChange) return showNewPass('qltp');
+    store.set('lcv_qtok_' + code, S.auth); enterQ();
+  }catch(e){ loading(false); $('errMa').textContent = e; }
+}
+function enterQ(){
+  S.admin = true; S.role = S.me.role;
+  S.qf = S.me.role === 'admin' ? '' : S.me.name;
+  S.nt.q = ''; S.ntData = null;
+  enterApp('all');
+}
+function showNewPass(kind){
+  S.newKind = kind;
+  $('nwName').textContent = kind === 'shop' ? (S.shop.short || S.shop.ma) : ('QLTP ' + S.me.name);
+  $('nwHint').innerHTML = kind === 'shop' ? 'Mật khẩu gồm <b>4 chữ số</b>, dùng cho các lần đăng nhập sau.' : 'Mật khẩu <b>4–8 chữ số</b>, không trùng mã nhân viên.';
+  $('inNew1').maxLength = $('inNew2').maxLength = kind === 'shop' ? 4 : 8;
   $('inNew1').value = ''; $('inNew2').value = ''; $('errNw').textContent = '';
+  $('app').classList.add('hide'); $('login').classList.remove('hide');
   showStep('stepNew'); setTimeout(() => $('inNew1').focus(), 50);
 }
 async function savePass(){
-  const a = $('inNew1').value.trim(), b = $('inNew2').value.trim();
+  const a = $('inNew1').value.trim(), b = $('inNew2').value.trim(), shop = S.newKind === 'shop';
   $('errNw').textContent = '';
-  if(!/^\d{4}$/.test(a)){ $('errNw').textContent = 'Mật khẩu phải gồm đúng 4 chữ số.'; return; }
+  if(shop ? !/^\d{4}$/.test(a) : !/^\d{4,8}$/.test(a)){ $('errNw').textContent = shop ? 'Mật khẩu phải gồm đúng 4 chữ số.' : 'Mật khẩu gồm 4–8 chữ số.'; return; }
   if(a !== b){ $('errNw').textContent = 'Hai lần nhập không khớp.'; return; }
   loading(true, 'Đang lưu mật khẩu…');
   try{
-    const r = await api('setShopPass', S.shop.ma, a, S.token);
-    loading(false);
-    S.token = r.token; store.set('lcv_tok_' + S.shop.ma, S.token);
-    toast('✅ Đã lưu mật khẩu mới'); afterLogin();
+    if(shop){
+      const r = await api('setShopPass', S.shop.ma, a, S.token);
+      S.token = r.token; store.set('lcv_tok_' + S.shop.ma, S.token);
+      loading(false); toast('✅ Đã lưu mật khẩu mới'); enterApp('shop');
+    } else {
+      const r = await api('setQltpPass', S.me.code, a, S.auth);
+      S.auth = r.token; S.me = r.me; store.set('lcv_qtok_' + S.me.code, S.auth);
+      loading(false); toast('✅ Đã lưu mật khẩu mới'); enterQ();
+    }
   }catch(e){ loading(false); $('errNw').textContent = e; }
 }
-function afterLogin(){ fillConfirm(); showStep('stepConfirm'); }
-function fillConfirm(){
-  const s = S.shop;
-  $('cfMa').textContent = 'Mã kho ' + s.ma;
-  $('cfName').textContent = s.short || s.full;
-  $('cfFull').textContent = s.full;
-  $('cfQ').textContent = s.qltp || '(chưa có)';
-  $('chgBox').classList.add('hide'); $('errCf').textContent='';
+/** Tự vào thẳng trang chính nếu máy này đã đăng nhập trước đó */
+async function autoLogin(){
+  const role = store.get('lcv_role');
+  if(role === 'shop'){
+    const ma = store.get('lcv_ma'), tok = ma && store.get('lcv_tok_' + ma);
+    if(!tok) return;
+    const sh = localShop(ma); if(!sh) return;
+    try{ const r = await api('loginShop', ma, '', tok); if(r && r.ok && !r.mustChange){ S.shop = r.shop || sh; S.token = tok; enterApp('shop'); } else store.del('lcv_tok_' + ma); }catch(e){}
+  } else if(role === 'qltp'){
+    const code = store.get('lcv_qma'), tok = code && store.get('lcv_qtok_' + code);
+    if(!tok) return;
+    try{ const r = await api('loginQltp', code, '', tok); if(r && r.ok && !r.mustChange){ S.auth = tok; S.me = r.me; enterQ(); } else store.del('lcv_qtok_' + code); }catch(e){}
+  }
 }
-async function changeKV(){
-  const q = $('chgQ').value, pin = $('chgPin').value.trim();
-  $('errCf').textContent='';
-  if(!q){ $('errCf').textContent='Chọn QLTP mới.'; return; }
-  if(!pin){ $('errCf').textContent='Nhập mã PIN.'; return; }
-  loading(true);
-  try{
-    S.shop = await api('changeShopQltp', S.shop.ma, q, pin);
-    fillConfirm(); toast('✅ Đã đổi QLTP → ' + S.shop.qltp);
-    upsertLocalShop(S.shop);
-  }catch(e){ $('errCf').textContent = e; }
-  loading(false);
+async function changeKV(q, pin){
+  S.shop = await api('changeShopQltp', S.shop.ma, q, pin);
+  upsertLocalShop(S.shop);
 }
 async function register(){
   const ma = $('rgMaTxt').textContent, full = $('rgFull').value.trim(), q = $('rgQ').value;
@@ -859,11 +874,51 @@ async function register(){
   try{
     S.shop = await api('registerShop', ma, full, q);
     upsertLocalShop(S.shop);
-    toast('✅ Đã thêm shop ' + S.shop.short);
     const r = await api('loginShop', ma, ma, '');
-    loading(false);
-    S.token = r.token; showNewPass();
+    loading(false); toast('✅ Đã thêm shop ' + S.shop.short);
+    S.token = r.token; store.set('lcv_ma', ma); store.set('lcv_role', 'shop'); showNewPass('shop');
   }catch(e){ $('errRg').textContent = e; loading(false); }
+}
+
+/* ---- TÀI KHOẢN (nút ⚙️ trên đầu trang) ---- */
+function openAccount(){
+  const shop = S.mode === 'shop', adm = S.role === 'admin';
+  $('modal').innerHTML = `<div class="ov"><div class="sheet" style="max-width:440px">
+    <h3><span>⚙️ Tài khoản</span><button class="x" id="acX">✕</button></h3>
+    <div class="shopbox">${shop ? `<div class="ma">Mã kho ${esc(S.shop.ma)}</div><div class="nm">${esc(S.shop.short||S.shop.full)}</div><div class="full">QLTP: ${esc(S.shop.qltp||'—')}</div>`
+      : S.me ? `<div class="ma">Mã NV ${esc(S.me.code)}</div><div class="nm">${esc(S.me.name)}</div><div class="full">${adm ? '👑 Admin – toàn quyền' : '👤 QLTP – quản trị KV của mình'}</div>` : '<div class="nm">Khách – xem toàn miền</div>'}</div>
+    ${(shop || S.me) ? `<button class="btn line block" id="acPass">🔐 Đổi mật khẩu</button>` : ''}
+    ${shop ? `<button class="btn line block" style="margin-top:8px" id="acKV">🔁 Đổi QLTP của shop</button>
+      <div id="acKVBox" class="hide" style="margin-top:10px"><div class="field"><label>QLTP mới</label><select id="acQ" class="inp"></select></div>
+      <div class="field"><label>PIN xác nhận</label><input id="acPin" class="inp" type="password" inputmode="numeric" maxlength="8" placeholder="••••"></div>
+      <button class="btn warn block" id="acKVSave">Xác nhận đổi QLTP</button></div>` : ''}
+    ${adm ? `<button class="btn line block" style="margin-top:8px" id="acAcc">👥 Tài khoản QLTP (đặt lại mật khẩu)</button><div id="acAccBox"></div>` : ''}
+    <div class="err" id="acErr"></div>
+    <button class="btn danger block" style="margin-top:12px" id="acOut">🚪 ${S.me || shop ? 'Đăng xuất' : 'Về trang đăng nhập'}</button>
+  </div></div>`;
+  $('acX').onclick = () => $('modal').innerHTML = '';
+  $('acOut').onclick = () => { $('modal').innerHTML = ''; logout(true); };
+  if($('acPass')) $('acPass').onclick = () => { $('modal').innerHTML = ''; showNewPass(shop ? 'shop' : 'qltp'); };
+  if($('acKV')) $('acKV').onclick = () => { qOptions($('acQ'), S.shop.qltp); $('acKVBox').classList.toggle('hide'); };
+  if($('acKVSave')) $('acKVSave').onclick = async () => {
+    const q = $('acQ').value, pin = $('acPin').value.trim();
+    if(!q || !pin){ $('acErr').textContent = 'Chọn QLTP và nhập PIN.'; return; }
+    loading(true, 'Đang đổi QLTP…');
+    try{ await changeKV(q, pin); loading(false); $('modal').innerHTML = ''; toast('✅ Đã đổi QLTP → ' + S.shop.qltp); reload(); }
+    catch(e){ loading(false); $('acErr').textContent = e; }
+  };
+  if($('acAcc')) $('acAcc').onclick = async () => {
+    $('acAccBox').innerHTML = '<div class="none">Đang tải…</div>';
+    try{
+      const list = await api('getQltpAccounts', S.auth);
+      $('acAccBox').innerHTML = `<div class="acclist">${list.map(a => `<div><span><b>${esc(a.code)}</b> ${esc(a.name)}${a.role==='admin'?' 👑':''}<em>${a.hasPass?'đã đổi MK':'MK = mã NV'}</em></span>${a.code===S.me.code?'':`<button data-rq="${esc(a.code)}">↺ Đặt lại</button>`}</div>`).join('')}</div>`;
+      $('acAccBox').querySelectorAll('[data-rq]').forEach(b => b.onclick = async () => {
+        if(b.dataset.ok !== '1'){ b.dataset.ok = '1'; b.textContent = 'Bấm lại để xác nhận'; return; }
+        try{ await api('resetQltpPass', b.dataset.rq, S.auth); b.textContent = '✓ Đã đặt lại'; b.disabled = true; }
+        catch(e){ $('acErr').textContent = e; }
+      });
+    }catch(e){ $('acAccBox').innerHTML = ''; $('acErr').textContent = e; }
+  };
 }
 
 /* ================= APP ================= */
@@ -911,31 +966,40 @@ function showLoadError(e){
     <div class="row2" style="margin-top:10px"><button class="btn line" id="eBack">← Đăng nhập lại</button><button class="btn pri" id="eRetry">⟳ Thử lại</button></div></div>`;
   $('eRetry').onclick = () => reload(); $('eBack').onclick = logout;
 }
-function logout(){
+function logout(full){
   closeDetail(); if($('formPage')) closeForm();
+  if(full){
+    if(S.mode==='shop' && S.shop) store.del('lcv_tok_' + S.shop.ma);
+    if(S.me) store.del('lcv_qtok_' + S.me.code);
+    store.del('lcv_role');
+  }
   $('app').classList.add('hide'); $('login').classList.remove('hide');
-  S.shop=null; S.data=null; S.token=null; S.stats={}; if(S.view==='stats') S.view='month'; showStep('stepMa'); $('inMa').focus();
+  S.shop=null; S.data=null; S.token=null; S.auth=null; S.me=null; S.admin=false; S.role=''; S.qf=''; S.stats={}; S.ntData=null;
+  if(S.view==='stats' || S.view==='nt') S.view='month';
+  $('inPw').value = ''; showStep('stepMa'); setRole(store.get('lcv_role')==='qltp' ? 'qltp' : (S.role0 || 'shop')); $('inMa').focus();
 }
 
 function renderHeader(){
   const d = S.data;
   $('hdTitle').textContent = d.tenApp || 'Lịch Công Việc';
-  $('hdSub').textContent = (d.tenMien||'') + (S.admin?' · 🔓 Leader':'');
-  $('btnAdmin').classList.toggle('hide', !S.admin);
+  $('hdSub').textContent = (d.tenMien||'') + (S.me ? (S.role==='admin' ? ' · 👑 Admin' : ' · 👤 Quản trị KV') : '');
+  $('btnAdmin').classList.add('hide');
+  $('btnLead').classList.toggle('hide', !S.admin);
   $('btnBell').classList.toggle('hide', S.mode!=='shop'); paintBell();
   $('tabNT').classList.toggle('hide', !S.admin);
   document.querySelector('.tabs').classList.toggle('t4', !!S.admin);
   $('fab').classList.add('hide'); /* dùng nút ✍️ Giao việc trên đầu trang */
   if(S.mode==='shop'){
     const s = S.shop;
-    $('who').innerHTML = `<div class="dot">🏪</div><div class="t"><b>${esc(s.ma)} · ${esc(s.short||s.full)}</b><span>QLTP: ${esc(s.qltp||'—')}</span></div><button id="btnOut">Đổi shop</button>`;
+    $('who').innerHTML = `<div class="dot">🏪</div><div class="t"><b>${esc(s.ma)} · ${esc(s.short||s.full)}</b><span>QLTP: ${esc(s.qltp||'—')}</span></div><button id="btnOut">⚙️</button>`;
   }else{
-    $('who').innerHTML = `<div class="dot">🌐</div><div class="t"><b>Toàn miền</b><span>${d.shopCount} siêu thị</span></div>
+    const me = S.me;
+    $('who').innerHTML = `<div class="dot">${me ? (S.role==='admin' ? '👑' : '👤') : '🌐'}</div><div class="t"><b>${me ? esc(me.name) + ' · ' + esc(me.code) : 'Toàn miền'}</b><span>${me ? (S.role==='admin' ? 'Admin toàn quyền' : 'QLTP – quản trị KV') : d.shopCount + ' siêu thị'}</span></div>
       <select id="qfSel"><option value="">Tất cả QLTP</option>${d.qltpList.map(q=>`<option ${q.name===S.qf?'selected':''}>${esc(q.name)}</option>`).join('')}</select>
-      <button id="btnOut">Đăng nhập</button>`;
+      <button id="btnOut">${me ? '⚙️' : 'Đăng nhập'}</button>`;
     $('qfSel').onchange = e => { S.qf = e.target.value; S.prog={}; render(); };
   }
-  $('btnOut').onclick = logout;
+  $('btnOut').onclick = () => (S.mode==='shop' || S.me) ? openAccount() : logout();
 }
 
 /* ---- logic CV ---- */
@@ -1027,7 +1091,8 @@ function renderMonth(){
 }
 function miniRow(t){
   const d = fromKey(t.endKey);
-  return `<div class="mini" data-k="${t.endKey}" data-id="${t.id}"><div class="d">${d.getDate()}<small>T${d.getMonth()+1}</small></div>
+  const left = t.endMs - Date.now(), soon = !isDone(t,t.endKey) && left > 0 && left <= 24*3600000;
+  return `<div class="mini ${soon?'soonm':''} ${t.scope!=='QLTP'?'rsmm':''}" data-k="${t.endKey}" data-id="${t.id}"><div class="d">${d.getDate()}<small>T${d.getMonth()+1}</small></div>
     <div class="mx"><b>${t.nhom==='CTKM'?'🎯 ':'⚙️ '}${esc(t.title)}</b><div class="lm">${stickers(t)}${dueChip(t,t.endKey)}</div></div></div>`;
 }
 /* ---- THỐNG KÊ ---- */
@@ -1107,7 +1172,7 @@ function renderStats(){
           <small>${s.done}/${s.total} việc${lateTxt(s)}${(s.pend.length+s.old.length)?` · ${open?'ẩn ▲':'xem '+(s.pend.length+s.old.length)+' việc chưa xong ▼'}`:''}</small></div>
         <span class="pp ${s.p==null?'':pctCls(s.p)}">${s.p==null?'—':s.p+'%'}</span>
       </div>${open?`<div class="pend2">${pend||'<div><span>Không còn việc nào.</span></div>'}
-        ${S.admin?`<button class="btn danger" data-reset="${s.ma}" style="margin:8px 10px;padding:7px 12px;font-size:12px">↺ Đặt lại mật khẩu shop về mã kho</button>`:''}</div>`:''}`;
+        ${S.admin && (S.role==='admin' || (S.me && norm(s.qltp)===norm(S.me.name)))?`<button class="btn danger" data-reset="${s.ma}" style="margin:8px 10px;padding:7px 12px;font-size:12px">↺ Đặt lại mật khẩu shop về mã kho</button>`:''}</div>`:''}`;
     }).join('') + `</div>`;
   }
   $('vStats').innerHTML = h;
@@ -1123,7 +1188,7 @@ function bindStats(){
     ev.stopPropagation();
     if(b.dataset.ok!=='1'){ b.dataset.ok='1'; b.textContent='Bấm lần nữa để xác nhận đặt lại'; return; }
     loading(true, 'Đang đặt lại mật khẩu…');
-    try{ await api('resetShopPass', b.dataset.reset, S.pin); toast('✅ Đã đặt lại – mật khẩu là mã kho ' + b.dataset.reset); }
+    try{ await api('resetShopPass', b.dataset.reset, S.auth); toast('✅ Đã đặt lại – mật khẩu là mã kho ' + b.dataset.reset); }
     catch(e){ toast('⚠️ ' + e, 3500); }
     loading(false);
   });
@@ -1140,7 +1205,7 @@ function shopInfo(ma){
 async function loadNT(){
   if(S.ntData || S.ntBusy) return;
   S.ntBusy = true; $('topbar').classList.remove('hide');
-  try{ S.ntData = await api('getAcceptance', S.pin); }
+  try{ S.ntData = await api('getAcceptance', S.auth); }
   catch(e){ S.ntData = { error: String(e) }; }
   S.ntBusy = false; $('topbar').classList.add('hide');
   if(S.view === 'nt') renderNT();
@@ -1224,7 +1289,7 @@ function bindNT(){
   const keepY = fn => async ev => { ev.stopPropagation(); const y = window.scrollY; await fn(ev); renderNT(); window.scrollTo(0, y); };
   v.querySelectorAll('[data-na]').forEach(b => b.onclick = keepY(async () => {
     const [tid, ma, st] = b.dataset.na.split('|');
-    try{ await api('setAccept', tid, ma, '', st, '', S.pin, by); const r = rowOf(tid, ma); if(r) r[3] = st; toast(st ? '✅ Đã nghiệm thu đạt' : 'Đã huỷ nghiệm thu'); }
+    try{ await api('setAccept', tid, ma, '', st, '', S.auth); const r = rowOf(tid, ma); if(r) r[3] = st; toast(st ? '✅ Đã nghiệm thu đạt' : 'Đã huỷ nghiệm thu'); }
     catch(e){ toast('⚠️ ' + e, 3500); }
   }));
   v.querySelectorAll('[data-nmore]').forEach(b => b.onclick = keepY(async () => { S.nt.more = b.dataset.nmore; }));
@@ -1233,7 +1298,7 @@ function bindNT(){
     const [tid, ma] = b.dataset.ns.split('|'), note = ($('ntRedoTxt') || {}).value || '';
     if(!note.trim()){ toast('Nhập lý do yêu cầu làm lại'); return; }
     try{
-      await api('setAccept', tid, ma, '', 'Làm lại', note.trim(), S.pin, by);
+      await api('setAccept', tid, ma, '', 'Làm lại', note.trim(), S.auth);
       const r = rowOf(tid, ma), t = taskById(tid);
       if(r){ r[3] = 'Làm lại'; r[5] = note.trim(); r[1] = t && Date.now() > t.endMs ? 'miss' : 'todo'; r[2] = 0; }
       S.nt.redo = ''; toast('↺ Đã yêu cầu shop ' + ma + ' làm lại');
@@ -1244,7 +1309,7 @@ function bindNT(){
     const mas = a.rows.filter(r => (r[1]==='ok'||r[1]==='late') && !r[3] && (!qn || norm(shopInfo(r[0]).qltp) === qn)).map(r => r[0]);
     if(!mas.length) return;
     loading(true, 'Đang nghiệm thu ' + mas.length + ' shop…');
-    try{ await api('setAccept', tid, mas, '', 'Đạt', '', S.pin, by); mas.forEach(m => { const r = rowOf(tid, m); if(r) r[3] = 'Đạt'; }); toast('✅ Đã nghiệm thu đạt ' + mas.length + ' shop'); }
+    try{ await api('setAccept', tid, mas, '', 'Đạt', '', S.auth); mas.forEach(m => { const r = rowOf(tid, m); if(r) r[3] = 'Đạt'; }); toast('✅ Đã nghiệm thu đạt ' + mas.length + ' shop'); }
     catch(e){ toast('⚠️ ' + e, 3500); }
     loading(false);
   }));
@@ -1392,9 +1457,16 @@ function ntChip(t,k){
   if(d.nt==='Làm lại') return `<span class="dc late">↺ Làm lại${d.ntNote ? ': ' + esc(d.ntNote) : ''}</span>`;
   return t.photo ? '<span class="dc dn">🕒 Chờ nghiệm thu</span>' : '';
 }
+function canEdit(t){ return S.admin && (S.role==='admin' || (S.me && norm(t.by)===norm(S.me.name))); }
+function soonOf(t,k){
+  if(isDone(t,k)) return false;
+  const left = deadlineOf(t, t.repeat ? k : t.endKey) - Date.now();
+  return left > 0 && left <= 24*3600000 && (t.repeat ? k===S.data.today : true);
+}
 function line(t,k){
-  const done = isDone(t,k), late = !done && (t.repeat ? k<S.data.today : t.endMs<S.data.now);
-  return `<div class="ln ${done?'done':''} ${late?'late':''}">
+  const done = isDone(t,k), late = !done && Date.now() > deadlineOf(t, t.repeat ? k : t.endKey) && (t.repeat ? k<=S.data.today : true);
+  const soon = !done && !late && soonOf(t,k), rsm = t.scope!=='QLTP';
+  return `<div class="ln ${done?'done':''} ${late?'late':''} ${soon?'soon':''} ${rsm && !done?'rsm':''}">
     ${S.mode==='shop' ? `<button class="ck ${S.syncing?'busy':''}" data-id="${t.id}" aria-label="Hoàn tất" ${S.syncing?'disabled title="Đang đồng bộ…"':''}>${done?'✓':''}</button>` : `<span class="bul"></span>`}
     <div class="lx">
       <div class="lt">${t.prio==='Cao'?'<span class="fire">🔥</span>':''}${esc(t.title)}</div>
@@ -1462,7 +1534,7 @@ function renderDetail(){
   const done = isDone(t,k), pr = S.prog[k] && S.prog[k][id];
   const steps = t.steps||[], imgs = t.imgs||[];
   let h = `<div class="pg-top"><button class="back" id="dtBack">‹</button><b>${t.nhom==='CTKM'?'🎯 CTKM bán hàng':'⚙️ Vận hành Miền / KV'}</b>
-      ${S.admin?`<button class="tbtn" id="dtEdit">✎ Sửa</button>`:''}</div>
+      ${canEdit(t)?`<button class="tbtn" id="dtEdit">✎ Sửa</button>`:''}</div>
     <div class="pg">
       <h2 class="pg-t">${t.prio==='Cao'?'🔥 ':''}${esc(t.title)}</h2>
       <div class="lm">${stickers(t,true)}${t.repeat?'<span class="stk rp">🔁 Hằng ngày</span>':''}${t.prio==='Cao'?'<span class="stk hi">Ưu tiên</span>':''}</div>
@@ -1483,7 +1555,7 @@ function renderDetail(){
           ${S.detail.pend&&pr.pending.length?`<div class="pend">${pr.pending.map(p=>`<div><b>${esc(p[0])}</b><span>${esc(p[1])}</span><em>${esc(p[2])}</em></div>`).join('')}</div>`:''}`
           : `<div class="none">Đang tải…</div>`}
       </div>
-      ${S.admin?`<button class="btn danger block" style="margin-top:14px" id="dtHide">🗑 Ẩn công việc này</button>`:''}
+      ${canEdit(t)?`<button class="btn danger block" style="margin-top:14px" id="dtHide">🗑 Ẩn công việc này</button>`:''}
     </div>
     ${S.mode==='shop'?`<div class="pg-foot"><button class="btn block ${done?'line':'pri'}" id="dtDone">${done?'↺ Bỏ đánh dấu hoàn tất':'✓ Đánh dấu hoàn tất'}</button></div>`:''}`;
   $('detail').innerHTML = h;
@@ -1837,8 +1909,14 @@ function openForm(t){
     <div class="err" id="fErr"></div>
   </div><div class="pg-foot"><button class="btn pri block" id="fSave">${isNew?'✓ Giao việc':'✓ Lưu thay đổi'}</button></div>`;
   $('formPage').classList.remove('hide'); $('formPage').scrollTop = 0; document.body.style.overflow='hidden';
-  const byOld = t.by && (t.by==='RSM' || qs.some(q=>q.name===t.by)) ? t.by : (isNew ? (store.get('lcv_by')||'') : '');
+  const byOld = t.by && (t.by==='RSM' || qs.some(q=>q.name===t.by)) ? t.by : (isNew ? 'RSM' : '');
   $('fBy').value = byOld;
+  if(S.role !== 'admin' && S.me){
+    /* QLTP: người tạo luôn là chính mình; giao được cả miền hoặc QLTP bất kỳ */
+    const nm = S.me.name;
+    $('fBy').innerHTML = `<option value="${esc(nm)}">${esc(nm)}</option>`; $('fBy').value = nm; $('fBy').disabled = true;
+    if(isNew){ F.scope = 'MIEN'; F.qltp = []; }
+  }
   $('fBy').onchange = () => { if(F.scope==='QLTP' && !F.qltp.length && $('fBy').value && $('fBy').value!=='RSM'){ F.qltp=[$('fBy').value]; paintQ(); } };
   const seg = (id, key) => {
     const el = $(id);
@@ -1861,7 +1939,7 @@ function openForm(t){
     const files = [...e.target.files]; e.target.value='';
     for(const f of files){
       loading(true);
-      try{ const b64 = await shrink(f); F.imgs.push(await api('uploadImage', f.name.replace(/\.\w+$/,'')+'.jpg', 'image/jpeg', b64, S.pin)); paintImgs(); }
+      try{ const b64 = await shrink(f); F.imgs.push(await api('uploadImage', f.name.replace(/\.\w+$/,'')+'.jpg', 'image/jpeg', b64, S.auth)); paintImgs(); }
       catch(err){ $('fErr').textContent = 'Lỗi tải ảnh: ' + err; }
       loading(false);
     }
@@ -1877,7 +1955,7 @@ function openForm(t){
     if(!body.title.trim()){ $('fErr').textContent='Nhập tiêu đề.'; return; }
     if(body.scope==='QLTP' && !body.qltp.length){ $('fErr').textContent='Chọn ít nhất 1 QLTP.'; return; }
     loading(true);
-    try{ await api('saveTask', body, S.pin); store.set('lcv_by', body.by); closeForm(); toast(isNew?'✅ Đã thêm CV':'✅ Đã lưu'); await reload(); if(S.detail) renderDetail(); }
+    try{ await api('saveTask', body, S.auth); store.set('lcv_by', body.by); closeForm(); toast(isNew?'✅ Đã thêm CV':'✅ Đã lưu'); await reload(); if(S.detail) renderDetail(); }
     catch(e){ loading(false); $('fErr').textContent = e; }
   };
 }
@@ -1901,33 +1979,27 @@ async function hideT(id){
     <p>“${esc(t.title)}” sẽ không còn hiện trên lịch (vẫn giữ trong Sheet, đổi Trạng thái về “Hoạt động” để hiện lại).</p>
     <div class="row2"><button class="btn line" id="hN">Huỷ</button><button class="btn danger" id="hY">Ẩn CV</button></div></div></div>`;
   $('hN').onclick = () => $('modal').innerHTML='';
-  $('hY').onclick = async () => { loading(true); try{ await api('hideTask', id, S.pin); $('modal').innerHTML=''; closeDetail(); toast('Đã ẩn CV'); await reload(); }catch(e){ loading(false); toast('⚠️ '+e); } };
+  $('hY').onclick = async () => { loading(true); try{ await api('hideTask', id, S.auth); $('modal').innerHTML=''; closeDetail(); toast('Đã ẩn CV'); await reload(); }catch(e){ loading(false); toast('⚠️ '+e); } };
 }
 
 /* ================= EVENTS ================= */
 $('btnFind').onclick = findMa;
-$('btnLogin').onclick = doLogin;
-$('inPass').onkeydown = e => { if(e.key==='Enter') doLogin(); };
+$('inMa').onkeydown = e => { if(e.key==='Enter') $('inPw').focus(); };
+$('inPw').onkeydown = e => { if(e.key==='Enter') findMa(); };
+$('roleSel').querySelectorAll('button').forEach(b => b.onclick = () => setRole(b.dataset.v));
+$('btnEye').onclick = () => { const i = $('inPw'); i.type = i.type === 'password' ? 'text' : 'password'; };
 $('btnForgot').onclick = () => $('forgotBox').classList.toggle('hide');
-$('btnBack3').onclick = () => { showStep('stepMa'); $('inMa').focus(); };
 $('btnSetPass').onclick = savePass;
 $('inNew2').onkeydown = e => { if(e.key==='Enter') savePass(); };
-$('btnChgPass').onclick = showNewPass;
 $('ldCancel').onclick = forceUnload;
-$('inMa').onkeydown = e => { if(e.key==='Enter') findMa(); };
 $('btnAll').onclick = () => enterApp('all');
 $('connRetry').onclick = () => { S.boot = null; boot(); };
-$('btnBack1').onclick = $('btnBack2').onclick = () => { showStep('stepMa'); $('inMa').focus(); };
-$('btnChgKV').onclick = () => { qOptions($('chgQ'), S.shop.qltp); $('chgPin').value=''; $('chgBox').classList.toggle('hide'); };
-$('btnChgSave').onclick = changeKV;
-$('btnEnter').onclick = () => enterApp('shop');
+$('btnBack2').onclick = () => { showStep('stepMa'); $('inMa').focus(); };
 $('rgFull').oninput = e => { const s = shortName(e.target.value); $('rgPrev').textContent = s ? 'Tên rút gọn: ' + s : ''; };
 $('btnReg').onclick = register;
 $('btnReload').onclick = () => reload();
 $('btnBell').onclick = toggleNotif;
-$('btnAdmin').onclick = toggleAdmin;
-$('btnLead').onclick = openLeader;
-$('btnLeadLogin').onclick = openLeader;
+$('btnLead').onclick = () => { if(S.admin) openForm(null); };
 $('fab').onclick = () => openForm(null);
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => { S.view = b.dataset.v; if(S.view==='month'){ const d=fromKey(S.sel); S.y=d.getFullYear(); S.m=d.getMonth(); } render(); });
 $('mPrev').onclick = () => { S.m--; if(S.m<0){S.m=11;S.y--;} renderMonth(); };

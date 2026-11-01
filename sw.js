@@ -1,5 +1,5 @@
 /* Service worker: cho phép cài app ra màn hình chính, hiện thông báo và mở app khi bấm vào thông báo */
-const CACHE = 'lcv-v11';
+const CACHE = 'lcv-v12';
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', 'index.html', 'manifest.webmanifest', 'icon-192.png'])).catch(() => {}));
   self.skipWaiting();
