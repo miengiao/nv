@@ -1,5 +1,5 @@
 /* Service worker: cho phép cài app ra màn hình chính, hiện thông báo và mở app khi bấm vào thông báo */
-const CACHE = 'lcv-v12';
+const CACHE = 'lcv-v16';
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', 'index.html', 'manifest.webmanifest', 'icon-192.png'])).catch(() => {}));
   self.skipWaiting();
@@ -16,8 +16,9 @@ self.addEventListener('fetch', e => {
 });
 self.addEventListener('notificationclick', e => {
   e.notification.close();
+  const go = (e.notification.data && e.notification.data.go) || '';
   e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(cs => {
-    for (const c of cs) { if ('focus' in c) return c.focus(); }
-    return self.clients.openWindow('./');
+    for (const c of cs) { if ('focus' in c) { if (go) c.postMessage({ go: go }); return c.focus(); } }
+    return self.clients.openWindow(go ? './?go=' + go : './');
   }));
 });
