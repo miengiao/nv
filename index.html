@@ -889,6 +889,45 @@ body.dopen .bnav{display:none}
 .swinfo{color:var(--ink)}
 .swinfo .sws{font-size:15px}
 .appv-note{background:#fff8e1;color:#5a4300;font-size:12.5px;font-weight:600;padding:7px 12px;border-bottom:1px solid #f0e0a8;cursor:pointer}
+.ksb{background:linear-gradient(135deg,#f6efff,#fff);border:1.5px solid #e2d2fb;border-radius:16px;padding:10px 12px;margin:10px 0 4px}
+.ksb h4{margin:0 0 6px;font-size:13px;font-weight:800;color:#5b2a9c;display:flex;justify-content:space-between;align-items:center}
+.ksr{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px dashed #e8dcfb}
+.ksr:first-of-type{border-top:0}
+.ksr .t{flex:1;min-width:0}.ksr .t b{display:block;font-size:14px}.ksr .t small{color:var(--mut);font-size:12px}
+.ksr .btn{padding:8px 12px;font-size:13px}
+.btn.vio{background:#6b2fb3;color:#fff;border-color:#6b2fb3}
+.ksq{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0;box-shadow:0 2px 10px -8px rgba(0,0,0,.3)}
+.ksq.kerr{border-color:var(--red);box-shadow:0 0 0 3px rgba(214,59,47,.12)}
+.ksq .qt{font-weight:700;font-size:15px;line-height:1.4;margin-bottom:10px}
+.ksq .qt i{color:var(--red);font-style:normal;margin-left:3px}
+.ksq .qn{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:8px;background:#f3e8ff;color:#6b2fb3;font-size:12px;font-weight:800;margin-right:6px}
+.kopt{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;margin-top:7px;cursor:pointer;font-size:14px;background:#fff;transition:.15s}
+.kopt input{width:18px;height:18px;accent-color:#6b2fb3;flex:none}
+.kopt.on{border-color:#6b2fb3;background:#faf5ff}
+.kopt .inp{margin:0;padding:6px 8px;flex:1}
+.kshead{background:linear-gradient(135deg,#6b2fb3,#8e4fd6);color:#fff;border-radius:18px;padding:16px;margin-bottom:6px}
+.kshead h2{margin:0 0 4px;font-size:19px;line-height:1.3}.kshead p{margin:6px 0 0;opacity:.92;font-size:13.5px;white-space:pre-wrap}
+.kshead small{opacity:.85;font-size:12px}
+.kscard{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;display:flex;gap:12px;align-items:center}
+.kscard .t{flex:1;min-width:0}.kscard .t b{display:block;font-size:15px}.kscard .t small{color:var(--mut);font-size:12px;display:block;margin-top:2px}
+.kst{font-size:11px;font-weight:800;border-radius:7px;padding:2px 7px;margin-left:4px}
+.kst.on{background:#e8f3ec;color:var(--g)}.kst.off{background:#f1f1f1;color:#777}
+.qed{background:#fff;border:1px solid var(--line);border-left:4px solid #8e4fd6;border-radius:14px;padding:12px;margin:10px 0}
+.qed .qh2{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.qed .qh2 b{flex:1;color:#6b2fb3;font-size:13px}
+.qed .mini{width:30px;height:30px;border-radius:9px;background:#f4f6f5;font-size:13px}
+.qed .seg button{font-size:12px;padding:7px 4px}
+.qed .orow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.qed .orow span{width:18px;text-align:center;color:var(--mut)}
+.qed .orow .inp{margin:0;flex:1}
+.qed .orow button{width:30px;height:30px;border-radius:9px;background:#fde8e6;color:var(--red)}
+.qed .qfoot{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:13px}
+.ksbar{margin:8px 0}.ksbar .l{display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px}
+.ksbar .b{height:10px;border-radius:6px;background:#f0eaf8;overflow:hidden}.ksbar .b i{display:block;height:100%;background:linear-gradient(90deg,#8e4fd6,#6b2fb3);border-radius:6px}
+.kstx{font-size:13.5px;padding:8px 10px;background:#faf8fd;border-radius:10px;margin-top:6px;white-space:pre-wrap}
+.kstx b{color:#5b2a9c}
+.ksacts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ksacts .btn{flex:1;min-width:120px}
 </style>
 </head>
 <body>
@@ -1010,6 +1049,7 @@ body.dopen .bnav{display:none}
       </div>
       <div class="week" id="dWeek"></div>
       <div id="dProg"></div>
+      <div id="ksBox"></div>
       <div id="dSum"></div>
       <div class="layt" id="layT"></div>
       <div class="box rsmb" id="boxRSM">
@@ -1035,6 +1075,7 @@ body.dopen .bnav{display:none}
 
 <div id="detail" class="detail hide"></div>
 <div id="formPage" class="detail hide" style="z-index:47"></div>
+<div id="ksPage" class="detail hide" style="z-index:46"></div>
 <div id="modal"></div>
 <div id="loading" class="loading hide"><div class="lbox"><div class="spin"></div><b id="ldMsg">Đang tải dữ liệu…</b><small id="ldSub">Máy chủ Google đang xử lý</small><button class="btn line hide" id="ldCancel">Đóng, thử lại sau</button></div></div>
 <div id="topbar" class="topbar hide"><i></i></div>
@@ -1199,7 +1240,7 @@ async function boot(){
   await resolveApi();
   if(!IS_GAS && !API_URL){ setConn('bad', 'Chưa gắn link máy chủ'); showApiSetup(); return; }
   if(BOOT && BOOT.error){ setConn('bad', 'Lỗi máy chủ: ' + BOOT.error); return; }
-  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 17.4' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
+  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 18' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
   catch(e){ setConn('bad', 'Chưa kết nối được: ' + e); }
 }
 function setConn(st, txt){
@@ -1605,6 +1646,8 @@ async function enterApp(mode){
   } else await reload();
 }
 async function reload(silent){
+  if(S.mode==='shop' && S.ks) setTimeout(() => loadShopKs(true), 50);
+  if(S.ksL) S.ksL = null;
   if(silent){ $('topbar').classList.remove('hide'); } else loading(true, 'Đang tải lịch công việc…');
   try{
     const d = await api('getData', S.mode==='shop' ? S.shop.ma : '');
@@ -1643,6 +1686,7 @@ function logout(full){
   }
   $('app').classList.add('hide'); $('login').classList.remove('hide');
   S.askedN=false; const nb=document.querySelector('.nask'); if(nb) nb.remove();
+  S.ks=null; S.ksL=null; closeKsPage();
   S.shop=null; S.data=null; S.token=null; S.auth=null; S.me=null; S.admin=false; S.role=''; S.qf=''; S.stats={}; S.ntData=null;
   S.view='home'; document.body.classList.remove('dopen');
   $('inPw').value = ''; showStep('stepMa'); setRole(store.get('lcv_role')==='qltp' ? 'qltp' : (S.role0 || 'shop')); $('inMa').focus();
@@ -1674,6 +1718,7 @@ window.addEventListener('resize', syncHH);
 
 /* ================= THANH ĐIỀU HƯỚNG DƯỚI ================= */
 const IC = {
+  form:'<rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 8h6M9 12h6M9 16h3"></path>',
   grid:'<rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect>',
   cal:'<rect x="3" y="4" width="18" height="17" rx="3"></rect><path d="M16 2v4M8 2v4M3 10h18"></path>',
   apps:'<circle cx="7" cy="7" r="3"></circle><circle cx="17" cy="7" r="3"></circle><circle cx="7" cy="17" r="3"></circle><circle cx="17" cy="17" r="3"></circle>',
@@ -1697,7 +1742,7 @@ function navItems(){
   return L;
 }
 function renderNav(){
-  const shopLeft = S.mode==='shop' && S.data ? dayInfo(S.data.today, visibleTasks()).left : 0;
+  const shopLeft = S.mode==='shop' && S.data ? dayInfo(S.data.today, visibleTasks()).left + (S.ks || []).filter(k => k.open && !k.my).length : 0;
   $('bnav').innerHTML = navItems().map(n => {
     const b = n[0]==='home' && shopLeft ? shopLeft : n[0]==='nt' && S.rqTotal ? S.rqTotal : 0;
     return `<button data-nv="${n[0]}" class="${S.view===n[0]?'on':''}" ${n[0]==='acc'?'id="btnOut"':''} aria-label="${n[2]}"><span class="pill">${svg(n[1])}</span>${n[2]}${b?`<span class="bdg">${b>99?'99+':b}</span>`:''}</button>`;
@@ -2586,6 +2631,7 @@ function guidePanel(t, k){
 
 function useCards(){ return store.get('lcv_lay') !== 'list'; }
 function renderDayLists(k){
+  renderKsBox();
   $('dSum').innerHTML = smartSummary(k);
   const info = dayInfo(k, visibleTasks()), shop = S.mode==='shop', cards = useCards();
   const fold = shop ? info.list.filter(t => isDone(t,k)) : [];
@@ -3006,6 +3052,7 @@ function fnList(){
     add('home', 'grid', 'Việc hôm nay', '#e8f3ec', '#0b7a3b', { d: 'Danh sách việc cần làm hôm nay' });
     add('month', 'cal', 'Lịch tháng', '#eaf2ff', '#1d4e9e', { d: 'Xem việc theo ngày trong tháng' });
     add('apps', 'apps', 'Ứng dụng', '#f1f4f2', '#44544b', { d: 'Các web app nội bộ' });
+    add('ksme', 'form', 'Khảo sát', '#f3e8ff', '#6b2fb3', { d: 'Trả lời khảo sát của RSM / QLTP' });
     add('acc', 'user', 'Tài khoản & mật khẩu', '#f1f4f2', '#44544b', { d: 'Đổi mật khẩu, đăng xuất' });
     add('bell', 'bell', notifOn() ? 'Tắt thông báo' : 'Bật thông báo', '#fff1dc', '#8a4b00', { d: 'Nhắc việc mới, việc sắp trễ' });
     add('reload', 'grid', 'Tải lại dữ liệu', '#f1f4f2', '#44544b');
@@ -3015,9 +3062,10 @@ function fnList(){
   if(S.admin) add('nt', 'check', 'Nghiệm thu', '#e8f3ec', '#0b7a3b', { tile: 1, badge: S.rqTotal || 0, d: 'Lướt ảnh: phải Đạt · trái Làm lại' });
   add('todo', 'warn', 'Chưa làm', '#fde8e6', '#b3261e', { tile: 1, badge: dashOk ? todoList('').length : 0, d: 'Siêu thị còn việc · hoàn tất thay' });
   add('dash', 'chart', 'Dashboard', '#eaf2ff', '#1d4e9e', { tile: 1, d: 'Tiến độ theo đầu việc / QLTP' });
+  if(me) add('survey', 'form', 'Khảo sát', '#f3e8ff', '#6b2fb3', { tile: 1, d: 'Tạo khảo sát, xem kết quả siêu thị trả lời' });
   if(me) add('link', 'link', 'Link sếp', '#fff1dc', '#8a4b00', { tile: 1, d: 'Link dashboard gửi sếp, không cần đăng nhập' });
   if(me) add('folder', 'folder', 'Thư mục ảnh', '#fff1dc', '#8a4b00', { tile: 1, d: 'Xem / gửi link thư mục ảnh của CV' });
-  if(me) add('reset', 'key', 'Reset MK', '#fff1dc', '#8a4b00', { tile: 1, d: 'Reset mật khẩu siêu thị' });
+  if(me) add('reset', 'key', 'Reset MK', '#fff1dc', '#8a4b00', { d: 'Reset mật khẩu siêu thị' });
   add('apps', 'apps', 'Ứng dụng', '#f1f4f2', '#44544b', { tile: 1, d: 'Các web app nội bộ' });
   add('access', 'eye', 'Lượt truy cập', '#eaf2ff', '#1d4e9e', { d: 'Shop vào app hôm nay / tháng' });
   add('month', 'cal', 'Lịch công việc', '#eaf2ff', '#1d4e9e', { d: 'Lịch tháng + việc theo ngày' });
@@ -3035,6 +3083,7 @@ function runFn(k){
   else if(k === 'reset') openShopReset(); else if(k === 'apps' || k === 'home' || k === 'month') go(k);
   else if(k === 'acc') openAccount(); else if(k === 'users') openAccounts();
   else if(k === 'bell') toggleNotif(); else if(k === 'reload') reload();
+  else if(k === 'survey') openKsList(); else if(k === 'ksme'){ go('home'); setTimeout(() => { const b = $('ksBox'); if(b) b.scrollIntoView({ behavior:'smooth', block:'center' }); }, 200); }
 }
 function tileHTML(f){
   return `<button class="tile" data-fn="${f.k}"><span class="tbox" style="background:${f.bg};color:${f.c}">${svg(f.ic, 24)}</span>${esc(f.n)}${f.badge ? `<span class="bdg">${f.badge > 99 ? '99+' : f.badge}</span>` : ''}</button>`;
@@ -3209,13 +3258,216 @@ async function shareFolder(id){
   }catch(e){ loading(false); toast('⚠️ ' + e, 3500); }
 }
 
+/* ================= KHẢO SÁT ================= */
+const KS_T = { para:'Đoạn văn', short:'Trả lời ngắn', one:'Một lựa chọn', many:'Nhiều lựa chọn' };
+function ksEnd(ms){ const d = new Date(ms); return pad(d.getHours()) + ':' + pad(d.getMinutes()) + ' ' + pad(d.getDate()) + '/' + pad(d.getMonth() + 1); }
+function ksLeft(ms){ const x = ms - Date.now(); if(x <= 0) return 'đã hết hạn'; const h = Math.floor(x / 36e5); return h >= 24 ? 'còn ' + Math.floor(h / 24) + ' ngày' : h >= 1 ? 'còn ' + h + ' giờ' : 'còn ' + Math.max(1, Math.round(x / 6e4)) + ' phút'; }
+function openKsPage(html){ syncHH(); const p = $('ksPage'); p.innerHTML = html; p.classList.remove('hide'); p.scrollTop = 0; document.body.style.overflow = 'hidden'; document.body.classList.add('dopen'); }
+function closeKsPage(){ const p = $('ksPage'); p.classList.add('hide'); p.innerHTML = ''; if(!S.detail){ document.body.style.overflow = ''; document.body.classList.remove('dopen'); } }
+
+/* ---- SIÊU THỊ: danh sách khảo sát ở trang Hôm nay ---- */
+async function loadShopKs(force){
+  if(S.mode !== 'shop' || !S.shop || !S.token || S.ksBusy || (S.ks && !force)) return;
+  S.ksBusy = true;
+  try{ S.ks = await api('getShopSurveys', S.shop.ma, S.token); }catch(e){ S.ks = []; }
+  S.ksBusy = false; renderKsBox(); if(typeof renderNav === 'function' && $('bnav') && $('bnav').innerHTML) renderNav();
+}
+function renderKsBox(){
+  const el = $('ksBox'); if(!el) return;
+  if(S.mode !== 'shop'){ el.innerHTML = ''; return; }
+  if(!S.ks){ el.innerHTML = ''; loadShopKs(); return; }
+  const L = S.ks.filter(k => k.open || (k.my && Date.now() - k.endMs < 3 * 864e5));
+  if(!L.length){ el.innerHTML = ''; return; }
+  const todo = L.filter(k => k.open && !k.my).length;
+  el.innerHTML = `<div class="ksb"><h4><span>📝 Khảo sát ${todo ? `– ${todo} cần trả lời` : ''}</span></h4>${L.map(k => `<div class="ksr"><div class="t"><b>${esc(k.title)}</b><small>${k.my ? '✅ Đã trả lời' + (k.open ? ' · sửa được đến ' + ksEnd(k.endMs) : '') : '⏰ Hạn ' + ksEnd(k.endMs) + ' · ' + ksLeft(k.endMs)} · ${k.qs.length} câu</small></div>${k.open ? `<button class="btn ${k.my ? 'line' : 'vio'}" data-ks="${k.id}">${k.my ? 'Sửa' : 'Trả lời'}</button>` : '<span class="kst off">Đã đóng</span>'}</div>`).join('')}</div>`;
+  el.querySelectorAll('[data-ks]').forEach(b => b.onclick = () => openKsAnswer(b.dataset.ks));
+}
+function openKsAnswer(id){
+  const k = (S.ks || []).find(x => x.id === id); if(!k) return;
+  const A = JSON.parse(JSON.stringify((k.my && k.my.a) || {}));
+  const isOther = (q, v) => q.other && typeof v === 'string' && v.indexOf('Khác: ') === 0;
+  const qHTML = (q, i) => {
+    const v = A[q.id];
+    let body = '';
+    if(q.t === 'para') body = `<textarea class="inp" data-qa="${q.id}" style="min-height:90px" placeholder="Nhập câu trả lời…">${esc(v || '')}</textarea>`;
+    else if(q.t === 'short') body = `<input class="inp" data-qa="${q.id}" value="${esc(v || '')}" placeholder="Câu trả lời ngắn">`;
+    else {
+      const many = q.t === 'many', arr = many ? (Array.isArray(v) ? v : []) : [v];
+      const oth = arr.find(x => isOther(q, x));
+      body = q.o.map(o => { const on = arr.indexOf(o) >= 0; return `<label class="kopt ${on ? 'on' : ''}"><input type="${many ? 'checkbox' : 'radio'}" name="${q.id}" value="${esc(o)}" ${on ? 'checked' : ''}><span>${esc(o)}</span></label>`; }).join('')
+        + (q.other ? `<label class="kopt ${oth ? 'on' : ''}"><input type="${many ? 'checkbox' : 'radio'}" name="${q.id}" value="__other" ${oth ? 'checked' : ''}><span>Khác:</span><input class="inp" data-oth="${q.id}" value="${esc(oth ? oth.slice(6) : '')}" placeholder="ghi rõ…"></label>` : '');
+    }
+    return `<div class="ksq" id="kq_${q.id}"><div class="qt"><span class="qn">${i + 1}</span>${esc(q.q)}${q.req ? '<i>*</i>' : ''}</div>${body}</div>`;
+  };
+  openKsPage(`<div class="pg-top"><button class="back" id="kaX">‹</button><b>📝 Khảo sát</b></div><div class="pg">
+    <div class="kshead"><small>${esc(k.by ? 'Từ ' + k.by : '')} · hạn ${ksEnd(k.endMs)} (${ksLeft(k.endMs)})</small><h2>${esc(k.title)}</h2>${k.desc ? `<p>${linkify(k.desc)}</p>` : ''}</div>
+    <div class="smut" style="font-size:12px">🏪 ${esc(S.shop.ma)} · ${esc(S.shop.short || S.shop.full || '')} · <i style="color:var(--red);font-style:normal">*</i> bắt buộc</div>
+    ${k.qs.map(qHTML).join('')}
+    <div class="err" id="kaErr"></div></div>
+    <div class="pg-foot"><button class="btn vio block" id="kaOk">${k.my ? '💾 Cập nhật câu trả lời' : '📨 Gửi câu trả lời'}</button></div>`);
+  const pg = $('ksPage');
+  $('kaX').onclick = closeKsPage;
+  const read = () => {
+    k.qs.forEach(q => {
+      if(q.t === 'para' || q.t === 'short'){ const e = pg.querySelector(`[data-qa="${q.id}"]`); A[q.id] = e ? e.value.trim() : ''; return; }
+      const ch = [...pg.querySelectorAll(`input[name="${q.id}"]:checked`)].map(x => x.value);
+      const ot = pg.querySelector(`[data-oth="${q.id}"]`), otv = ot ? ot.value.trim() : '';
+      const vals = ch.map(x => x === '__other' ? (otv ? 'Khác: ' + otv : '') : x).filter(Boolean);
+      A[q.id] = q.t === 'many' ? vals : (vals[0] || '');
+    });
+  };
+  pg.querySelectorAll('.kopt input[type=radio],.kopt input[type=checkbox]').forEach(inp => inp.onchange = () => {
+    pg.querySelectorAll(`input[name="${inp.name}"]`).forEach(x => x.closest('.kopt').classList.toggle('on', x.checked));
+  });
+  pg.querySelectorAll('[data-oth]').forEach(t => t.oninput = () => { const c = t.closest('.kopt').querySelector('input[type=radio],input[type=checkbox]'); if(t.value && !c.checked){ c.checked = true; c.onchange(); } });
+  $('kaOk').onclick = async () => {
+    read();
+    pg.querySelectorAll('.ksq.kerr').forEach(x => x.classList.remove('kerr'));
+    const miss = k.qs.find(q => q.req && (Array.isArray(A[q.id]) ? !A[q.id].length : !A[q.id]));
+    if(miss){ const e = $('kq_' + miss.id); e.classList.add('kerr'); e.scrollIntoView({ behavior:'smooth', block:'center' }); $('kaErr').textContent = '⚠️ Còn câu bắt buộc chưa trả lời.'; return; }
+    loading(true, 'Đang gửi câu trả lời…');
+    try{
+      const r = await api('submitSurvey', k.id, S.shop.ma, S.token, A);
+      loading(false); k.my = { at: r.at, a: A }; closeKsPage(); renderKsBox();
+      celebrate(null, 0, ['Đã gửi khảo sát!', 'Cảm ơn ' + (S.shop.short || 'bạn') + ' đã dành thời gian trả lời 💜']);
+    }catch(e){ loading(false); $('kaErr').textContent = '⚠️ ' + String(e).replace(/^Error:\s*/, ''); }
+  };
+}
+
+/* ---- QUẢN LÝ: danh sách · tạo · kết quả ---- */
+async function openKsList(force){
+  openKsPage(`<div class="pg-top"><button class="back" id="klX">‹</button><b>📝 Khảo sát</b><button class="tbtn" id="klNew">＋ Tạo mới</button></div><div class="pg" id="klBody"><div class="none">⏳ Đang tải…</div></div>`);
+  $('klX').onclick = closeKsPage; $('klNew').onclick = () => openKsBuilder(null);
+  if(!S.ksL || force){ try{ S.ksL = await api('listSurveys', S.auth); }catch(e){ $('klBody').innerHTML = `<div class="none">⚠️ ${esc(e)}</div>`; return; } }
+  const L = S.ksL, b = $('klBody'); if(!b) return;
+  b.innerHTML = (L.length ? '' : `<div class="none" style="padding:30px 10px">Chưa có khảo sát nào.<br><button class="btn vio" style="margin-top:12px" id="klNew2">＋ Tạo khảo sát đầu tiên</button></div>`)
+    + L.map(k => { const p = k.total ? Math.round(k.done * 100 / k.total) : 0, open = k.st !== 'Đóng' && Date.now() <= k.endMs;
+      return `<button class="kscard" data-kr="${k.id}"><span class="pring" style="--p:${p};--rc:#6b2fb3"><b>${p}%</b></span><div class="t"><b>${esc(k.title)}<span class="kst ${open ? 'on' : 'off'}">${open ? 'Đang mở' : k.st === 'Đóng' ? 'Đã đóng' : 'Hết hạn'}</span></b><small>${k.done}/${k.total} siêu thị đã trả lời · hạn ${ksEnd(k.endMs)}</small><small>👤 ${esc(k.by)} · ${k.scope === 'QLTP' ? '📍 ' + esc(k.qltp.join(', ')) : '🌐 Cả miền'} · ${k.qs.length} câu</small></div></button>`; }).join('');
+  if($('klNew2')) $('klNew2').onclick = () => openKsBuilder(null);
+  b.querySelectorAll('[data-kr]').forEach(x => x.onclick = () => openKsResult(x.dataset.kr));
+}
+function openKsBuilder(k0){
+  const today = S.data.today, addD = n => { const x = fromKey(today); x.setDate(x.getDate() + n); return keyOf(x); };
+  const K = k0 ? JSON.parse(JSON.stringify(k0)) : { title:'', desc:'', scope:'MIEN', qltp:[], qs:[{ id:'q1', t:'one', q:'', req:1, o:['', ''], other:0 }] };
+  const e0 = k0 && k0.endMs ? new Date(k0.endMs) : null;
+  K.eD = e0 ? keyOf(e0) : addD(2); K.eT = e0 ? pad(e0.getHours()) + ':' + pad(e0.getMinutes()) : '17:00';
+  const qsList = S.role === 'ql' ? S.data.qltpList.filter(q => myKV() && norm(q.name) === norm(myKV())) : S.data.qltpList;
+  const noKV = S.role === 'ql' && !myKV();
+  let nid = K.qs.reduce((m, q) => Math.max(m, +String(q.id).replace(/\D/g, '') || 0), 0);
+  const save = () => {
+    K.title = $('kbT').value; K.desc = $('kbD').value; K.eD = $('kbED').value; K.eT = $('kbET').value;
+    K.qs.forEach(q => {
+      const c = $('ksPage').querySelector(`[data-qe="${q.id}"]`); if(!c) return;
+      q.q = c.querySelector('[data-f=q]').value;
+      q.o = [...c.querySelectorAll('[data-f=o]')].map(x => x.value);
+      q.req = c.querySelector('[data-f=req]').checked ? 1 : 0;
+      const ot = c.querySelector('[data-f=other]'); q.other = ot && ot.checked ? 1 : 0;
+    });
+  };
+  const qe = (q, i) => `<div class="qed" data-qe="${q.id}">
+      <div class="qh2"><b>Câu ${i + 1}</b><button class="mini" data-mv="${q.id}|-1" ${i ? '' : 'disabled'} title="Lên">▲</button><button class="mini" data-mv="${q.id}|1" ${i < K.qs.length - 1 ? '' : 'disabled'} title="Xuống">▼</button><button class="mini" data-cp="${q.id}" title="Nhân bản">⧉</button><button class="mini" data-rm="${q.id}" title="Xoá câu" style="color:var(--red)">🗑</button></div>
+      <div class="seg" data-ty="${q.id}">${Object.keys(KS_T).map(t => `<button type="button" data-t="${t}" class="${q.t === t ? 'on' : ''}">${t === 'para' ? '¶ ' : t === 'short' ? '— ' : t === 'one' ? '◉ ' : '☑ '}${KS_T[t]}</button>`).join('')}</div>
+      <textarea class="inp" data-f="q" style="margin-top:8px;min-height:52px" placeholder="Nội dung câu hỏi">${esc(q.q)}</textarea>
+      ${q.t === 'one' || q.t === 'many' ? `<div>${q.o.map((o, j) => `<div class="orow"><span>${q.t === 'one' ? '○' : '☐'}</span><input class="inp" data-f="o" value="${esc(o)}" placeholder="Lựa chọn ${j + 1}"><button type="button" data-ro="${q.id}|${j}" ${q.o.length > 2 ? '' : 'disabled'}>✕</button></div>`).join('')}
+        <button type="button" class="link" data-ao="${q.id}" style="margin-top:8px">＋ Thêm lựa chọn</button></div>` : `<div class="smut" style="margin-top:6px;font-size:12px">Siêu thị sẽ gõ ${q.t === 'para' ? 'đoạn văn (nhiều dòng)' : 'câu trả lời ngắn (1 dòng)'}.</div>`}
+      <div class="qfoot"><label class="chk"><input type="checkbox" data-f="req" ${q.req ? 'checked' : ''}> Bắt buộc</label>${q.t === 'one' || q.t === 'many' ? `<label class="chk"><input type="checkbox" data-f="other" ${q.other ? 'checked' : ''}> Thêm ô "Khác…"</label>` : ''}</div></div>`;
+  const paint = () => {
+    const y = $('ksPage').scrollTop;
+    openKsPage(`<div class="pg-top"><button class="back" id="kbX">‹</button><b>${k0 ? '✎ Sửa khảo sát' : '📝 Tạo khảo sát'}</b></div><div class="pg">
+      <div class="fby">👤 Người tạo: <b>${esc(k0 ? k0.by : (S.me ? S.me.name : ''))}</b>${k0 && k0.done ? ` <small>· đã có ${k0.done} siêu thị trả lời – sửa câu hỏi có thể làm lệch kết quả cũ</small>` : ''}</div>
+      <div class="field"><input id="kbT" class="inp big2" value="${esc(K.title)}" placeholder="Tên khảo sát – VD: Khảo sát tình trạng tủ mát"></div>
+      <div class="field"><textarea id="kbD" class="inp" style="min-height:70px" placeholder="Mô tả / lời nhắn cho siêu thị (không bắt buộc)">${esc(K.desc)}</textarea></div>
+      <div class="fsec">⏰ Hạn trả lời</div>
+      <div class="qd" id="kbEq">${[[today,'Hôm nay'],[addD(1),'Ngày mai'],[addD(2),'+2 ngày'],[addD(3),'+3 ngày'],[addD(7),'+1 tuần']].map(([v,l]) => `<button type="button" data-d="${v}" class="${K.eD === v ? 'on' : ''}">${l}</button>`).join('')}</div>
+      <div class="row2"><input id="kbED" class="inp" type="date" value="${K.eD}"><input id="kbET" class="inp" type="time" step="300" value="${K.eT}"></div>
+      <div class="fsec">👥 Gửi cho</div>
+      <div class="seg" id="kbScope"><button data-v="MIEN" class="${K.scope === 'MIEN' ? 'on' : ''}">🌐 Cả miền</button>${noKV ? '' : `<button data-v="QLTP" class="${K.scope === 'QLTP' ? 'on' : ''}">${S.role === 'ql' ? '👤 KV ' + esc(myKV()) : '👤 Chọn QLTP'}</button>`}</div>
+      <div class="qchips ${K.scope === 'QLTP' && S.role !== 'ql' ? '' : 'hide'}" id="kbQ">${qsList.map(q => `<button data-q="${esc(q.name)}" class="${K.qltp.some(z => norm(z) === norm(q.name)) ? 'on' : ''}">${esc(q.name)}</button>`).join('')}</div>
+      <div class="fsec">❓ Câu hỏi (${K.qs.length})</div>
+      ${K.qs.map(qe).join('')}
+      <button class="btn line block" id="kbAdd" style="border-style:dashed">＋ Thêm câu hỏi</button>
+      <div class="err" id="kbErr"></div></div>
+      <div class="pg-foot"><button class="btn vio block" id="kbOk">${k0 ? '💾 Lưu thay đổi' : '📨 Tạo & gửi siêu thị'}</button></div>`);
+    $('ksPage').scrollTop = y;
+    const pg = $('ksPage');
+    $('kbX').onclick = () => k0 ? openKsResult(k0.id) : openKsList();
+    pg.querySelectorAll('#kbEq [data-d]').forEach(b => b.onclick = () => { save(); K.eD = b.dataset.d; paint(); });
+    pg.querySelectorAll('#kbScope [data-v]').forEach(b => b.onclick = () => { save(); K.scope = b.dataset.v; if(S.role === 'ql' && K.scope === 'QLTP') K.qltp = [myKV()]; paint(); });
+    pg.querySelectorAll('#kbQ [data-q]').forEach(b => b.onclick = () => { const q = b.dataset.q, i = K.qltp.findIndex(z => norm(z) === norm(q)); if(i >= 0) K.qltp.splice(i, 1); else K.qltp.push(q); b.classList.toggle('on', i < 0); });
+    pg.querySelectorAll('[data-ty] [data-t]').forEach(b => b.onclick = () => { save(); const q = K.qs.find(x => x.id === b.closest('[data-ty]').dataset.ty); q.t = b.dataset.t; if((q.t === 'one' || q.t === 'many') && q.o.length < 2) q.o = q.o.concat(['', '']).slice(0, Math.max(2, q.o.length)); paint(); });
+    pg.querySelectorAll('[data-ao]').forEach(b => b.onclick = () => { save(); K.qs.find(x => x.id === b.dataset.ao).o.push(''); paint(); const c = pg.querySelector(`[data-qe="${b.dataset.ao}"]`); const ins = c && c.querySelectorAll('[data-f=o]'); if(ins && ins.length) ins[ins.length - 1].focus(); });
+    pg.querySelectorAll('[data-ro]').forEach(b => b.onclick = () => { save(); const [id, j] = b.dataset.ro.split('|'); K.qs.find(x => x.id === id).o.splice(+j, 1); paint(); });
+    pg.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => { save(); if(K.qs.length < 2) return toast('Cần ít nhất 1 câu hỏi'); K.qs = K.qs.filter(x => x.id !== b.dataset.rm); paint(); });
+    pg.querySelectorAll('[data-cp]').forEach(b => b.onclick = () => { save(); const i = K.qs.findIndex(x => x.id === b.dataset.cp), c = JSON.parse(JSON.stringify(K.qs[i])); c.id = 'q' + (++nid); K.qs.splice(i + 1, 0, c); paint(); });
+    pg.querySelectorAll('[data-mv]').forEach(b => b.onclick = () => { save(); const [id, d] = b.dataset.mv.split('|'), i = K.qs.findIndex(x => x.id === id), j = i + +d; if(j < 0 || j >= K.qs.length) return; const t = K.qs[i]; K.qs[i] = K.qs[j]; K.qs[j] = t; paint(); });
+    $('kbAdd').onclick = () => { save(); const last = K.qs[K.qs.length - 1]; K.qs.push({ id: 'q' + (++nid), t: last ? last.t : 'one', q: '', req: 1, o: ['', ''], other: 0 }); paint(); setTimeout(() => { const c = pg.querySelectorAll('.qed'); const e = c[c.length - 1]; if(e){ e.scrollIntoView({ behavior:'smooth', block:'center' }); e.querySelector('[data-f=q]').focus(); } }, 50); };
+    $('kbOk').onclick = async () => {
+      save();
+      const err = m => { $('kbErr').textContent = '⚠️ ' + m; };
+      if(!K.title.trim()) return err('Chưa nhập tên khảo sát.');
+      if(!K.eD) return err('Chưa chọn hạn trả lời.');
+      if(K.scope === 'QLTP' && !K.qltp.length) return err('Chọn ít nhất 1 QLTP.');
+      const bad = K.qs.findIndex(q => !q.q.trim() || ((q.t === 'one' || q.t === 'many') && q.o.filter(o => o.trim()).length < 2));
+      if(bad >= 0) return err('Câu ' + (bad + 1) + ': ' + (!K.qs[bad].q.trim() ? 'chưa nhập nội dung câu hỏi.' : 'cần ít nhất 2 lựa chọn.'));
+      loading(true, 'Đang lưu khảo sát…');
+      try{
+        const r = await api('saveSurvey', { id: k0 ? k0.id : '', title: K.title, desc: K.desc, scope: K.scope, qltp: K.qltp, end: K.eD + 'T' + (K.eT || '17:00'),
+          qs: K.qs.map(q => ({ id: q.id, t: q.t, q: q.q, req: q.req, other: q.other, o: q.o.filter(o => o.trim()) })) }, S.auth);
+        loading(false); S.ksL = null; toast(k0 ? '✅ Đã lưu khảo sát' : '📨 Đã gửi khảo sát tới siêu thị', 2200);
+        openKsResult(r.id);
+      }catch(e){ loading(false); err(String(e).replace(/^Error:\s*/, '')); }
+    };
+  };
+  paint();
+}
+async function openKsResult(id){
+  openKsPage(`<div class="pg-top"><button class="back" id="krX">‹</button><b>📊 Kết quả khảo sát</b></div><div class="pg" id="krBody"><div class="none">⏳ Đang tải kết quả…</div></div>`);
+  $('krX').onclick = () => openKsList(true);
+  let R; try{ R = await api('getSurveyResult', id, S.auth); }catch(e){ $('krBody').innerHTML = `<div class="none">⚠️ ${esc(e)}</div>`; return; }
+  const k = R.k, n = R.ans.length, p = R.total ? Math.round(n * 100 / R.total) : 0, open = k.st !== 'Đóng' && Date.now() <= k.endMs;
+  const qBlock = (q, i) => {
+    let h = `<div class="ksq"><div class="qt"><span class="qn">${i + 1}</span>${esc(q.q)} <small class="smut">· ${KS_T[q.t]}</small></div>`;
+    if(q.t === 'one' || q.t === 'many'){
+      const cnt = {}; let oth = [];
+      R.ans.forEach(a => { const v = a.a[q.id]; (Array.isArray(v) ? v : v ? [v] : []).forEach(x => { if(String(x).indexOf('Khác: ') === 0) oth.push([a, x.slice(6)]); else cnt[x] = (cnt[x] || 0) + 1; }); });
+      const base = R.ans.filter(a => { const v = a.a[q.id]; return Array.isArray(v) ? v.length : !!v; }).length || 1;
+      h += q.o.map(o => { const c = cnt[o] || 0, pc = Math.round(c * 100 / base); return `<div class="ksbar"><div class="l"><span>${esc(o)}</span><b>${c} · ${pc}%</b></div><div class="b"><i style="width:${pc}%"></i></div></div>`; }).join('');
+      if(q.other) h += `<div class="ksbar"><div class="l"><span>Khác</span><b>${oth.length} · ${Math.round(oth.length * 100 / base)}%</b></div><div class="b"><i style="width:${Math.round(oth.length * 100 / base)}%"></i></div></div>` + oth.slice(0, 20).map(([a, x]) => `<div class="kstx"><b>${esc(a.ma)} ${esc(a.short)}:</b> ${esc(x)}</div>`).join('');
+    } else {
+      const L = R.ans.filter(a => a.a[q.id]);
+      h += L.length ? L.map((a, j) => `<div class="kstx ${j >= 8 ? 'hide kmore' + i : ''}"><b>${esc(a.ma)} ${esc(a.short)}:</b> ${esc(a.a[q.id])}</div>`).join('') + (L.length > 8 ? `<button class="link" data-km="${i}" style="margin-top:6px">Xem thêm ${L.length - 8} câu trả lời ▼</button>` : '') : '<div class="smut">Chưa có câu trả lời.</div>';
+    }
+    return h + '</div>';
+  };
+  $('krBody').innerHTML = `<div class="kshead"><small>👤 ${esc(k.by)} · ${k.scope === 'QLTP' ? '📍 ' + esc(k.qltp.join(', ')) : '🌐 Cả miền'} · hạn ${ksEnd(k.endMs)} · ${open ? 'đang mở' : k.st === 'Đóng' ? 'đã đóng' : 'hết hạn'}</small><h2>${esc(k.title)}</h2>${k.desc ? `<p>${linkify(k.desc)}</p>` : ''}</div>
+    <div class="hstrip" style="margin-top:10px"><div><b style="color:#6b2fb3">${n}/${R.total}</b><small>Đã trả lời</small></div><div><b>${p}%</b><small>Hoàn thành</small></div><div><b class="r">${R.pend.length}</b><small>Chưa trả lời</small></div><div><b>${k.qs.length}</b><small>Câu hỏi</small></div></div>
+    <div class="ksacts">${R.mine ? `<button class="btn line" id="krEd">✎ Sửa</button><button class="btn line" id="krSt">${k.st === 'Đóng' ? '🔓 Mở lại' : '🔒 Đóng'}</button>` : ''}<button class="btn line" id="krCp">📋 Sao chép kết quả</button>${R.pend.length ? '<button class="btn line" id="krPd">📋 DS chưa trả lời</button>' : ''}${R.mine ? '<button class="btn danger" id="krRm">🗑 Xoá</button>' : ''}</div>
+    ${k.qs.map(qBlock).join('')}
+    ${R.pend.length ? `<div class="ksq"><div class="qt">🕒 Chưa trả lời (${R.pend.length})</div>${groupQ(R.pend, x => x[2]).map(g => `<div class="qh">👤 ${esc(g.q)} <em>${g.items.length}</em></div><div class="chips">${g.items.map(x => `<span class="sc">${esc(x[0])} ${esc(x[1])}</span>`).join('')}</div>`).join('')}</div>` : ''}`;
+  const b = $('krBody');
+  b.querySelectorAll('[data-km]').forEach(x => x.onclick = () => { b.querySelectorAll('.kmore' + x.dataset.km).forEach(e => e.classList.remove('hide')); x.remove(); });
+  if($('krEd')) $('krEd').onclick = () => openKsBuilder(Object.assign({}, k, { done: n }));
+  if($('krSt')) $('krSt').onclick = async () => { try{ await api('setSurveyState', k.id, k.st === 'Đóng' ? 'Mở' : 'Đóng', S.auth); S.ksL = null; toast(k.st === 'Đóng' ? '🔓 Đã mở lại khảo sát' : '🔒 Đã đóng khảo sát'); openKsResult(k.id); }catch(e){ toast('⚠️ ' + e, 3000); } };
+  if($('krRm')) $('krRm').onclick = async () => { if(!confirm('Xoá khảo sát "' + k.title + '"?\nCâu trả lời cũ vẫn còn trên sheet KS_TRA_LOI.')) return; try{ await api('setSurveyState', k.id, 'Xoá', S.auth); S.ksL = null; toast('🗑 Đã xoá khảo sát'); openKsList(true); }catch(e){ toast('⚠️ ' + e, 3000); } };
+  $('krCp').onclick = () => {
+    const out = ['📝 ' + k.title + ' – ' + n + '/' + R.total + ' ST đã trả lời'];
+    k.qs.forEach((q, i) => {
+      out.push('', (i + 1) + '. ' + q.q);
+      if(q.t === 'one' || q.t === 'many'){ const cnt = {}; R.ans.forEach(a => { const v = a.a[q.id]; (Array.isArray(v) ? v : v ? [v] : []).forEach(x => { const kx = String(x).indexOf('Khác: ') === 0 ? 'Khác' : x; cnt[kx] = (cnt[kx] || 0) + 1; }); }); Object.keys(cnt).sort((a, b2) => cnt[b2] - cnt[a]).forEach(o => out.push('   • ' + o + ': ' + cnt[o])); }
+      else R.ans.filter(a => a.a[q.id]).forEach(a => out.push('   • ' + a.ma + ' ' + a.short + ': ' + a.a[q.id]));
+    });
+    copyText(out.join('\n'));
+  };
+  if($('krPd')) $('krPd').onclick = () => copyText('🕒 Chưa trả lời khảo sát "' + k.title + '" (' + R.pend.length + ' ST):\n' + groupQ(R.pend, x => x[2]).map(g => '👤 ' + g.q + '\n' + g.items.map(x => '   ' + x[0] + ' ' + x[1]).join('\n')).join('\n'));
+}
+
 /* ================= PHÁO HOA CHÚC MỪNG ================= */
 const THANKS = ['Cảm ơn cả team đã hoàn thành!', 'Làm tốt lắm, cảm ơn bạn!', 'Xuất sắc! Cảm ơn đã đúng hạn.', 'Tuyệt vời, cảm ơn sự chăm chỉ!'];
-function celebrate(t, nPhoto){
+function celebrate(t, nPhoto, msg){
   const old = document.querySelector('.fw'); if(old) old.remove();
-  const left = S.data ? dayInfo(S.data.today, visibleTasks()).left : 0;
+  const left = msg ? 0 : S.data ? dayInfo(S.data.today, visibleTasks()).left : 0;
   const el = document.createElement('div'); el.className = 'fw';
-  el.innerHTML = `<canvas></canvas><div class="fwmsg" style="animation:fwpop 2.8s ease forwards"><div class="em">🎉</div><b>${left ? 'Đã hoàn tất!' : 'Xong hết việc hôm nay!'}</b><span>${esc(THANKS[Math.floor(Math.random() * THANKS.length)])}</span>${nPhoto ? `<span style="color:var(--mut);font-size:12px">Đã nộp ${nPhoto} ảnh</span>` : ''}${left ? `<span style="color:var(--mut);font-size:12px">Còn ${left} việc hôm nay</span>` : ''}</div>`;
+  el.innerHTML = `<canvas></canvas><div class="fwmsg" style="animation:fwpop 2.8s ease forwards"><div class="em">🎉</div><b>${msg ? esc(msg[0]) : left ? 'Đã hoàn tất!' : 'Xong hết việc hôm nay!'}</b><span>${esc(msg ? msg[1] : THANKS[Math.floor(Math.random() * THANKS.length)])}</span>${nPhoto ? `<span style="color:var(--mut);font-size:12px">Đã nộp ${nPhoto} ảnh</span>` : ''}${left ? `<span style="color:var(--mut);font-size:12px">Còn ${left} việc hôm nay</span>` : ''}</div>`;
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 2900);
   try{ navigator.vibrate && navigator.vibrate([30, 40, 30]); }catch(e){}
