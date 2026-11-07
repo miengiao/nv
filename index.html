@@ -888,6 +888,7 @@ body.dopen .bnav{display:none}
 .swtt b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:20px;font-weight:800;margin-top:2px}
 .swinfo{color:var(--ink)}
 .swinfo .sws{font-size:15px}
+.appv-note{background:#fff8e1;color:#5a4300;font-size:12.5px;font-weight:600;padding:7px 12px;border-bottom:1px solid #f0e0a8;cursor:pointer}
 </style>
 </head>
 <body>
@@ -1198,7 +1199,7 @@ async function boot(){
   await resolveApi();
   if(!IS_GAS && !API_URL){ setConn('bad', 'Chưa gắn link máy chủ'); showApiSetup(); return; }
   if(BOOT && BOOT.error){ setConn('bad', 'Lỗi máy chủ: ' + BOOT.error); return; }
-  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 17.2' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
+  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 17.3' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
   catch(e){ setConn('bad', 'Chưa kết nối được: ' + e); }
 }
 function setConn(st, txt){
@@ -3055,6 +3056,13 @@ function openAppView(u, name){
   $('avRe').onclick = () => { $('avLd').classList.remove('hide'); const cur = fr.src; fr.src = 'about:blank'; setTimeout(() => { fr.src = /^about:/.test(cur) ? u : cur; }, 30); };
   try{ history.pushState({ av: 1 }, ''); }catch(e){}
 }
+function avNote(msg){
+  const h = document.querySelector('#appView .appv-h'); if(!h) return;
+  let n = $('avNote'); if(!msg){ if(n) n.remove(); return; }
+  if(!n){ n = document.createElement('div'); n.id = 'avNote'; n.className = 'appv-note'; h.after(n); n.onclick = () => n.remove(); }
+  n.textContent = msg;
+  if(/Đã gửi/.test(msg)) setTimeout(() => { if(n.isConnected) n.remove(); }, 4000);
+}
 function closeAppView(silent){
   const el = $('appView'); if(!el) return;
   clearTimeout(el._tm); el.remove();
@@ -3067,11 +3075,19 @@ document.addEventListener('click', e => {
   const it = menuItems().find(m => m.u === u), sso = !!(it && it.s && S.me && S.auth);
   if(!sso && (!canEmbed(u) || store.get('lcv_ext') === '1')) return;
   e.preventDefault(); if(typeof closeDrawer === 'function' && $('drawer')) closeDrawer();
-  if(!sso){ openAppView(u, nm); return; }
+  if(!sso){
+    openAppView(u, nm);
+    if(S.me && /script\.google/.test(u)) avNote(it && !it.s ? '🔒 Tự đăng nhập TẮT – sheet MENU cột H "Tự đăng nhập" chưa = Có (sửa xong chờ ~5 phút, bấm ⟳ Tải lại app)' : '');
+    return;
+  }
   /* App bật "Tự đăng nhập": xin vé đăng nhập ngắn hạn rồi mở ngay trong app */
   openAppView('about:blank', nm);
-  api('getAppLink', u, S.auth).then(r => { const f = $('avFr'); if(f){ f.src = r.url; const o = $('avOut'); if(o) o.href = r.url; } })
-    .catch(err => { const f = $('avFr'); if(f) f.src = u; toast('⚠️ Không tự đăng nhập được: ' + err, 3500); });
+  api('getAppLink', u, S.auth).then(r => {
+    const f = $('avFr'); if(!f) return;
+    f.src = r.url; const o = $('avOut'); if(o) o.href = r.url;
+    avNote(/[?&]sso=/.test(r.url) ? '🔑 Đã gửi vé tự đăng nhập' : '🔒 Máy chủ chưa thấy cột H = Có cho link này – kiểm tra link ở cột D trùng khớp, chờ ~5 phút');
+  }).catch(err => { const f = $('avFr'); if(f) f.src = u;
+    avNote('⚠️ Không lấy được vé: ' + String(err).replace(/^Error:\s*/, '') + (/getAppLink|hỗ trợ lệnh|not a function|không tồn tại|not found|unknown/i.test(String(err)) ? ' → Code.gs Checklist chưa lên bản 17.2 (dán Code mới + Phiên bản mới)' : '')); });
 });
 function appUse(){ try{ return JSON.parse(store.get('lcv_appuse') || '{}') || {}; }catch(e){ return {}; } }
 function bumpApp(u){ const m = appUse(); m[u] = (m[u] || 0) + 1; store.set('lcv_appuse', JSON.stringify(m)); }
