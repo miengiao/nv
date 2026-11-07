@@ -1199,7 +1199,7 @@ async function boot(){
   await resolveApi();
   if(!IS_GAS && !API_URL){ setConn('bad', 'Chưa gắn link máy chủ'); showApiSetup(); return; }
   if(BOOT && BOOT.error){ setConn('bad', 'Lỗi máy chủ: ' + BOOT.error); return; }
-  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 17.3' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
+  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 17.4' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
   catch(e){ setConn('bad', 'Chưa kết nối được: ' + e); }
 }
 function setConn(st, txt){
@@ -1447,6 +1447,7 @@ function openAccount(){
 /* ================= TRÌNH ĐƠN ỨNG DỤNG (bấm logo góc trái) ================= */
 function menuItems(){
   const role = S.mode === 'shop' ? 'shop' : S.me ? (S.role === 'admin' ? 'admin' : 'lead') : 'all';
+  if(!(S.mode === 'shop' && S.shop && S.token) && !(S.me && S.auth)) return [];
   return ((S.boot && S.boot.menu) || []).filter(m => m.w === 'all' || m.w === role || (m.w === 'lead' && role === 'admin'));
 }
 function openDrawer(){
@@ -1462,7 +1463,7 @@ function openDrawer(){
     ${nav.map(n => `<button class="drw-i ${S.view===n[0]?'on':''}" data-go="${n[0]}"><i>${n[1]}</i><span>${n[2]}</span></button>`).join('')}
     ${S.admin ? `<button class="drw-i" data-act="new"><i>✍️</i><span>Giao việc mới</span></button>` : ''}
     <div class="drw-sec">Ứng dụng ${S.role === 'admin' ? '<small>· thêm ở sheet MENU</small>' : ''}</div>
-    ${apps.length ? `<div class="drw-apps">${apps.map(m => `<a class="drw-app" href="${esc(m.u)}" target="_blank" rel="noopener" data-app="${esc(m.u)}" data-an="${esc(m.n)}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</a>`).join('')}</div>`
+    ${apps.length ? `<div class="drw-apps">${apps.map(m => `<a class="drw-app" href="#" data-app="${m.id}" data-ae="${m.e}" data-an="${esc(m.n)}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</a>`).join('')}</div>`
       : `<div class="drw-empty">${S.role === 'admin' ? 'Chưa có. Mở sheet <b>MENU</b> → dán link webapp vào cột "Link webapp", cột Bật = <b>Có</b>. App tự hiện sau ~5 phút.' : 'Chưa có ứng dụng nào.'}</div>`}
     <div class="drw-sec">Cài đặt</div>
     ${(shop || me) ? `<button class="drw-i" data-act="bell"><i>${notifOn() ? '🔔' : '🔕'}</i><span>${notifOn() ? 'Đang bật thông báo' : 'Bật thông báo'}</span></button>` : ''}
@@ -3044,16 +3045,16 @@ function openAppView(u, name){
   closeAppView(true); syncHH();
   const el = document.createElement('div'); el.id = 'appView'; el.className = 'appv';
   el.innerHTML = `<div class="appv-h"><button class="back" id="avBack" aria-label="Quay lại">‹</button><b>${esc(name || 'Ứng dụng')}</b>
-      <button class="tbtn" id="avRe" title="Tải lại">⟳</button><a class="tbtn" id="avOut" href="${esc(u)}" target="_blank" rel="noopener" title="Mở ở tab riêng">↗ Mở ngoài</a></div>
+      <button class="tbtn" id="avRe" title="Tải lại">⟳</button></div>
     <div class="appv-b"><div class="appv-ld" id="avLd"><div class="spin"></div><span>Đang mở ${esc(name || '')}…</span><small id="avHint"></small></div>
     <iframe id="avFr" src="${esc(u)}" allow="camera; microphone; geolocation; clipboard-read; clipboard-write; fullscreen; web-share" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
   document.body.appendChild(el); document.body.classList.add('dopen'); document.body.style.overflow = 'hidden';
   const fr = $('avFr');
   fr.onload = () => { if(/^about:/.test(fr.src)) return; const l = $('avLd'); if(l) l.classList.add('hide'); };
-  const tm = setTimeout(() => { const h = $('avHint'); if(h) h.innerHTML = 'Chậm hoặc trắng trang? App đó chưa cho phép nhúng – bấm <b>↗ Mở ngoài</b>.'; }, 7000);
+  const tm = setTimeout(() => { const h = $('avHint'); if(h) h.innerHTML = 'Chậm hoặc trắng trang? App đó chưa thêm dòng <b>setXFrameOptionsMode(ALLOWALL)</b> trong doGet – báo admin.'; }, 7000);
   el._tm = tm;
   $('avBack').onclick = () => history.state && history.state.av ? history.back() : closeAppView();
-  $('avRe').onclick = () => { $('avLd').classList.remove('hide'); const cur = fr.src; fr.src = 'about:blank'; setTimeout(() => { fr.src = /^about:/.test(cur) ? u : cur; }, 30); };
+  $('avRe').onclick = () => { const cur = fr.dataset.u || u; if(/^about:/.test(cur)) return; $('avLd').classList.remove('hide'); fr.src = 'about:blank'; setTimeout(() => { fr.src = cur; }, 30); };
   try{ history.pushState({ av: 1 }, ''); }catch(e){}
 }
 function avNote(msg){
@@ -3071,24 +3072,22 @@ function closeAppView(silent){
 window.addEventListener('popstate', () => { if($('appView')) closeAppView(); });
 document.addEventListener('click', e => {
   const a = e.target.closest && e.target.closest('a[data-app]'); if(!a) return;
-  const u = a.dataset.app, nm = a.dataset.an || (a.querySelector('b') || {}).textContent || '';
-  const it = menuItems().find(m => m.u === u), sso = !!(it && it.s && S.me && S.auth);
-  if(!sso && (!canEmbed(u) || store.get('lcv_ext') === '1')) return;
   e.preventDefault(); if(typeof closeDrawer === 'function' && $('drawer')) closeDrawer();
-  if(!sso){
-    openAppView(u, nm);
-    if(S.me && /script\.google/.test(u)) avNote(it && !it.s ? '🔒 Tự đăng nhập TẮT – sheet MENU cột H "Tự đăng nhập" chưa = Có (sửa xong chờ ~5 phút, bấm ⟳ Tải lại app)' : '');
+  openApp(a.dataset.app, a.dataset.an || (a.querySelector('b') || {}).textContent || '', a.dataset.ae === '1');
+});
+/* Link app chỉ xin từ máy chủ theo phiên đăng nhập – không nằm sẵn trên trang */
+function openApp(id, nm, embed){
+  bumpApp(id);
+  const ask = S.me && S.auth ? api('getAppLink', id, S.auth) : (S.mode === 'shop' && S.shop && S.token) ? api('getAppLinkShop', id, S.shop.ma, S.token) : Promise.reject('Cần đăng nhập để mở ứng dụng.');
+  if(!embed){
+    const w = window.open('about:blank', '_blank');
+    ask.then(r => { if(w) w.location.replace(r.url); else location.href = r.url; }).catch(err => { if(w) w.close(); toast('⚠️ ' + String(err).replace(/^Error:\s*/, ''), 3500); });
     return;
   }
-  /* App bật "Tự đăng nhập": xin vé đăng nhập ngắn hạn rồi mở ngay trong app */
   openAppView('about:blank', nm);
-  api('getAppLink', u, S.auth).then(r => {
-    const f = $('avFr'); if(!f) return;
-    f.src = r.url; const o = $('avOut'); if(o) o.href = r.url;
-    avNote(/[?&]sso=/.test(r.url) ? '🔑 Đã gửi vé tự đăng nhập' : '🔒 Máy chủ chưa thấy cột H = Có cho link này – kiểm tra link ở cột D trùng khớp, chờ ~5 phút');
-  }).catch(err => { const f = $('avFr'); if(f) f.src = u;
-    avNote('⚠️ Không lấy được vé: ' + String(err).replace(/^Error:\s*/, '') + (/getAppLink|hỗ trợ lệnh|not a function|không tồn tại|not found|unknown/i.test(String(err)) ? ' → Code.gs Checklist chưa lên bản 17.2 (dán Code mới + Phiên bản mới)' : '')); });
-});
+  ask.then(r => { const f = $('avFr'); if(f){ f.dataset.u = r.url; f.src = r.url; } })
+     .catch(err => { closeAppView(); toast('⚠️ ' + String(err).replace(/^Error:\s*/, ''), 3500); });
+}
 function appUse(){ try{ return JSON.parse(store.get('lcv_appuse') || '{}') || {}; }catch(e){ return {}; } }
 function bumpApp(u){ const m = appUse(); m[u] = (m[u] || 0) + 1; store.set('lcv_appuse', JSON.stringify(m)); }
 function searchBox(id, ph){
@@ -3101,7 +3100,7 @@ function searchHTML(q){
   const fns = fnList().filter(f => hit(f.n) || hit(f.d));
   if(fns.length) h += `<div class="sh">Chức năng</div>` + fns.slice(0, 6).map(f => `<button data-fn="${f.k}"><i style="background:${f.bg};color:${f.c}">${svg(f.ic, 16)}</i><span><b>${esc(f.n)}</b>${f.d ? `<small>${esc(f.d)}</small>` : ''}</span></button>`).join('');
   const apps = menuItems().filter(m => hit(m.n) || hit(m.d));
-  if(apps.length) h += `<div class="sh">Ứng dụng</div>` + apps.slice(0, 6).map(m => `<a href="${esc(m.u)}" target="_blank" rel="noopener" data-app="${esc(m.u)}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><span><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</span></a>`).join('');
+  if(apps.length) h += `<div class="sh">Ứng dụng</div>` + apps.slice(0, 6).map(m => `<a href="#" data-app="${m.id}" data-ae="${m.e}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><span><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</span></a>`).join('');
   if(S.mode !== 'shop'){
     const shops = ((S.boot && S.boot.shops) || []).filter(r => String(r[0]).indexOf(q) === 0 || hit(r[1]) || hit(r[2])).slice(0, 6);
     if(shops.length) h += `<div class="sh">Siêu thị</div>` + shops.map(r => `<button data-sh="${esc(r[0])}"><i>🏪</i><span><b>${esc(r[0])} · ${esc(r[1])}</b><small>QLTP ${esc(r[3] || '—')}</small></span></button>`).join('');
@@ -3117,7 +3116,7 @@ function bindSearch(id){
   inp.oninput = paint; if(inp.value) paint();
   out.onclick = e => {
     const b = e.target.closest('[data-fn],[data-sh],[data-tk],[data-app]'); if(!b) return;
-    if(b.dataset.app){ bumpApp(b.dataset.app); return; }
+    if(b.dataset.app) return;
     S.srch[id] = ''; inp.value = ''; out.innerHTML = '';
     if(b.dataset.fn) runFn(b.dataset.fn);
     else if(b.dataset.sh) shopSheet(b.dataset.sh);
@@ -3159,16 +3158,15 @@ function renderHome(){
 }
 function renderApps(){
   const v = $('vApps'), apps = menuItems(), use = appUse();
-  const fav = apps.slice().sort((a, b) => (use[b.u] || 0) - (use[a.u] || 0)).slice(0, 4);
+  const fav = apps.slice().sort((a, b) => (use[b.id] || 0) - (use[a.id] || 0)).slice(0, 4);
   let h = `<div class="apg">` + searchBox('aSearch', S.mode === 'shop' ? 'Tìm ứng dụng, chức năng, công việc…' : 'Tìm ứng dụng, chức năng, siêu thị…');
   if(!apps.length) h += `<div class="blk" style="margin-top:14px;text-align:center">${S.role === 'admin' ? 'Chưa có ứng dụng. Mở sheet <b>MENU</b> → dán link webapp vào cột "Link webapp", cột Bật = <b>Có</b>. App tự hiện sau ~5 phút.' : 'Chưa có ứng dụng nào.'}</div>`;
   else {
-    h += `<h4>Hay dùng</h4><div class="tiles" style="margin-top:0">${fav.map(m => `<a class="tile" href="${esc(m.u)}" target="_blank" rel="noopener" data-app="${esc(m.u)}" data-an="${esc(m.n)}" style="text-decoration:none"><span class="tbox" style="background:var(--gl)">${esc(m.i)}</span>${esc(m.n)}</a>`).join('')}</div>`;
-    h += `<h4>Tất cả ứng dụng (${apps.length})</h4><div class="alist">${apps.map(m => `<a class="acard" href="${esc(m.u)}" target="_blank" rel="noopener" data-app="${esc(m.u)}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><span><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</span><em>›</em></a>`).join('')}</div>`;
+    h += `<h4>Hay dùng</h4><div class="tiles" style="margin-top:0">${fav.map(m => `<a class="tile" href="#" data-app="${m.id}" data-ae="${m.e}" data-an="${esc(m.n)}" style="text-decoration:none"><span class="tbox" style="background:var(--gl)">${esc(m.i)}</span>${esc(m.n)}</a>`).join('')}</div>`;
+    h += `<h4>Tất cả ứng dụng (${apps.length})</h4><div class="alist">${apps.map(m => `<a class="acard" href="#" data-app="${m.id}" data-ae="${m.e}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><span><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</span><em>›</em></a>`).join('')}</div>`;
   }
   v.innerHTML = h + `</div>`;
   bindSearch('aSearch');
-  v.querySelectorAll('.tiles [data-app], .alist [data-app]').forEach(a => a.addEventListener('click', () => bumpApp(a.dataset.app)));
 }
 function pickTask(title, fn){
   const today = S.data.today;
