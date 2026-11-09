@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<link rel="preconnect" href="https://script.google.com" crossorigin><link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -928,6 +929,116 @@ body.dopen .bnav{display:none}
 .kstx b{color:#5b2a9c}
 .ksacts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
 .ksacts .btn{flex:1;min-width:120px}
+.tcd{position:relative;overflow:hidden;min-height:0;gap:8px;padding:11px 11px 10px}
+.tcd-h{align-items:flex-start}
+.tcd-h .tcd-t{flex:1;min-width:0;-webkit-line-clamp:3;font-size:14.5px;padding-top:1px}
+.tcd-ic{width:30px;height:30px;border-radius:10px;font-size:15px;flex:none}
+.tcd .ck.ring{width:32px;height:32px}
+.tdl{display:flex;flex-direction:column;line-height:1.15;background:#f4f8f5;border-radius:12px;padding:7px 10px;position:relative}
+.tdl b{font-size:22px;font-weight:800;letter-spacing:-.5px;color:#123b25;font-variant-numeric:tabular-nums}
+.tdl span{font-size:12px;color:var(--mut);font-weight:600;margin-top:2px}
+.tdl em{font-style:normal;font-weight:800;color:#0b7a3b}
+.tdl.soon{background:#fff3e2}.tdl.soon b,.tdl.soon em{color:#b35f00}
+.tdl.late{background:#fdecea}.tdl.late b,.tdl.late em{color:#c62828}
+.tdl.dn b{color:var(--mut);text-decoration:line-through}
+.tcd-m{margin-top:0}
+.tcd-m:empty{display:none}
+.tcd .hd.rmd{background:#fff3e2;color:#8a4b00;border:0}
+.wm{position:absolute;pointer-events:none;font-weight:900;letter-spacing:.08em;white-space:nowrap;border:3px double currentColor;border-radius:8px;padding:2px 10px;text-transform:uppercase;z-index:0}
+.tcd>*:not(.wm),.ln>*:not(.wm){position:relative;z-index:1}
+.wm-rsm{color:rgba(11,122,59,.10);font-size:17px;right:-14px;bottom:24px;transform:rotate(-18deg)}
+.wm-done{color:rgba(198,40,40,.16);font-size:22px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-14deg)}
+.ln{position:relative;overflow:hidden}
+.ln .wm-rsm{font-size:13px;right:8px;bottom:6px;top:auto;transform:rotate(-10deg);color:rgba(11,122,59,.12)}
+.ln .wm-done{font-size:16px;left:auto;right:58px;top:50%;transform:translateY(-50%) rotate(-10deg)}
+.tcd.done{opacity:.85}
+.tcd.done .tcd-t,.ln.done .lt{text-decoration:line-through;text-decoration-thickness:2px;color:#8a978f}
+.commit{display:flex;gap:10px;align-items:flex-start;background:#fff8e1;border:1.5px solid #f2d27a;border-radius:12px;padding:10px 12px;margin:10px 0;font-size:13px;line-height:1.45;color:#5a4300;cursor:pointer}
+.commit input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:#0b7a3b}
+.arl{display:flex;flex-direction:column;gap:6px}
+.arr{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;text-align:left;margin-top:6px}
+.arr input{width:20px;height:20px;accent-color:#0b7a3b;flex:none}
+.arr span{flex:1;min-width:0}.arr b{display:block;font-size:14px}.arr small{color:var(--mut);font-size:12px}
+.pvl{max-height:50vh;overflow:auto}
+#pvBar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(78px + env(safe-area-inset-bottom));z-index:60;background:#1c2b23;color:#fff;border-radius:999px;padding:8px 8px 8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:92vw}
+#pvBar button{background:#ffd23f;color:#3a2a00;border-radius:999px;padding:6px 12px;font-weight:800;font-size:12.5px}
+body.pvmode .top{background:linear-gradient(135deg,#3b4a42,#56665c)}
+.pvs .pvt{font-size:14px;line-height:1.55;margin:4px 0 6px}
+.pvfull details{border-top:1px solid var(--line);padding:8px 0}
+.pvfull summary{font-weight:700;font-size:14px;cursor:pointer}
+.pvfull p{font-size:13px;line-height:1.55;color:#33433a;margin:6px 0 2px}
+.rmq.rsm{border-left:4px solid var(--g2)}
+.tcd-e{font-size:12px;margin-right:4px;vertical-align:1px}
+.drw-sw{margin:4px 14px 8px;padding:10px;border-radius:14px;background:#f4f7f5}
+.drw-sw>span{display:block;font-size:11.5px;font-weight:800;color:var(--mut);text-transform:uppercase;margin-bottom:6px}
+.drw-sw small{display:block;font-size:11.5px;color:var(--mut);margin-top:6px}
+.kpub{display:flex;gap:10px;align-items:flex-start;margin:14px 0 4px;padding:12px;border-radius:14px;background:#faf5ff;border:1.5px dashed #c9a8f0;cursor:pointer}
+.kpub input{width:20px;height:20px;accent-color:#6b2fb3;margin-top:2px;flex:none}
+.kpub small{display:block;color:var(--mut);font-size:12px;margin-top:2px}
+.kslink{background:#faf5ff;border:1.5px solid #e2d2fb;border-radius:14px;padding:12px;margin:10px 0}
+.kslink small{display:block;color:var(--mut);font-size:12px;margin:2px 0 8px}
+.kslr{display:flex;gap:6px}.kslr .inp{margin:0;flex:1;font-size:12.5px}.kslr .btn{padding:8px 12px;white-space:nowrap}
+.pks{min-height:100vh;background:#f6f3fb}
+.pks-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#0a6e35,#0f8f47);color:#fff}
+.pks-top b{flex:1;font-size:15px}.pks-top span{font-size:12px;background:rgba(255,255,255,.18);padding:4px 9px;border-radius:9px}
+.pks-logo{width:34px;height:34px;border-radius:10px;flex:none}
+.appv.kept{visibility:hidden;pointer-events:none;transform:translateX(100%)}
+.ph-slot .upb{position:absolute;left:6px;top:6px;font-style:normal;font-size:11px;font-weight:800;padding:2px 7px;border-radius:8px;background:rgba(0,0,0,.6);color:#fff}
+.ph-slot[data-up="up"] .upb::after{content:'⏳ đang tải'}
+.ph-slot[data-up="ok"] .upb{background:#12a150}.ph-slot[data-up="ok"] .upb::after{content:'✓ đã tải'}
+.ph-slot[data-up="err"] .upb{background:#d63b2f}.ph-slot[data-up="err"] .upb::after{content:'⚠ lỗi – sẽ thử lại'}
+.demob{margin-top:12px;border:1.5px dashed var(--g2);color:var(--g);font-weight:700}
+.sheet.dn{max-width:420px}
+.dn-lead{font-size:13.5px;color:var(--mut);margin:-4px 0 10px}
+.dn-qr{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center;min-height:120px;display:grid;place-items:center}
+.dn-qr img{width:100%;max-width:300px;border-radius:10px}
+.dn-fb{font-size:13px;color:var(--mut)}
+.dn-row{display:flex;align-items:center;gap:10px;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.dn-row>div{flex:1;min-width:0}.dn-row small{display:block;font-size:11.5px;color:var(--mut)}.dn-row b{font-size:15px}.dn-row em{display:block;font-style:normal;font-size:12px;color:var(--mut)}
+.dn-row .btn{padding:7px 11px;font-size:13px}
+.dn-acc{font-size:20px!important;letter-spacing:1px;color:var(--g)}
+.dn-help{margin-top:10px;font-size:12.5px;background:#f4f7f5;border-radius:12px;padding:10px}
+.row2 a.btn{display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink)}
+.dpend.exm .sc.exc{background:#fde8e6;color:#a42a20;border-color:#f3b6b0;cursor:pointer;font-weight:700}
+.exh{color:#a42a20;font-size:12px}
+.dpend.exl{background:#f6f6f6;border-radius:12px;padding:8px 10px;margin-top:8px}
+.dpend.exl small{font-weight:500;color:var(--mut)}
+.sc .exr{margin-left:6px;width:22px;height:22px;border-radius:7px;background:#e8f3ec;color:var(--g);font-weight:900;font-size:12px}
+.dacts .btn.on{background:#fde8e6;border-color:#f3b6b0;color:#a42a20}
+.exlk{display:block;margin:4px 0 8px;color:#a42a20;font-size:13px}
+.rmpv{white-space:pre-wrap;font:13px/1.5 inherit;font-family:inherit;background:#f4f7f5;border-radius:12px;padding:10px 12px;margin:6px 0 10px;max-height:40vh;overflow:auto}
+.sp.rlc{background:#f3e8ff;color:#6b2fb3}
+.instb{position:fixed;left:10px;right:10px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:55;max-width:560px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 14px 40px -12px rgba(10,60,30,.45);border:1px solid #d7e8dd;padding:12px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2)}
+.instb.on{transform:none}
+#login:not(.hide) ~ .instb,body:not(.dopen) .instb{}
+.instb-ic{width:44px;height:44px;border-radius:12px;flex:none}
+.instb-t{flex:1;min-width:150px}.instb-t b{display:block;font-size:14.5px}.instb-t small{display:block;font-size:12px;color:var(--mut);margin-top:2px}
+.instb-a{display:flex;align-items:center;gap:6px}.instb-a .btn{padding:9px 14px;font-size:13.5px}
+.instb-x{width:32px;height:32px;border-radius:10px;background:#f1f4f2;color:var(--mut)}
+.instb-h{flex-basis:100%;font-size:13px;line-height:1.55;background:#f4f7f5;border-radius:12px;padding:10px 12px}
+.instb-f{display:flex;justify-content:space-between;margin-top:6px;font-size:12px;color:var(--mut)}
+.kssec{margin:18px 2px 4px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#6b2fb3,#8e4fd6);color:#fff;font-weight:800;font-size:13.5px;letter-spacing:.2px}
+.kscale{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.kscale label{position:relative;cursor:pointer}
+.kscale input{position:absolute;opacity:0;pointer-events:none}
+.kscale span{display:grid;place-items:center;height:42px;border-radius:11px;border:1.5px solid var(--line);font-weight:800;font-size:15px;background:#fff;transition:.12s}
+.kscale label.on span{background:#6b2fb3;border-color:#6b2fb3;color:#fff;transform:scale(1.06)}
+.kscale.mini span{height:28px;font-size:12px;color:var(--mut)}
+.kscale-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:4px}
+.qed.sec{border-left-color:#6b2fb3;background:#faf5ff}
+.qed .seg{flex-wrap:wrap}.qed .seg button{flex:1 1 30%}
+.kbtpl{margin:6px 0 10px;border-style:dashed;color:#6b2fb3;font-weight:800}
+.pk-st{background:#f3e8ff;border-radius:12px;padding:10px 12px}.pk-st small{display:block;color:var(--mut);font-size:12px}
+.ksavg{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}.ksavg b{font-size:30px}.ksavg span{color:var(--mut);font-size:13px}
+.ksavg .g,.kstb .g{color:#0b7a3b}.ksavg .o,.kstb .o{color:#c26a00}.ksavg .r,.kstb .r{color:#c62828}
+.ksdist{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;align-items:end;height:90px}
+.ksdist div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:11px}
+.ksdist i{display:block;width:100%;background:linear-gradient(180deg,#8e4fd6,#6b2fb3);border-radius:5px 5px 2px 2px;min-height:2px}
+.ksdist em{font-style:normal;color:#6b2fb3;font-weight:700;font-size:10.5px}.ksdist span{color:var(--mut)}
+.kstb-w{overflow-x:auto}.kstb{width:100%;border-collapse:collapse;font-size:12.5px}
+.kstb th,.kstb td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+.kstb th:first-child,.kstb td:first-child{text-align:left;white-space:normal;min-width:120px}
+.kstb th{background:#f6f3fb;color:#5b2a9c;font-size:11.5px}
 </style>
 </head>
 <body>
@@ -956,6 +1067,8 @@ body.dopen .bnav{display:none}
       <button class="btn pri block" id="btnFind">Đăng nhập →</button>
       <div class="err" id="errMa"></div>
       <div class="lrow"><button class="link" id="btnAll">🌐 Xem lịch toàn miền</button><button class="link" id="btnForgot">Quên mật khẩu?</button></div>
+      <button class="btn ghost block demob" id="btnDemo" type="button">👀 Trải nghiệm thử – không cần tài khoản</button>
+      <div class="lrow" style="justify-content:center"><button class="link" id="btnDonate" type="button">☕ Ủng hộ dự án</button></div>
       <div class="forgot hide" id="forgotBox">🔒 <b>Quên mật khẩu?</b><br>Nhắn tin cho <b>admin KV 42995</b> kèm <b><span id="fgWhat">mã đăng nhập</span></b> để được đặt lại.<br>Sau khi đặt lại, mật khẩu trở về <b id="fgBack">chính mã đăng nhập</b>, đăng nhập rồi tạo mật khẩu mới.</div>
       <div class="conn" id="conn"><span class="cdot wait"></span><span id="connTxt">Đang khởi động ứng dụng…</span><button class="link hide" id="connRetry">Thử lại</button></div>
     </div>
@@ -1128,6 +1241,7 @@ const isExec = u => /^https:\/\/script\.google\.com\/(a\/[^\/]+\/)?macros\/s\/[\
 const API_META = ((document.querySelector('meta[name="api-url"]')||{}).content || '').trim();
 let API_URL = isExec(API_META) ? API_META : (isExec(store.get('lcv_api')) ? store.get('lcv_api') : '');
 const IS_GAS = !!(window.google && google.script && google.script.run);
+const APP_VER = '20.1';
 async function resolveApi(){
   if(IS_GAS || isExec(API_META)) return;
   try{
@@ -1146,6 +1260,7 @@ function showApiSetup(){
   $('apiOk').onclick = () => { const v = $('apiIn').value.trim(); if(!isExec(v)){ $('apiErr').textContent = 'Link phải có dạng https:\/\/script.google.com/macros/s/…/exec'; return; } store.set('lcv_api', v); API_URL = v; box.remove(); S.boot = null; boot(); };
 }
 function api(fn, ...args){
+  if(S.demo) return demoApi(fn, args);
   return new Promise((res, rej) => {
     let done = false;
     const t = setTimeout(() => { if(!done){ done = true; rej('Máy chủ phản hồi quá lâu. Kiểm tra mạng rồi bấm Thử lại.'); } }, /^upload/.test(fn) ? 90000 : 25000);
@@ -1234,13 +1349,16 @@ function showStep(id){ ['stepMa','stepNew','stepReg'].forEach(s => $(s).classLis
 async function boot(){
   const rp = reportParams();
   if(rp) return startReport(rp);
+  setTimeout(installBanner, 2500);
+  const kp = (BOOT && BOOT.ks) || (() => { try{ return new URLSearchParams(location.search).get('ks'); }catch(e){ return ''; } })();
+  if(kp){ await resolveApi(); return startPubKs(kp); }
   /* Không khoá màn hình: hiện trang đăng nhập ngay, dữ liệu cấu hình tải ngầm */
   setRole(store.get('lcv_role') === 'qltp' ? 'qltp' : 'shop');
   setConn('wait', 'Đang kết nối máy chủ…');
   await resolveApi();
   if(!IS_GAS && !API_URL){ setConn('bad', 'Chưa gắn link máy chủ'); showApiSetup(); return; }
   if(BOOT && BOOT.error){ setConn('bad', 'Lỗi máy chủ: ' + BOOT.error); return; }
-  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản 18' : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
+  try{ await ensureBoot(); autoLogin(); setConn('ok', `Đã kết nối · ${S.boot.shopCount} siêu thị · ${S.boot.qltpList.length} QLTP · ${S.boot.tasks ? 'bản ' + APP_VER : 'bản 16.7 (Code.gs cũ – chưa nhúng dữ liệu)'}`); }
   catch(e){ setConn('bad', 'Chưa kết nối được: ' + e); }
 }
 function setConn(st, txt){
@@ -1345,13 +1463,26 @@ async function loginQ(code, pw){
     store.set('lcv_qtok_' + code, S.auth); enterQ();
   }catch(e){ loading(false); $('errMa').textContent = e; }
 }
-function myKV(){ return S.me ? (S.me.kv || (S.me.role === 'qltp' ? S.me.name : '')) : (S.shop ? S.shop.qltp || '' : ''); }
+/* Quyền theo sheet PHAN_QUYEN (máy chủ vẫn kiểm lại) – admin luôn đủ quyền */
+function can(k){ return !!S.me && (S.me.role === 'admin' || !S.me.perms || !!S.me.perms[k]); }
+function canV(k){ return !S.me || can(k); }
+function canGiao(){ return can('GIAO_MIEN') || can('GIAO_KV'); }
+function adminQ(){ return !!(S.me && S.me.role === 'admin' && store.get('lcv_asq') === '1'); }
+function myKV(){ return S.me ? (S.me.kv || (S.me.role === 'qltp' || adminQ() ? S.me.name : '')) : (S.shop ? S.shop.qltp || '' : ''); }
+/* Admin gạt sang chế độ QLTP: chỉ xem KV của mình cho gọn (quyền admin vẫn giữ) */
+function setAdminQ(on){
+  store.set('lcv_asq', on ? '1' : '0');
+  S.qf = adminQ() ? myKV() : ''; S.st.dq = S.qf; S.nt.q = adminQ() ? myKV() : ''; S.ntData = null;
+  S.dash = null; S.prog = {}; S.ksL = null; S.rq = null;
+  renderHeader(); render();
+  toast(on ? '👤 Chế độ QLTP – chỉ hiện KV ' + myKV() : '👑 Chế độ Admin – toàn miền', 2200);
+}
 function roleTxt(r){ return r === 'admin' ? '👑 Admin toàn quyền' : r === 'ql' ? '🧑‍💼 Quản lý' + (S.me && S.me.kv ? ' · KV ' + S.me.kv : ' · cả miền') : '👤 QLTP – quản trị KV'; }
 function enterQ(){
   S.admin = true; S.role = S.me.role;
-  S.qf = S.me.role === 'admin' ? '' : myKV();
+  S.qf = S.me.role === 'admin' && !adminQ() ? '' : myKV();
   S.st.dq = S.qf;
-  S.nt.q = ''; S.ntData = null;
+  S.nt.q = adminQ() ? myKV() : ''; S.ntData = null;
   enterApp('all');
 }
 function showNewPass(kind){
@@ -1488,7 +1619,7 @@ function openAccount(){
 /* ================= TRÌNH ĐƠN ỨNG DỤNG (bấm logo góc trái) ================= */
 function menuItems(){
   const role = S.mode === 'shop' ? 'shop' : S.me ? (S.role === 'admin' ? 'admin' : 'lead') : 'all';
-  if(!(S.mode === 'shop' && S.shop && S.token) && !(S.me && S.auth)) return [];
+  if(S.demo || (!(S.mode === 'shop' && S.shop && S.token) && !(S.me && S.auth))) return [];
   return ((S.boot && S.boot.menu) || []).filter(m => m.w === 'all' || m.w === role || (m.w === 'lead' && role === 'admin'));
 }
 function openDrawer(){
@@ -1500,17 +1631,21 @@ function openDrawer(){
   el.innerHTML = `<div class="drw-bg"></div><aside class="drw-p" role="dialog" aria-label="Trình đơn">
     <div class="drw-h"><div class="drw-logo appicon"></div><div><b>${esc((S.data && S.data.tenApp) || 'Lịch Công Việc Miền')}</b><small>${esc((S.data && S.data.tenMien) || '')}</small></div><button class="drw-x" id="drX" aria-label="Đóng">✕</button></div>
     <div class="drw-me"><span class="av">${shop ? '🏪' : me ? (S.role==='admin'?'👑':S.role==='ql'?'🧑‍💼':'👤') : '🌐'}</span><div><b>${shop ? esc(shop.ma + ' · ' + (shop.short || shop.full)) : me ? esc(me.name) : 'Khách'}</b><small>${shop ? 'QLTP ' + esc(shop.qltp || '—') : me ? roleTxt(S.role) : 'Xem toàn miền'}</small></div></div>
+    ${me && me.role === 'admin' && !S.pv ? `<div class="drw-sw"><span>Chế độ xem</span><div class="seg sm"><button data-asq="0" class="${adminQ() ? '' : 'on'}">👑 Admin</button><button data-asq="1" class="${adminQ() ? 'on' : ''}">👤 QLTP · ${esc(me.kv || me.name)}</button></div><small>${adminQ() ? 'Chỉ hiện dữ liệu KV của anh cho gọn – quyền admin vẫn giữ.' : 'Đang xem toàn miền.'}</small></div>` : ''}
     <div class="drw-sec">Điều hướng</div>
     ${nav.map(n => `<button class="drw-i ${S.view===n[0]?'on':''}" data-go="${n[0]}"><i>${n[1]}</i><span>${n[2]}</span></button>`).join('')}
-    ${S.admin ? `<button class="drw-i" data-act="new"><i>✍️</i><span>Giao việc mới</span></button>` : ''}
+    ${S.admin && (!S.me || canGiao()) ? `<button class="drw-i" data-act="new"><i>✍️</i><span>Giao việc mới</span></button>` : ''}
     <div class="drw-sec">Ứng dụng ${S.role === 'admin' ? '<small>· thêm ở sheet MENU</small>' : ''}</div>
     ${apps.length ? `<div class="drw-apps">${apps.map(m => `<a class="drw-app" href="#" data-app="${m.id}" data-ae="${m.e}" data-an="${esc(m.n)}" data-an="${esc(m.n)}"><i>${esc(m.i)}</i><b>${esc(m.n)}</b>${m.d ? `<small>${esc(m.d)}</small>` : ''}</a>`).join('')}</div>`
       : `<div class="drw-empty">${S.role === 'admin' ? 'Chưa có. Mở sheet <b>MENU</b> → dán link webapp vào cột "Link webapp", cột Bật = <b>Có</b>. App tự hiện sau ~5 phút.' : 'Chưa có ứng dụng nào.'}</div>`}
     <div class="drw-sec">Cài đặt</div>
     ${(shop || me) ? `<button class="drw-i" data-act="bell"><i>${notifOn() ? '🔔' : '🔕'}</i><span>${notifOn() ? 'Đang bật thông báo' : 'Bật thông báo'}</span></button>` : ''}
     ${(shop || me) ? `<button class="drw-i" data-act="acc"><i>⚙️</i><span>Tài khoản & mật khẩu</span></button>` : ''}
-    ${S.me ? `<button class="drw-i" data-act="shopreset"><i>🔑</i><span>Reset mật khẩu siêu thị</span></button>` : ''}
-    ${S.role === 'admin' ? `<button class="drw-i" data-act="users"><i>👥</i><span>Quản lý tài khoản</span></button>` : ''}
+    ${S.me && can('RESET_MK_ST') ? `<button class="drw-i" data-act="shopreset"><i>🔑</i><span>Reset mật khẩu siêu thị</span></button>` : ''}
+    ${S.me && can('QL_TAI_KHOAN') ? `<button class="drw-i" data-act="users"><i>👥</i><span>Quản lý tài khoản</span></button>` : ''}
+    ${S.me && can('LUU_TRU') ? `<button class="drw-i" data-act="archive"><i>📦</i><span>Lưu trữ CV cũ</span></button>` : ''}${S.me && can('XEM_NHU_ST') ? `<button class="drw-i" data-act="preview"><i>👁</i><span>Xem như siêu thị</span></button>` : ''}
+    <button class="drw-i" data-act="privacy"><i>🔒</i><span>Quyền riêng tư</span></button>
+    <button class="drw-i" data-act="donate"><i>☕</i><span>Ủng hộ dự án</span></button>
     <button class="drw-i" data-act="reload"><i>⟳</i><span>Tải lại dữ liệu</span></button>
     <button class="drw-i out" data-act="out"><i>🚪</i><span>${shop || me ? 'Đăng xuất' : 'Về trang đăng nhập'}</span></button>
     <div class="drw-ver">${esc(($('connTxt') && ($('connTxt').textContent.match(/bản [\d.]+/) || [''])[0]) || '')}</div>
@@ -1518,11 +1653,13 @@ function openDrawer(){
   document.body.appendChild(el);
   requestAnimationFrame(() => el.classList.add('open'));
   el.querySelector('.drw-bg').onclick = closeDrawer; $('drX').onclick = closeDrawer;
+  el.querySelectorAll('[data-asq]').forEach(b => b.onclick = () => { closeDrawer(); setAdminQ(b.dataset.asq === '1'); });
   el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { closeDrawer(); go(b.dataset.go); });
   el.querySelectorAll('[data-act]').forEach(b => b.onclick = () => {
     const a = b.dataset.act; closeDrawer();
     if(a === 'new') openForm(null); else if(a === 'bell') toggleNotif(); else if(a === 'acc') openAccount();
     else if(a === 'users') openAccounts(); else if(a === 'shopreset') openShopReset(); else if(a === 'reload') reload(); else if(a === 'out') logout(true);
+    else if(a === 'archive') openArchive(); else if(a === 'preview') pickPreview(); else if(a === 'privacy') openPrivacy(false);
   });
   let x0 = null; const p = el.querySelector('.drw-p');
   p.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive:true });
@@ -1532,7 +1669,7 @@ function closeDrawer(){ const el = $('drawer'); if(!el) return; el.classList.rem
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
 
 /* ================= RESET MẬT KHẨU SIÊU THỊ (QLTP · Quản lý · Admin) ================= */
-function canResetShop(sh){ return !!sh && !!S.me && (S.role === 'admin' || (!!myKV() && norm(sh.qltp) === norm(myKV()))); }
+function canResetShop(sh){ return !!sh && !!S.me && can('RESET_MK_ST') && (S.role === 'admin' || (!!myKV() && norm(sh.qltp) === norm(myKV()))); }
 function openShopReset(prefill){
   $('modal').innerHTML = `<div class="ov"><div class="sheet" style="max-width:440px">
     <h3><span>🔑 Reset mật khẩu siêu thị</span><button class="x" id="rsX">✕</button></h3>
@@ -1580,15 +1717,17 @@ function openShopReset(prefill){
 async function openAccounts(){
   $('modal').innerHTML = `<div class="ov"><div class="sheet" style="max-width:520px"><h3><span>👥 Quản lý tài khoản</span><button class="x" id="uaX">✕</button></h3><div id="uaBody"><div class="none">⏳ Đang tải…</div></div></div></div>`;
   $('uaX').onclick = () => $('modal').innerHTML = '';
-  let list = [];
+  let list = [], roles = [];
   const kvs = (S.data.qltpList || []).map(q => q.name);
+  const BASEN = ['admin', 'qltp', 'ql', 'quản lý'];
+  const custom = () => roles.filter(r => BASEN.indexOf(norm(r.name)) < 0);
   const RL = { admin:'👑 Admin', qltp:'👤 QLTP', ql:'🧑‍💼 Quản lý', lock:'🔒 Đã khoá' };
   const draw = () => {
     const g = { admin:[], qltp:[], ql:[], lock:[] }; list.forEach(a => (g[a.role] || g.qltp).push(a));
     $('uaBody').innerHTML = `<button class="btn pri block" id="uaNew">➕ Cấp tài khoản mới</button><div id="uaForm"></div>
       <p class="note" style="margin:8px 0 0">Vai trò <b>Quản lý</b>: giao việc cả miền hoặc KV mặc định; sửa/xoá việc mình tạo. Mật khẩu lần đầu = chính mã đăng nhập.</p>
       ${['ql','admin','qltp','lock'].filter(k => g[k].length).map(k => `<div class="ua-g">${RL[k]} <em>${g[k].length}</em></div>${g[k].map(a => `
-        <div class="ua-r"><div class="ua-m"><b>${esc(a.code)}</b> · ${esc(a.name)}${a.kv ? ` <span class="sp n">KV ${esc(a.kv)}</span>` : ''}<small>${a.hasPass ? '🔐 đã đổi mật khẩu' : '🔓 MK = mã đăng nhập'}</small></div>
+        <div class="ua-r"><div class="ua-m"><b>${esc(a.code)}</b> · ${esc(a.name)}${a.rn && BASEN.indexOf(norm(a.rn)) < 0 && a.role !== 'lock' ? ` <span class="sp rlc">🏷 ${esc(a.rn)}</span>` : ''}${a.kv ? ` <span class="sp n">KV ${esc(a.kv)}</span>` : ''}<small>${a.hasPass ? '🔐 đã đổi mật khẩu' : '🔓 MK = mã đăng nhập'}</small></div>
         <div class="ua-b"><button data-ued="${esc(a.code)}">✎</button>${a.code === S.me.code ? '' : `<button data-urs="${esc(a.code)}" title="Đặt lại mật khẩu">↺</button><button class="d" data-udl="${esc(a.code)}" title="${a.role==='ql'?'Xoá':'Khoá'}">🗑</button>`}</div></div>`).join('')}`).join('')}
       <div class="err" id="uaErr"></div>`;
     $('uaNew').onclick = () => form(null);
@@ -1608,38 +1747,42 @@ async function openAccounts(){
       <div class="row2"><div class="field"><label>Mã đăng nhập (user)</label><input class="inp" id="uaC" value="${esc(x.code)}" ${a ? 'disabled' : ''} placeholder="VD: linh.ql" autocapitalize="none"></div>
       <div class="field"><label>Tên hiển thị</label><input class="inp" id="uaN" value="${esc(x.name)}" placeholder="VD: Nguyễn Thuỳ Linh"></div></div>
       <div class="seg" id="uaR">${[['QL','🧑‍💼 Quản lý'],['QLTP','👤 QLTP'],['ADMIN','👑 Admin'],['KHOÁ','🔒 Khoá']].map(r => `<button data-v="${r[0]}" class="${(x.role==='lock'?'KHOÁ':x.role.toUpperCase())===r[0]?'on':''}">${r[1]}</button>`).join('')}</div>
+      ${custom().length ? `<div class="smut" style="font-size:12px;margin:8px 0 4px">Vai trò theo bộ phận (sheet PHAN_QUYEN):</div><div class="qchips" id="uaRC">${custom().map(r => `<button data-v="${esc(r.name)}">🏷 ${esc(r.name)}</button>`).join('')}</div>` : ''}
       <div class="field" id="uaKVf"><label>KV mặc định (QLTP) – để trống = chỉ giao cả miền</label><select class="inp" id="uaK"><option value="">— Không có (chỉ cả miền) —</option>${kvs.map(k => `<option ${norm(k)===norm(x.kv)?'selected':''}>${esc(k)}</option>`).join('')}</select></div>
       <div class="row2"><button class="btn line" id="uaCancel">Huỷ</button><button class="btn pri" id="uaSave">✓ ${a ? 'Lưu' : 'Tạo tài khoản'}</button></div></div>`;
-    let role = x.role === 'lock' ? 'KHOÁ' : x.role.toUpperCase();
-    const paint = () => { $('uaR').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === role)); $('uaKVf').classList.toggle('hide', role !== 'QL'); };
-    $('uaR').querySelectorAll('button').forEach(b => b.onclick = () => { role = b.dataset.v; paint(); }); paint();
+    let role = x.role === 'lock' ? 'KHOÁ' : (x.rn && BASEN.indexOf(norm(x.rn)) < 0 ? x.rn : x.role.toUpperCase());
+    const baseOf = r => { const c = roles.find(z => norm(z.name) === norm(r)); return c ? c.base.toUpperCase() : r; };
+    const paint = () => { $('modal').querySelectorAll('#uaR button,#uaRC button').forEach(b => b.classList.toggle('on', b.dataset.v === role)); $('uaKVf').classList.toggle('hide', baseOf(role) !== 'QL'); };
+    $('modal').querySelectorAll('#uaR button,#uaRC button').forEach(b => b.onclick = () => { role = b.dataset.v; paint(); }); paint();
     $('uaCancel').onclick = () => $('uaForm').innerHTML = '';
     $('uaSave').onclick = async () => {
       loading(true, 'Đang lưu tài khoản…');
-      try{ const r = await api('saveAccount', { code: $('uaC').value, name: $('uaN').value, role, kv: role === 'QL' ? $('uaK').value : '' }, S.auth);
+      try{ const r = await api('saveAccount', { code: $('uaC').value, name: $('uaN').value, role, kv: baseOf(role) === 'QL' ? $('uaK').value : '' }, S.auth);
         loading(false); toast(a ? '✅ Đã lưu ' + r.code : '✅ Đã tạo ' + r.code + ' · MK lần đầu: ' + r.code, 4000);
         if(S.boot && S.boot.qltpCodes && S.boot.qltpCodes.indexOf(r.code) < 0) S.boot.qltpCodes.push(r.code); load(); }
       catch(e){ loading(false); $('uaErr').textContent = e; }
     };
     $('uaForm').scrollIntoView({ behavior:'smooth', block:'nearest' });
   };
-  const load = async () => { try{ list = await api('getQltpAccounts', S.auth); draw(); }catch(e){ $('uaBody').innerHTML = `<div class="err">${esc(String(e))}</div>`; } };
+  const load = async () => { try{ if(!roles.length){ try{ roles = (await api('getRoles', S.auth)).roles || []; }catch(e){} } list = await api('getQltpAccounts', S.auth); draw(); }catch(e){ $('uaBody').innerHTML = `<div class="err">${esc(String(e))}</div>`; } };
   load();
 }
 
 /* ================= APP ================= */
 async function enterApp(mode){
+  setTimeout(prefetchApps, 1500);
   S.mode = mode;
-  if(mode==='shop') store.set('lcv_ma', S.shop.ma);
+  if(mode==='shop' && !S.demo) store.set('lcv_ma', S.shop.ma);
+  if(!S.demo) setTimeout(askPrivacyOnce, 1200);
   $('login').classList.add('hide'); $('app').classList.remove('hide');
   const t = new Date(); S.y = t.getFullYear(); S.m = t.getMonth(); S.sel = keyOf(t); S.view = 'home';
   const b = S.boot;
-  if(b && b.tasks){
+  if(b && b.tasks && !S.demo){
     /* Hiện ngay lịch từ dữ liệu gửi sẵn, đồng bộ trạng thái hoàn tất ở nền */
     const q = S.mode==='shop' ? norm(S.shop.qltp) : '';
     S.data = { now:Date.now(), today:keyOf(t), shop:S.mode==='shop'?S.shop:null, done:{}, qltpList:b.qltpList,
       tenApp:b.tenApp, tenMien:b.tenMien, shopCount:b.shopCount,
-      tasks: S.mode==='shop' ? b.tasks.filter(x => x.scope!=='QLTP' || x.qltp.some(z => norm(z)===q)) : b.tasks.slice() };
+      tasks: S.mode==='shop' ? b.tasks.filter(x => (x.scope!=='QLTP' || x.qltp.some(z => norm(z)===q)) && !(x.ex || []).includes(String(S.shop.ma))) : b.tasks.slice() };
     S.syncing = S.mode==='shop';
     renderHeader(); render();
     await reload(true);
@@ -1686,7 +1829,9 @@ function logout(full){
   }
   $('app').classList.add('hide'); $('login').classList.remove('hide');
   S.askedN=false; const nb=document.querySelector('.nask'); if(nb) nb.remove();
+  if(S.pv) stopPreview();
   S.ks=null; S.ksL=null; closeKsPage();
+  for(const k in APPL) delete APPL[k]; closeAppView(true); const kp = $('appKeep'); if(kp) kp.remove();
   S.shop=null; S.data=null; S.token=null; S.auth=null; S.me=null; S.admin=false; S.role=''; S.qf=''; S.stats={}; S.ntData=null;
   S.view='home'; document.body.classList.remove('dopen');
   $('inPw').value = ''; showStep('stepMa'); setRole(store.get('lcv_role')==='qltp' ? 'qltp' : (S.role0 || 'shop')); $('inMa').focus();
@@ -1700,10 +1845,10 @@ function renderHeader(){
     $('hdSub').textContent = sp.ma + (sp.qltp ? ' · QLTP ' + sp.qltp : '');
   }else{
     $('hdTitle').textContent = d.tenApp || 'Lịch Công Việc';
-    $('hdSub').textContent = S.me ? S.me.name + ' · ' + (S.role==='admin' ? 'Admin' : S.role==='ql' ? 'Quản lý' + (S.me.kv ? ' KV ' + S.me.kv : '') : 'QLTP') : (d.tenMien || 'Toàn miền') + ' · ' + d.shopCount + ' ST';
+    $('hdSub').textContent = S.me ? S.me.name + ' · ' + (S.role==='admin' ? (adminQ() ? 'Admin · chế độ QLTP' : 'Admin') : S.role==='ql' ? 'Quản lý' + (S.me.kv ? ' KV ' + S.me.kv : '') : 'QLTP') : (d.tenMien || 'Toàn miền') + ' · ' + d.shopCount + ' ST';
   }
   $('btnAdmin').classList.add('hide');
-  $('btnLead').classList.toggle('hide', !S.admin);
+  $('btnLead').classList.toggle('hide', !S.admin || (S.me && !canGiao()));
   $('btnBell').classList.toggle('hide', !(S.mode==='shop' || S.me)); paintBell();
   $('fab').classList.add('hide');
   /* Shop chờ duyệt: banner gọn dưới đầu trang */
@@ -1738,7 +1883,8 @@ const svg = (k, n) => `<svg width="${n||21}" height="${n||21}" viewBox="0 0 24 2
 function navItems(){
   if(S.mode==='shop') return [['home','grid','Hôm nay'],['month','cal','Lịch tháng'],['apps','apps','Ứng dụng'],['acc','user','Tài khoản']];
   const L = [['home','grid','Trang chủ'],['month','cal','Lịch'],['stats','chart','Dashboard']];
-  L.push(S.admin ? ['nt','check','Nghiệm thu'] : ['apps','apps','Ứng dụng']);
+  if(S.me && !can('DASHBOARD')) L.splice(2, 1, ['apps','apps','Ứng dụng']);
+  L.push(S.admin && (!S.me || can('NGHIEM_THU')) ? ['nt','check','Nghiệm thu'] : (L.some(x => x[0] === 'apps') ? ['acc','user','Tài khoản'] : ['apps','apps','Ứng dụng']));
   return L;
 }
 function renderNav(){
@@ -2075,8 +2221,13 @@ function renderDashTask(){
     if(open){
       const qs = Object.keys(x.per).sort((a, b) => pctOf(x.per[a].done, x.per[a].tot) - pctOf(x.per[b].done, x.per[b].tot));
       det = `<div class="dqt">${qs.map(q => { const r = x.per[q], pp = pctOf(r.done, r.tot); return `<div class="dqr"><span class="qn">${esc(q)}</span><div class="sb2"><i class="${pctCls(pp)}" style="width:${pp}%"></i></div><span class="qv">${r.done}/${r.tot}</span>${r.miss?`<span class="lt">⚠️${r.miss}</span>`:'<span></span>'}</div>`; }).join('')}</div>`;
-      if(x.pend.length) det += `<div class="dpend"><div class="ntgh">📝 Chưa làm (${x.pend.length})</div>${groupQ(x.pend, p => p[2]).map(g => `<div class="qh">👤 ${esc(g.q)} <em>${g.items.length}</em></div><div class="chips">${g.items.map(p => `<span class="sc ${p[3]==='m'?'m':p[3]==='s'?'s':''}${canLead(t, p[0]) ? ` dfs" data-dfs="${t.id}|${esc(p[0])}|${dashDay(t.id)}" title="Bấm để hoàn tất thay` : ''}">${esc(p[0])} ${esc(p[1])}</span>`).join('')}</div>`).join('')}</div>`;
-      det += `<div class="dacts">${S.me ? `<button class="btn pri" data-rl="${t.id}">🔗 Link dashboard gửi sếp</button><button class="btn line" data-fl="${t.id}">📁 Thư mục ảnh</button>` : ''}${canEdit(t) ? `<button class="btn line" data-ed="${t.id}">✎ Sửa CV</button>` : ''}${S.me ? `<button class="btn line" data-gnt="${t.id}">✅ Nghiệm thu</button>` : ''}<button class="btn line" data-cp="${t.id}">📋 Sao chép DS chưa làm</button></div>`;
+      const exm = S.st.exm === t.id;
+      if(x.pend.length) det += `<div class="dpend ${exm ? 'exm' : ''}"><div class="ntgh">📝 Chưa làm (${x.pend.length})${exm ? ' <b class="exh">– bấm ST để LOẠI khỏi CV này</b>' : ''}</div>${groupQ(x.pend, p => p[2]).map(g => `<div class="qh">👤 ${esc(g.q)} <em>${g.items.length}</em></div><div class="chips">${g.items.map(p => exm
+        ? (canExclude(t, p[0]) ? `<span class="sc exc" data-exc="${t.id}|${esc(p[0])}" title="Loại khỏi CV">✕ ${esc(p[0])} ${esc(p[1])}</span>` : `<span class="sc" style="opacity:.45">${esc(p[0])} ${esc(p[1])}</span>`)
+        : `<span class="sc ${p[3]==='m'?'m':p[3]==='s'?'s':''}${canLead(t, p[0]) ? ` dfs" data-dfs="${t.id}|${esc(p[0])}|${dashDay(t.id)}" title="Bấm để hoàn tất thay` : ''}">${esc(p[0])} ${esc(p[1])}</span>`).join('')}</div>`).join('')}</div>`;
+      const exL = exList(t);
+      if(exL.length) det += `<div class="dpend exl"><div class="ntgh">🚫 Đã loại khỏi CV (${exL.length}) <small>– bấm ↩ để đưa lại</small></div><div class="chips">${exL.map(r => `<span class="sc">${esc(r.ma)} ${esc(r.short)}${canExclude(t, r.ma) ? `<button class="exr" data-exr="${t.id}|${esc(r.ma)}" title="Đưa lại vào CV">↩</button>` : ''}</span>`).join('')}</div></div>`;
+      det += `<div class="dacts">${S.me ? `<button class="btn pri" data-rl="${t.id}">🔗 Link dashboard gửi sếp</button><button class="btn line" data-fl="${t.id}">📁 Thư mục ảnh</button>` : ''}${canEdit(t) ? `<button class="btn line" data-ed="${t.id}">✎ Sửa CV</button>` : ''}${S.me ? `<button class="btn line" data-gnt="${t.id}">✅ Nghiệm thu</button>` : ''}<button class="btn line" data-cp="${t.id}">📋 Sao chép DS chưa làm</button>${S.me && x.pend.some(p => canExclude(t, p[0])) ? `<button class="btn line ${exm ? 'on' : ''}" data-exm="${t.id}">${exm ? '✓ Xong' : '✂ Loại ST khỏi CV'}</button>` : ''}</div>`;
     }
     return `<div class="ntc ${open?'open':''} ${t.scope!=='QLTP'?'rsmc':''}"><div class="ntc-h" data-dt="${t.id}">
       <div class="lt">${t.nhom==='CTKM'?'🎯':'⚙️'} ${esc(t.title)}</div>
@@ -2151,6 +2302,9 @@ function bindDash(){
   const v = $('vStats');
   if($('dqSel')) $('dqSel').onchange = e => { S.st.dq = e.target.value; S.st.open = ''; renderStats(); };
   if($('dtSel')) $('dtSel').onchange = e => { S.st.dt = e.target.value; renderStats(); };
+  v.querySelectorAll('[data-exm]').forEach(b => b.onclick = () => { S.st.exm = S.st.exm === b.dataset.exm ? '' : b.dataset.exm; const y = window.scrollY; renderStats(); window.scrollTo(0, y); });
+  v.querySelectorAll('[data-exc]').forEach(b => b.onclick = () => { const [id, ma] = b.dataset.exc.split('|'); setExclude(id, ma, true); });
+  v.querySelectorAll('[data-exr]').forEach(b => b.onclick = e => { e.stopPropagation(); const [id, ma] = b.dataset.exr.split('|'); setExclude(id, ma, false); });
   v.querySelectorAll('[data-dt]').forEach(b => b.onclick = () => { const k = 'T' + b.dataset.dt; S.st.open = S.st.open === k ? '' : k; const y = window.scrollY; renderStats(); window.scrollTo(0, y); });
   v.querySelectorAll('[data-rl]').forEach(b => b.onclick = ev => { ev.stopPropagation(); shareReport(b.dataset.rl); });
   v.querySelectorAll('[data-fl]').forEach(b => b.onclick = ev => { ev.stopPropagation(); shareFolder(b.dataset.fl); });
@@ -2210,6 +2364,66 @@ function bindAccess(prevM, nextM){
   if($('acP')) $('acP').onclick = () => { S.accM = prevM; S.acc = null; renderStats(); };
   if($('acN')) $('acN').onclick = () => { S.accM = nextM; S.acc = null; renderStats(); };
   if($('dqSel')) $('dqSel').onchange = e => { S.st.dq = e.target.value; renderStats(); };
+}
+
+/* ================= KHẢO SÁT ẨN DANH (?ks=…) – không cần đăng nhập ================= */
+async function startPubKs(tok){
+  $('login').classList.add('hide'); $('app').classList.add('hide');
+  const el = $('report'); el.classList.remove('hide'); document.title = 'Khảo sát';
+  el.innerHTML = '<div class="none" style="margin-top:80px">⏳ Đang mở khảo sát…</div>';
+  let k; try{ k = await api('getPublicSurvey', tok); }catch(e){
+    el.innerHTML = `<div class="rp-wrap"><div class="blk" style="text-align:center;margin-top:50px"><div style="font-size:42px">🔒</div><b>${esc(String(e).replace(/^Error:\s*/, ''))}</b></div></div>`; return; }
+  let dev = store.get('lcv_dev'); if(!dev){ dev = 'd' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); store.set('lcv_dev', dev); }
+  const sent = store.get('lcv_kss_' + tok.split('.')[0]);
+  const A = {}, NUM = ksNum(k.qs);
+  const qHTML = (q, i) => {
+    let body = '';
+    if(q.t === 'sec') return `<div class="kssec">${esc(q.q)}</div>`;
+    if(q.t === 'scale') body = ksScaleHTML(q, '');
+    else if(q.t === 'para') body = `<textarea class="inp" data-qa="${q.id}" style="min-height:90px" placeholder="Nhập câu trả lời…"></textarea>`;
+    else if(q.t === 'short') body = `<input class="inp" data-qa="${q.id}" placeholder="Câu trả lời ngắn">`;
+    else { const many = q.t === 'many';
+      body = q.o.map(o => `<label class="kopt"><input type="${many ? 'checkbox' : 'radio'}" name="${q.id}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join('')
+        + (q.other ? `<label class="kopt"><input type="${many ? 'checkbox' : 'radio'}" name="${q.id}" value="__other"><span>Khác:</span><input class="inp" data-oth="${q.id}" placeholder="ghi rõ…"></label>` : ''); }
+    return `<div class="ksq" id="kq_${q.id}"><div class="qt"><span class="qn">${NUM[q.id]}</span>${esc(q.q)}${q.req ? '<i>*</i>' : ''}</div>${body}</div>`;
+  };
+  const stP = (() => { try{ return new URLSearchParams(location.search).get('st') || (BOOT && BOOT.st) || ''; }catch(e){ return ''; } })();
+  const SH = k.shops || [], stLock = SH.find(x => String(x[0]) === String(stP));
+  const done = (title, sub) => { el.innerHTML = `<div class="pks"><div class="pks-top"><div class="appicon pks-logo"></div><b>${esc(k.tenMien || 'Checklist')}</b></div><div class="pg" style="text-align:center;padding-top:50px"><div style="font-size:56px">💜</div><h2 style="margin:10px 0 6px">${title}</h2><p class="smut">${sub}</p></div></div>`; };
+  if(!k.open){ done('Khảo sát đã đóng', 'Cảm ơn bạn đã quan tâm.'); return; }
+  el.innerHTML = `<div class="pks"><div class="pks-top"><div class="appicon pks-logo"></div><b>${esc(k.tenMien || 'Checklist')}</b><span>🕶 Ẩn danh</span></div><div class="pg">
+    <div class="kshead"><small>${k.by ? 'Từ ' + esc(k.by) + ' · ' : ''}hạn ${ksEnd(k.endMs)}</small><h2>${esc(k.title)}</h2>${k.desc ? `<p>${linkify(k.desc)}</p>` : ''}</div>
+    ${sent ? '<div class="note" style="margin:10px 0">✅ Máy này đã gửi trả lời. Gửi lại sẽ thay câu trả lời cũ.</div>' : ''}
+    <div class="smut" style="font-size:12.5px;margin:8px 2px">Câu trả lời <b>không ghi tên</b> của bạn. <i style="color:var(--red);font-style:normal">*</i> bắt buộc</div>
+    ${SH.length ? `<div class="ksq" id="kq__st"><div class="qt">🏪 Siêu thị bạn đang làm việc<i>*</i></div>${stLock
+      ? `<div class="pk-st"><b>${esc(stLock[0])} · ${esc(stLock[1])}</b><small>QLTP ${esc(stLock[2] || '')}</small></div>`
+      : `<input class="inp" id="pkStQ" placeholder="🔎 Gõ mã kho hoặc tên siêu thị…" autocomplete="off"><select class="inp" id="pkSt" style="margin-top:6px"><option value="">— Chọn siêu thị —</option>${SH.map(x => `<option value="${esc(x[0])}">${esc(x[0])} · ${esc(x[1])}</option>`).join('')}</select>`}</div>` : ''}
+    ${k.qs.map(qHTML).join('')}
+    <div class="ksq"><div class="qt">Vị trí của bạn <small class="smut">(không bắt buộc – VD: NV bán hàng, thu ngân…)</small></div><input class="inp" id="pkWho" maxlength="60" placeholder="Vị trí / bộ phận"></div>
+    <div class="err" id="kaErr"></div></div>
+    <div class="pg-foot"><button class="btn vio block" id="kaOk">📨 Gửi câu trả lời</button></div></div>`;
+  el.querySelectorAll('.kopt input[type=radio],.kopt input[type=checkbox]').forEach(inp => inp.onchange = () => el.querySelectorAll(`input[name="${inp.name}"]`).forEach(x => x.closest('.kopt').classList.toggle('on', x.checked)));
+  el.querySelectorAll('.kscale input').forEach(inp => inp.onchange = () => el.querySelectorAll(`.kscale input[name="${inp.name}"]`).forEach(x => x.parentNode.classList.toggle('on', x.checked)));
+  el.querySelectorAll('[data-oth]').forEach(t => t.oninput = () => { const c = t.closest('.kopt').querySelector('input[type=radio],input[type=checkbox]'); if(t.value && !c.checked){ c.checked = true; c.onchange(); } });
+  if($('pkStQ')) $('pkStQ').oninput = e => { const q = norm(e.target.value); const sel = $('pkSt'); [...sel.options].forEach(o => { o.hidden = !!q && !!o.value && norm(o.textContent).indexOf(q) < 0; }); const f = [...sel.options].filter(o => o.value && !o.hidden); if(f.length === 1) sel.value = f[0].value; };
+  $('kaOk').onclick = async () => {
+    const stV = stLock ? String(stLock[0]) : ($('pkSt') ? $('pkSt').value : '');
+    if(SH.length && !stV){ const e = $('kq__st'); e.classList.add('kerr'); e.scrollIntoView({ behavior:'smooth', block:'center' }); $('kaErr').textContent = '⚠️ Chọn siêu thị bạn đang làm việc.'; return; }
+    k.qs.forEach(q => {
+      if(q.t === 'sec') return;
+      if(q.t === 'para' || q.t === 'short'){ const e = el.querySelector(`[data-qa="${q.id}"]`); A[q.id] = e ? e.value.trim() : ''; return; }
+      const ch = [...el.querySelectorAll(`input[name="${q.id}"]:checked`)].map(x => x.value), ot = el.querySelector(`[data-oth="${q.id}"]`), otv = ot ? ot.value.trim() : '';
+      const vals = ch.map(x => x === '__other' ? (otv ? 'Khác: ' + otv : '') : x).filter(Boolean);
+      A[q.id] = q.t === 'many' ? vals : (vals[0] || '');
+    });
+    el.querySelectorAll('.ksq.kerr').forEach(x => x.classList.remove('kerr'));
+    const miss = k.qs.find(q => q.req && (Array.isArray(A[q.id]) ? !A[q.id].length : !A[q.id]));
+    if(miss){ const e = $('kq_' + miss.id); e.classList.add('kerr'); e.scrollIntoView({ behavior:'smooth', block:'center' }); $('kaErr').textContent = '⚠️ Còn câu bắt buộc chưa trả lời.'; return; }
+    loading(true, 'Đang gửi…');
+    try{ await api('submitPublicSurvey', tok, A, dev, $('pkWho').value, stV); loading(false); store.set('lcv_kss_' + tok.split('.')[0], String(Date.now()));
+      celebrate(null, 0, ['Đã gửi!', 'Cảm ơn bạn đã dành thời gian trả lời 💜']); done('Cảm ơn bạn!', 'Câu trả lời ẩn danh đã được ghi nhận.'); }
+    catch(e){ loading(false); $('kaErr').textContent = '⚠️ ' + String(e).replace(/^Error:\s*/, ''); }
+  };
 }
 
 /* ================= TRANG BÁO CÁO CHO SẾP (?r=…&k=…) ================= */
@@ -2657,17 +2871,29 @@ function renderDayLists(k){
   bindLines(k);
   if(S.data && $('bnav').innerHTML) renderNav();
 }
+/* Hạn hiển thị to: giờ + ngày + "Hôm nay / Ngày mai" */
+function dlParts(t,k){
+  const ms = deadlineOf(t, t.repeat ? k : t.endKey), d = new Date(ms), key = keyOf(d), today = S.data.today;
+  const hasT = t.repeat ? !!t.endTime : !!t.endTime;
+  const diff = daysBetween(today, key);
+  const lb = diff === 0 ? 'Hôm nay' : diff === 1 ? 'Ngày mai' : diff === -1 ? 'Hôm qua' : diff === 2 ? 'Ngày kia' : DOW_LB[d.getDay()];
+  return { time: hasT ? pad(d.getHours()) + ':' + pad(d.getMinutes()) : 'Cả ngày', lb, dm: pad(d.getDate()) + '/' + pad(d.getMonth() + 1), diff, ms };
+}
 function card(t,k){
   const done = isDone(t,k), late = !done && Date.now() > deadlineOf(t, t.repeat ? k : t.endKey) && (t.repeat ? k<=S.data.today : true);
-  const soon = !done && !late && soonOf(t,k), shop = S.mode==='shop';
+  const soon = !done && !late && soonOf(t,k), shop = S.mode==='shop', rsm = isRSM(t);
   const pr = !shop && S.prog[k] && S.prog[k][t.id], pct = pr && pr.total ? Math.round(pr.done*100/pr.total) : null;
   const rc = pct === null ? '' : pct >= 80 ? 'var(--g2)' : pct >= 50 ? 'var(--or)' : 'var(--red)';
-  return `<article class="tcd ${done?'done':''} ${late?'late':''} ${soon?'soon':''}" data-open="${t.id}">
-    <div class="tcd-h"><span class="tcd-ic ${t.nhom==='CTKM'?'km':''}">${t.nhom==='CTKM'?'🎯':'⚙️'}</span>
+  const D = dlParts(t,k), rec = doneRec(t,k);
+  const st = done ? (rec && rec.at > D.ms ? 'xong trễ' : 'đã xong') : late ? 'quá hạn' : soon ? 'sắp tới hạn' : t.repeat ? '🔁 ' + repTxt(t,true) : '';
+  return `<article class="tcd ${done?'done':''} ${late?'late':''} ${soon?'soon':''} ${rsm?'rsm':''}" data-open="${t.id}">
+    ${rsm ? '<span class="wm wm-rsm" aria-hidden="true">CV CỦA RSM</span>' : ''}${done ? '<span class="wm wm-done" aria-hidden="true">ĐÃ LÀM</span>' : ''}
+    <div class="tcd-h">
+      <h3 class="tcd-t"><span class="tcd-e">${t.nhom==='CTKM'?'🎯':'⚙️'}</span>${t.prio==='Cao'?'🔥 ':''}${esc(t.title)}</h3>
       ${shop ? `<button class="ck ring ${S.syncing?'busy':''}" data-id="${t.id}" aria-label="${done?'Bỏ hoàn tất':'Hoàn tất'}">${done?'✓':t.photo?'📷':''}</button>`
         : pct !== null ? `<span class="pring" style="--p:${pct};--rc:${rc}"><b>${pct}%</b></span>` : ''}</div>
-    <h3 class="tcd-t">${t.prio==='Cao'?'🔥 ':''}${esc(t.title)}</h3>
-    <div class="tcd-m">${dueChip(t,k)}${t.photo && !done ? `<span class="dc ph">📸 ${t.photo} ảnh</span>` : ''}${ntChip(t,k)}${pr ? `<span class="pc">🏪 ${pr.done}/${pr.total}</span>` : ''}${canEdit(t)?`<button class="hd ed" data-edt="${t.id}">✎ Sửa</button>`:''}</div>
+    <div class="tdl ${late?'late':soon?'soon':done?'dn':''}"><b>${D.time}</b><span><em>${D.lb}</em> ${D.dm}${st ? ' · ' + st : ''}</span></div>
+    <div class="tcd-m">${t.photo && !done ? `<span class="dc ph">📸 ${t.photo} ảnh</span>` : ''}${ntChip(t,k)}${pr ? `<span class="pc">🏪 ${pr.done}/${pr.total}</span>` : ''}${!shop && pr && pr.done < pr.total ? `<button class="hd rmd" data-rmd="${t.id}|${k}" title="Sao chép DS shop chưa làm để nhắc">🔔 Nhắc</button>` : ''}${canEdit(t)?`<button class="hd ed" data-edt="${t.id}">✎</button>`:''}</div>
   </article>`;
 }
 function countTxt(list,k){ if(!list.length) return ''; if(S.mode!=='shop') return list.length+' CV'; return list.filter(t=>isDone(t,k)).length + '/' + list.length; }
@@ -2703,7 +2929,7 @@ function soonOf(t,k){
 function line(t,k){
   const done = isDone(t,k), late = !done && Date.now() > deadlineOf(t, t.repeat ? k : t.endKey) && (t.repeat ? k<=S.data.today : true);
   const soon = !done && !late && soonOf(t,k), rsm = t.scope!=='QLTP';
-  return `<div class="ln ${done?'done':''} ${late?'late':''} ${soon?'soon':''} ${rsm && !done?'rsm':''}">
+  return `<div class="ln ${done?'done':''} ${late?'late':''} ${soon?'soon':''} ${rsm?'rsm':''}">${rsm ? '<span class="wm wm-rsm" aria-hidden="true">RSM</span>' : ''}${done ? '<span class="wm wm-done" aria-hidden="true">ĐÃ LÀM</span>' : ''}
     ${S.mode==='shop' ? `<button class="ck ${S.syncing?'busy':''}" data-id="${t.id}" aria-label="Hoàn tất" ${S.syncing?'disabled title="Đang đồng bộ…"':''}>${done?'✓':''}</button>` : `<span class="bul"></span>`}
     <div class="lx">
       <div class="lt">${t.prio==='Cao'?'<span class="fire">🔥</span>':''}${esc(t.title)}</div>
@@ -2733,20 +2959,22 @@ async function loadProgress(k, force){
   if((S.view==='month' || (S.view==='home' && S.mode==='shop')) && S.sel===k){ const y = window.scrollY; renderDayLists(k); window.scrollTo(0,y); }
   if(S.detail && S.detail.k===k) renderDetail();
 }
-async function toggle(id, k, btn){
+async function toggle(id, k, btn, committed){
+  if(S.pv){ toast('👁 Đang xem thử như siêu thị – không hoàn tất được.', 2200); return; }
   if(S.syncing){ toast('⏳ Đang đồng bộ trạng thái, chờ 1–2 giây…', 1500); return; }
   const t = S.data.tasks.find(x=>x.id===id); if(!t) return;
   const dk = doneKey(t,k), cur = S.data.done[dk], was = isDone(t,k);
   if(was && cur.nt==='Đạt'){ toast('✅ Việc này đã được nghiệm thu ĐẠT – không bỏ hoàn tất được.', 3000); return; }
   if(!was && t.repeat && k > S.data.today){ toast('📅 Chưa đến ngày làm – báo cáo được từ ngày ' + dm(k) + '.', 2500); return; }
   if(!was && t.photo){ openPhotoSheet(t, k); return; }
+  if(!was && !committed){ askCommit(t, () => toggle(id, k, btn, true)); return; }
   if(btn && btn.classList.contains('busy')) return;
   if(btn) btn.classList.add('busy');
   if(was) delete S.data.done[dk]; else S.data.done[dk] = {at:Date.now(), photos:[], nt:''};
   const y = window.scrollY; renderDay(); window.scrollTo(0,y);
   if(S.detail) renderDetail();
   try{
-    await api('toggleDone', id, S.shop.ma, t.repeat?k:'', !was, S.token);
+    await api('toggleDone', id, S.shop.ma, t.repeat?k:'', !was, S.token, [], !was);
     if(!was){ if(Date.now() > deadlineOf(t, t.repeat ? k : t.endKey)) toast('✅ Đã báo cáo bù – hệ thống ghi nhận TRỄ hạn', 2800); else celebrate(t, 0); }
     delete S.prog[k]; loadProgress(k, true);
   }catch(e){
@@ -2795,12 +3023,13 @@ function renderDetail(){
           : `<div class="none">Đang tải…</div>`}
       </div>
       ${S.me?`<button class="btn line block" style="margin-top:14px" id="dtRep">🔗 Link dashboard gửi sếp</button><button class="btn line block" style="margin-top:8px" id="dtFold">📁 Thư mục ảnh của CV</button>`:''}
-      ${canEdit(t)?`<button class="btn line block" style="margin-top:8px" id="dtEdit">✎ Sửa công việc</button><button class="btn danger block" style="margin-top:8px" id="dtHide">🗑 Xoá công việc này</button>`:''}
+      ${canEdit(t)?`<button class="btn line block" style="margin-top:8px" id="dtEdit">✎ Sửa công việc</button><button class="btn line block" style="margin-top:8px" id="dtArc">📦 Lưu trữ – ẩn khỏi app</button><button class="btn danger block" style="margin-top:8px" id="dtHide">🗑 Xoá công việc này</button>`:''}
     </div>
     ${S.mode==='shop'?`<div class="pg-foot"><button class="btn block ${done?'line':'pri'}" id="dtDone">${done?'↺ Bỏ đánh dấu hoàn tất':t.photo?'📷 Chụp ảnh & hoàn tất':'✓ Đánh dấu hoàn tất'}</button></div>`:''}`;
   $('detail').innerHTML = h;
   $('dtBack').onclick = closeDetail;
   if($('dtEdit')) $('dtEdit').onclick = () => openForm(t);
+  if($('dtArc')) $('dtArc').onclick = () => doArchive([t.id], true, () => closeDetail());
   if($('dtHide')) $('dtHide').onclick = () => hideT(t.id);
   if($('dtDone')) $('dtDone').onclick = () => toggle(t.id, k, null);
   if($('dtRep')) $('dtRep').onclick = () => shareReport(S.detail.id);
@@ -2830,7 +3059,7 @@ function fitText(g, s, maxW){
 }
 /** Vẽ ảnh + dấu chìm: giờ lớn, ngày, mã ST, tên ST, QLTP, tên CV; tự co giãn theo kích thước ảnh */
 function stampCanvas(src, sw, sh, task, up){
-  const k = Math.min(1, 1600 / Math.max(sw, sh)), W = Math.round(sw * k), H = Math.round(sh * k);
+  const k = Math.min(1, 1280 / Math.max(sw, sh)), W = Math.round(sw * k), H = Math.round(sh * k);
   const c = document.createElement('canvas'); c.width = W; c.height = H;
   const g = c.getContext('2d');
   g.drawImage(src, 0, 0, W, H);
@@ -2873,7 +3102,7 @@ function stampCanvas(src, sw, sh, task, up){
   if(l2){ y += fs + gap; g.font = `500 ${fs}px ${FF}`; g.globalAlpha = 0.85; g.fillText(l2, bx + px, y); g.globalAlpha = 1; }
   if(lu){ y += fs + gap; g.font = `600 ${fs}px ${FF}`; g.fillStyle = '#ffd1b3'; g.fillText(lu, bx + px, y); g.fillStyle = '#ffffff'; }
   g.textBaseline = 'alphabetic';
-  return c.toDataURL('image/jpeg', 0.82);
+  return c.toDataURL('image/jpeg', 0.74);
 }
 async function stampFile(file, task, upload){
   const im = await loadImg(await fileToURL(file));
@@ -2943,11 +3172,26 @@ function pickFiles(capture, multiple){
 }
 
 /** Bảng nộp ảnh khi tick hoàn tất CV có yêu cầu ảnh */
+/* Ảnh được tải lên NGAY khi chụp/chọn (chạy ngầm, tự thử lại 3 lần) → bấm Nộp gần như tức thì */
+const UP = new Map();
+function retryUp(fn, n){
+  return fn().catch(e => (n > 1 && !/đăng nhập|không hợp lệ|quyền/i.test(String(e))) ? new Promise(r => setTimeout(r, 1200 * (4 - n))).then(() => retryUp(fn, n - 1)) : Promise.reject(e));
+}
+function upKick(d, t, ma, lead, onChange){
+  const o0 = UP.get(d); if(o0 && o0.st !== 'err') return o0.p;
+  const o = { st: 'up' }, b64 = d.split(',')[1];
+  const name = `${ma}_${(t.title||'').slice(0,30)}_${keyOf(new Date())}_${Date.now().toString(36)}${lead ? '_thay' : ''}`;
+  o.p = retryUp(() => lead ? api('uploadLeadPhoto', ma, name, b64, t.id, S.auth) : api('uploadShopPhoto', ma, S.token, name, b64, t.id), 3)
+    .then(u => { o.st = 'ok'; o.u = u; onChange && onChange(); return u; }, e => { o.st = 'err'; o.e = e; onChange && onChange(); throw e; });
+  UP.set(d, o); return o.p;
+}
 function openPhotoSheet(t, k, lead){
   const need = lead ? 0 : t.photo, MAX = 3, shots = [];
-  S.phShop = lead ? lead.shop : null;
+  S.phShop = lead ? lead.shop : null; S.phCm = false;
+  const ma = lead ? lead.shop.ma : (S.shop && S.shop.ma);
   const close = () => { $('modal').innerHTML = ''; S.phShop = null; };
-  const add = d => { if(shots.length < MAX){ shots.push(d); paint(); } };
+  const mark = () => shots.forEach((d, i) => { const el = $('modal').querySelector(`[data-ps="${i}"]`); if(el){ const o = UP.get(d); el.dataset.up = o ? o.st : 'up'; } });
+  const add = d => { if(shots.length < MAX){ shots.push(d); paint(); if(!S.demo) upKick(d, t, ma, lead, mark).catch(() => {}); } };
   const addFiles = async (files, upload) => {
     for(const f of files.slice(0, MAX - shots.length)){
       try{ add(await stampFile(f, t, upload)); }catch(e){ $('phErr').textContent = String(e); }
@@ -2959,18 +3203,22 @@ function openPhotoSheet(t, k, lead){
       <div class="ph-t">${esc(t.title)}</div>
       ${lead ? `<div class="lead-shop">🏪 <b>${esc(lead.shop.ma)}</b> ${esc(lead.shop.short || '')}<small>${esc(lead.shop.qltp || '')}${k && t.repeat ? ' · ngày ' + dm(k) : ''}</small></div>
       <div class="field"><input class="inp" id="phNote" maxlength="200" placeholder="Ghi chú (VD: ST báo qua Zalo, đã kiểm tra trực tiếp…)" value="${esc(lead.note || '')}"></div>
+      ${canExclude(t, lead.shop.ma) ? `<button class="link exlk" id="phEx" type="button">🚫 ST này không cần làm CV → loại khỏi CV</button>` : ''}
       <div class="note">Ảnh <b>không bắt buộc</b> khi bạn hoàn tất thay${t.photo ? ` (CV yêu cầu ${t.photo} ảnh nếu ST tự nộp)` : ''}. Hệ thống ghi: <i>Hoàn tất thay bởi ${esc(S.me ? S.me.name : '')}</i>.</div>`
       : `<div class="note">Cần <b>${need}</b> ảnh · tối đa ${MAX}. Ảnh chụp gắn giờ chụp; ảnh chọn từ máy gắn dấu <b>ẢNH TẢI LÊN</b>.</div>`}
       <div class="ph-grid">${[0,1,2].map(i => shots[i]
-        ? `<div class="ph-slot on"><img src="${shots[i]}" data-pz="${i}" alt="Ảnh ${i+1}"><button data-prm="${i}">✕</button></div>`
+        ? `<div class="ph-slot on" data-ps="${i}" data-up="${(UP.get(shots[i]) || {}).st || 'up'}"><img src="${shots[i]}" data-pz="${i}" alt="Ảnh ${i+1}"><button data-prm="${i}">✕</button><em class="upb"></em></div>`
         : `<div class="ph-slot ${i < need ? 'req' : ''}"><span>${i < need ? 'Bắt buộc' : 'Thêm nếu cần'}</span></div>`).join('')}</div>
       <div class="row2" style="margin-top:10px">
         <button class="btn pri" id="phCam" ${shots.length >= MAX ? 'disabled' : ''}>📷 Chụp ảnh</button>
         <button class="btn line" id="phLib" ${shots.length >= MAX ? 'disabled' : ''}>🖼️ Chọn ảnh có sẵn</button></div>
       <div class="err" id="phErr"></div>
-      <button class="btn pri block" id="phOk" ${shots.length < need ? 'disabled' : ''}>${lead ? (shots.length ? `✓ Nộp ${shots.length} ảnh & hoàn tất thay` : '✓ Hoàn tất thay (không ảnh)') : `✓ Nộp ${shots.length} ảnh & hoàn tất`}</button>
+      ${lead ? '' : `<label class="commit"><input type="checkbox" id="phCm" ${S.phCm ? 'checked' : ''}><span>${COMMIT_TXT}</span></label>`}
+      <button class="btn pri block" id="phOk" ${shots.length < need || (!lead && !S.phCm) ? 'disabled' : ''}>${lead ? (shots.length ? `✓ Nộp ${shots.length} ảnh & hoàn tất thay` : '✓ Hoàn tất thay (không ảnh)') : `✓ Nộp ${shots.length} ảnh & hoàn tất`}</button>
     </div></div>`;
     if(lead && $('phNote')) $('phNote').oninput = e => { lead.note = e.target.value; };
+    if($('phEx')) $('phEx').onclick = () => { close(); setExclude(t.id, lead.shop.ma, true); };
+    if($('phCm')) $('phCm').onchange = e => { S.phCm = e.target.checked; $('phOk').disabled = shots.length < need || !S.phCm; };
     $('phX').onclick = close;
     $('modal').querySelectorAll('[data-prm]').forEach(b => b.onclick = () => { shots.splice(+b.dataset.prm, 1); paint(); });
     $('modal').querySelectorAll('[data-pz]').forEach(im => im.onclick = () => zoom(shots.slice(), +im.dataset.pz));
@@ -2983,16 +3231,17 @@ function openPhotoSheet(t, k, lead){
   };
   paint();
 }
+async function upAll(shots, t, ma, lead){
+  const tick = () => { const n = shots.filter(d => (UP.get(d) || {}).st === 'ok').length; loading(true, n < shots.length ? `Đang tải ảnh lên Drive… ${n}/${shots.length}` : 'Đang lưu hoàn tất…'); };
+  tick();
+  return Promise.all(shots.map(d => upKick(d, t, ma, lead, tick)));
+}
 async function submitPhotos(t, k, shots){
-  const urls = [];
+  let urls = [];
   try{
-    for(let i = 0; i < shots.length; i++){
-      loading(true, `Đang tải ảnh ${i+1}/${shots.length} lên Drive…`);
-      const name = `${S.shop.ma}_${(t.title||'').slice(0,30)}_${keyOf(new Date())}_${i+1}`;
-      urls.push(await api('uploadShopPhoto', S.shop.ma, S.token, name, shots[i].split(',')[1], t.id));
-    }
+    urls = await upAll(shots, t, S.shop.ma, null);
     loading(true, 'Đang lưu hoàn tất…');
-    await api('toggleDone', t.id, S.shop.ma, t.repeat ? k : '', true, S.token, urls);
+    await api('toggleDone', t.id, S.shop.ma, t.repeat ? k : '', true, S.token, urls, true);
     S.data.done[doneKey(t, k)] = { at: Date.now(), photos: urls, nt: '', ntNote: '' };
     loading(false); $('modal').innerHTML = '';
     celebrate(t, urls.length);
@@ -3001,19 +3250,16 @@ async function submitPhotos(t, k, shots){
     delete S.prog[k]; loadProgress(k, true);
   }catch(e){
     loading(false);
-    const el = $('phErr'); if(el) el.textContent = '⚠️ ' + e + (urls.length ? ` (đã tải ${urls.length} ảnh, bấm Nộp lại)` : '');
+    const okN = shots.filter(d => (UP.get(d) || {}).st === 'ok').length;
+    const el = $('phErr'); if(el) el.textContent = '⚠️ ' + e + (okN ? ` (đã tải ${okN}/${shots.length} ảnh – bấm Nộp lại, ảnh đã tải không phải tải lại)` : ' – kiểm tra mạng rồi bấm Nộp lại');
     if(/đăng nhập/i.test(String(e))){ store.del('lcv_tok_' + S.shop.ma); setTimeout(logout, 1800); }
   }
 }
 
 async function submitLead(t, k, shots, lead){
-  const urls = [], ma = lead.shop.ma, dk = t.repeat ? k : '';
+  let urls = []; const ma = lead.shop.ma, dk = t.repeat ? k : '';
   try{
-    for(let i = 0; i < shots.length; i++){
-      loading(true, `Đang tải ảnh ${i+1}/${shots.length} lên Drive…`);
-      const name = `${ma}_${(t.title||'').slice(0,30)}_${keyOf(new Date())}_thay_${i+1}`;
-      urls.push(await api('uploadLeadPhoto', ma, name, shots[i].split(',')[1], t.id, S.auth));
-    }
+    urls = shots.length ? await upAll(shots, t, ma, lead) : [];
     loading(true, 'Đang lưu hoàn tất thay…');
     await api('doneForShop', t.id, ma, dk, true, (lead.note || '').trim(), urls, S.auth);
     loading(false); $('modal').innerHTML = ''; S.phShop = null;
@@ -3027,7 +3273,7 @@ async function submitLead(t, k, shots, lead){
   }
 }
 function canLead(t, ma){
-  if(!S.me) return false;
+  if(!S.me || !can('HOAN_TAT_THAY')) return false;
   if(S.me.role === 'admin' || norm(t.by) === norm(S.me.name)) return true;
   const kv = myKV(); return !!kv && norm(shopInfo(ma).qltp) === norm(kv);
 }
@@ -3058,19 +3304,24 @@ function fnList(){
     add('reload', 'grid', 'Tải lại dữ liệu', '#f1f4f2', '#44544b');
     return F;
   }
-  if(S.admin) add('new', 'plus', 'Giao việc', '#0b7a3b', '#ffffff', { tile: 1, d: 'Tạo công việc mới cho miền / KV' });
-  if(S.admin) add('nt', 'check', 'Nghiệm thu', '#e8f3ec', '#0b7a3b', { tile: 1, badge: S.rqTotal || 0, d: 'Lướt ảnh: phải Đạt · trái Làm lại' });
-  add('todo', 'warn', 'Chưa làm', '#fde8e6', '#b3261e', { tile: 1, badge: dashOk ? todoList('').length : 0, d: 'Siêu thị còn việc · hoàn tất thay' });
-  add('dash', 'chart', 'Dashboard', '#eaf2ff', '#1d4e9e', { tile: 1, d: 'Tiến độ theo đầu việc / QLTP' });
-  if(me) add('survey', 'form', 'Khảo sát', '#f3e8ff', '#6b2fb3', { tile: 1, d: 'Tạo khảo sát, xem kết quả siêu thị trả lời' });
-  if(me) add('link', 'link', 'Link sếp', '#fff1dc', '#8a4b00', { tile: 1, d: 'Link dashboard gửi sếp, không cần đăng nhập' });
-  if(me) add('folder', 'folder', 'Thư mục ảnh', '#fff1dc', '#8a4b00', { tile: 1, d: 'Xem / gửi link thư mục ảnh của CV' });
-  if(me) add('reset', 'key', 'Reset MK', '#fff1dc', '#8a4b00', { d: 'Reset mật khẩu siêu thị' });
+  if(S.admin && canGiao()) add('new', 'plus', 'Giao việc', '#0b7a3b', '#ffffff', { tile: 1, d: 'Tạo công việc mới cho miền / KV' });
+  if(S.admin && can('NGHIEM_THU')) add('nt', 'check', 'Nghiệm thu', '#e8f3ec', '#0b7a3b', { tile: 1, badge: S.rqTotal || 0, d: 'Lướt ảnh: phải Đạt · trái Làm lại' });
+  if(canV('DASHBOARD')) add('todo', 'warn', 'Chưa làm', '#fde8e6', '#b3261e', { tile: 1, badge: dashOk ? todoList('').length : 0, d: 'Siêu thị còn việc · hoàn tất thay' });
+  if(canV('DASHBOARD')) add('dash', 'chart', 'Dashboard', '#eaf2ff', '#1d4e9e', { tile: 1, d: 'Tiến độ theo đầu việc / QLTP' });
+  if(me && can('KHAO_SAT')) add('survey', 'form', 'Khảo sát', '#f3e8ff', '#6b2fb3', { tile: 1, d: 'Tạo khảo sát, xem kết quả siêu thị trả lời' });
+  if(me && can('LINK_SEP')) add('link', 'link', 'Link sếp', '#fff1dc', '#8a4b00', { tile: 1, d: 'Link dashboard gửi sếp, không cần đăng nhập' });
+  if(me && can('DASHBOARD')) add('remind', 'bell', 'Nhắc việc', '#fff1dc', '#8a4b00', { tile: 1, badge: dashOk ? remindTasks().reduce((a, x) => a + x.pend.length, 0) : 0, d: 'DS siêu thị chưa làm theo từng CV của KV – sao chép để nhắc' });
+  if(me && can('LINK_SEP')) add('folder', 'folder', 'Thư mục ảnh', '#fff1dc', '#8a4b00', { d: 'Xem / gửi link thư mục ảnh của CV' });
+  if(me && can('LUU_TRU')) add('archive', 'folder', 'Lưu trữ CV', '#eef1f4', '#44544b', { d: 'Ẩn CV cũ / dự án đã xong khỏi app · khôi phục' });
+  if(me && can('XEM_NHU_ST')) add('preview', 'user', 'Xem như siêu thị', '#e8f3ec', '#0b7a3b', { d: 'Giả lập giao diện của 1 siêu thị trong KV' });
+  add('privacy', 'key', 'Quyền riêng tư', '#eef1f4', '#44544b', { d: 'App thu thập gì, ai được xem' });
+  add('donate', 'apps', 'Ủng hộ dự án', '#fff4e0', '#8a4b00', { d: 'QR chuyển khoản MB Bank ủng hộ người làm app' });
+  if(me && can('RESET_MK_ST')) add('reset', 'key', 'Reset MK', '#fff1dc', '#8a4b00', { d: 'Reset mật khẩu siêu thị' });
   add('apps', 'apps', 'Ứng dụng', '#f1f4f2', '#44544b', { tile: 1, d: 'Các web app nội bộ' });
-  add('access', 'eye', 'Lượt truy cập', '#eaf2ff', '#1d4e9e', { d: 'Shop vào app hôm nay / tháng' });
+  if(canV('TRUY_CAP')) add('access', 'eye', 'Lượt truy cập', '#eaf2ff', '#1d4e9e', { d: 'Shop vào app hôm nay / tháng' });
   add('month', 'cal', 'Lịch công việc', '#eaf2ff', '#1d4e9e', { d: 'Lịch tháng + việc theo ngày' });
   if(me) add('acc', 'user', 'Tài khoản & mật khẩu', '#f1f4f2', '#44544b');
-  if(S.role === 'admin') add('users', 'user', 'Quản lý tài khoản', '#f1f4f2', '#44544b', { d: 'Cấp tài khoản QL / QLTP' });
+  if(me && can('QL_TAI_KHOAN')) add('users', 'user', 'Quản lý tài khoản', '#f1f4f2', '#44544b', { d: 'Cấp tài khoản QL / QLTP' });
   if(me) add('bell', 'bell', notifOn() ? 'Tắt thông báo' : 'Bật thông báo', '#fff1dc', '#8a4b00');
   add('reload', 'grid', 'Tải lại dữ liệu', '#f1f4f2', '#44544b');
   return F;
@@ -3083,6 +3334,7 @@ function runFn(k){
   else if(k === 'reset') openShopReset(); else if(k === 'apps' || k === 'home' || k === 'month') go(k);
   else if(k === 'acc') openAccount(); else if(k === 'users') openAccounts();
   else if(k === 'bell') toggleNotif(); else if(k === 'reload') reload();
+  else if(k === 'remind') openRemind(); else if(k === 'archive') openArchive(); else if(k === 'preview') pickPreview(); else if(k === 'privacy') openPrivacy(false); else if(k === 'donate') openDonate();
   else if(k === 'survey') openKsList(); else if(k === 'ksme'){ go('home'); setTimeout(() => { const b = $('ksBox'); if(b) b.scrollIntoView({ behavior:'smooth', block:'center' }); }, 200); }
 }
 function tileHTML(f){
@@ -3113,9 +3365,20 @@ function avNote(msg){
   n.textContent = msg;
   if(/Đã gửi/.test(msg)) setTimeout(() => { if(n.isConnected) n.remove(); }, 4000);
 }
+function showKeptApp(el, nm){
+  closeAppView(true); syncHH();
+  el.querySelectorAll('[data-kid]').forEach(x => { x.id = x.dataset.kid; x.removeAttribute('data-kid'); });
+  el.id = 'appView'; el.classList.remove('kept'); el.removeAttribute('aria-hidden');
+  document.body.classList.add('dopen'); document.body.style.overflow = 'hidden';
+  try{ history.pushState({ av: 1 }, ''); }catch(e){}
+}
 function closeAppView(silent){
   const el = $('appView'); if(!el) return;
-  clearTimeout(el._tm); el.remove();
+  clearTimeout(el._tm);
+  /* Giữ app vừa đóng chạy ngầm (ẩn) → mở lại tức thì, không phải tải lại */
+  const fr = el.querySelector('iframe'), old = $('appKeep');
+  if(!silent && el.dataset.id && fr && fr.dataset.u){ if(old && old !== el) old.remove(); el.querySelectorAll('[id]').forEach(x => { x.dataset.kid = x.id; x.removeAttribute('id'); }); el.id = 'appKeep'; el.classList.add('kept'); el.setAttribute('aria-hidden', 'true'); }
+  else el.remove();
   if(!S.detail){ document.body.classList.remove('dopen'); document.body.style.overflow = ''; }
 }
 window.addEventListener('popstate', () => { if($('appView')) closeAppView(); });
@@ -3125,15 +3388,30 @@ document.addEventListener('click', e => {
   openApp(a.dataset.app, a.dataset.an || (a.querySelector('b') || {}).textContent || '', a.dataset.ae === '1');
 });
 /* Link app chỉ xin từ máy chủ theo phiên đăng nhập – không nằm sẵn trên trang */
+const APPL = {};
+function appLink(id){
+  const who = S.me ? 'q' + (S.me.code || S.me.name) : S.shop ? 's' + S.shop.ma : '';
+  const c = APPL[id]; if(c && c.who === who && Date.now() - c.at < 30 * 60000) return Promise.resolve(c.r);
+  const p = S.me && S.auth ? api('getAppLink', id, S.auth) : (S.mode === 'shop' && S.shop && S.token) ? api('getAppLinkShop', id, S.shop.ma, S.token) : Promise.reject('Cần đăng nhập để mở ứng dụng.');
+  return p.then(r => { APPL[id] = { r, at: Date.now(), who }; return r; });
+}
+/* Xin sẵn link các app hay dùng sau khi vào app (chạy ngầm) → bấm mở là vào ngay */
+function prefetchApps(){
+  const L = menuItems(); if(!L.length) return;
+  const use = appUse();
+  L.slice().sort((a, b) => (use[b.id] || 0) - (use[a.id] || 0)).slice(0, 3).forEach((m, i) => setTimeout(() => appLink(m.id).catch(() => {}), 2500 + i * 900));
+}
 function openApp(id, nm, embed){
   bumpApp(id);
-  const ask = S.me && S.auth ? api('getAppLink', id, S.auth) : (S.mode === 'shop' && S.shop && S.token) ? api('getAppLinkShop', id, S.shop.ma, S.token) : Promise.reject('Cần đăng nhập để mở ứng dụng.');
+  const keep = $('appKeep');
+  if(embed && keep && keep.dataset.id === String(id)){ showKeptApp(keep, nm); return; }
+  const ask = appLink(id);
   if(!embed){
     const w = window.open('about:blank', '_blank');
     ask.then(r => { if(w) w.location.replace(r.url); else location.href = r.url; }).catch(err => { if(w) w.close(); toast('⚠️ ' + String(err).replace(/^Error:\s*/, ''), 3500); });
     return;
   }
-  openAppView('about:blank', nm);
+  openAppView('about:blank', nm); const v = $('appView'); if(v){ v.dataset.id = String(id); v.dataset.nm = nm || ''; }
   ask.then(r => { const f = $('avFr'); if(f){ f.dataset.u = r.url; f.src = r.url; } })
      .catch(err => { closeAppView(); toast('⚠️ ' + String(err).replace(/^Error:\s*/, ''), 3500); });
 }
@@ -3227,16 +3505,19 @@ function pickTask(title, fn){
   $('pkX').onclick = () => $('modal').innerHTML = '';
   $('modal').querySelectorAll('[data-pk]').forEach(b => b.onclick = () => { $('modal').innerHTML = ''; fn(b.dataset.pk); });
 }
-function shopSheet(ma){
+function shopSheet(ma, tried){
+  if(!S.dash && !tried){ loading(true, 'Đang tải việc của siêu thị…'); Promise.resolve(loadDash()).catch(() => {}).then(() => { loading(false); shopSheet(ma, true); }); return; }
   const si = shopInfo(ma), mine = [];
   if(S.dash && !S.dash.error) dashTasks().forEach(x => x.pend.forEach(p => { if(String(p[0]) === String(ma)) mine.push({ t: x.t, ch: p[3] }); }));
   $('modal').innerHTML = `<div class="ov"><div class="sheet qsheet" style="max-width:480px"><h3><span>🏪 ${esc(ma)} · ${esc(si.short)}</span><button class="x" id="ssX">✕</button></h3>
     <div class="note" style="margin-top:-6px">QLTP: <b>${esc(si.qltp || '—')}</b></div>
     <div class="bt" style="margin:10px 0 2px;font-weight:800">📝 Việc chưa làm (${mine.length})</div>
     ${mine.length ? mine.map(z => `<div class="row"><span><b>${z.ch === 'm' ? '❌ ' : ''}${esc(z.t.title)}</b><small>${z.ch === 'm' ? 'Quá hạn' : 'Còn hạn'} · ${z.t.repeat ? '🔁 ' + esc(repTxt(z.t, true)) : 'NT ' + dm(z.t.endKey)}</small></span>${canLead(z.t, ma) ? `<button class="btn pri" data-dfs="${z.t.id}|${esc(ma)}|${dashDay(z.t.id)}">✓ Hoàn tất thay</button>` : ''}</div>`).join('') : `<div class="none">${S.dash ? '🎉 Siêu thị đã làm hết việc.' : '⏳ Đang tải…'}</div>`}
-    ${S.me ? `<button class="btn line block" style="margin-top:12px" id="ssRs">🔑 Reset mật khẩu siêu thị này</button>` : ''}
+    ${mine.length ? `<button class="btn pri block" style="margin-top:12px" id="ssRm">📣 Nhắc QL siêu thị này</button>` : ''}
+    ${S.me ? `<button class="btn line block" style="margin-top:8px" id="ssRs">🔑 Reset mật khẩu siêu thị này</button>` : ''}
   </div></div>`;
   $('ssX').onclick = () => $('modal').innerHTML = '';
+  if($('ssRm')) $('ssRm').onclick = () => remindShop(ma, si, mine);
   if($('ssRs')) $('ssRs').onclick = () => { $('modal').innerHTML = ''; openShopReset(ma); };
 }
 async function shareFolder(id){
@@ -3259,7 +3540,55 @@ async function shareFolder(id){
 }
 
 /* ================= KHẢO SÁT ================= */
-const KS_T = { para:'Đoạn văn', short:'Trả lời ngắn', one:'Một lựa chọn', many:'Nhiều lựa chọn' };
+const KS_T = { one:'Một lựa chọn', many:'Nhiều lựa chọn', scale:'Thang điểm 1–10', para:'Đoạn văn', short:'Trả lời ngắn', sec:'Tiêu đề phần' };
+const KS_IC = { one:'◉ ', many:'☑ ', scale:'⑩ ', para:'¶ ', short:'— ', sec:'§ ' };
+function ksNum(qs){ const m = {}; let c = 0; qs.forEach(q => { if(q.t !== 'sec') m[q.id] = ++c; }); return m; }
+function ksScaleHTML(q, v){ return `<div class="kscale">${Array.from({ length: 10 }, (_, i) => i + 1).map(n => `<label class="${String(v) === String(n) ? 'on' : ''}"><input type="radio" name="${q.id}" value="${n}" ${String(v) === String(n) ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div><div class="kscale-l"><span>Rất kém</span><span>Rất tốt</span></div>`; }
+/* Mẫu khảo sát có sẵn */
+const KS_TPL = [{ name: 'Khảo sát MTLV định kỳ cho nhân viên', icon: '🧑‍🤝‍🧑',
+  title: 'Khảo sát môi trường làm việc định kỳ cho nhân viên',
+  desc: 'Khảo sát ẩn danh – không ghi tên bạn. Siêu thị lấy theo danh sách của app, bạn chỉ cần chọn đúng siêu thị đang làm. Hãy trả lời thật lòng để QL và siêu thị ngày một tốt hơn.',
+  qs: [
+    ['sec','PHẦN 1 · ĐÁNH GIÁ QUẢN LÝ SIÊU THỊ'],
+    ['scale','Về mặt giao tiếp, bạn đánh giá QL của mình bao nhiêu điểm?',1], ['para','Vì sao bạn đánh giá thang điểm này?'],
+    ['scale','Theo thang điểm 10, bạn đánh giá mức độ làm gương của QL mình?',1], ['para','Vì sao bạn đánh giá thang điểm này?'],
+    ['scale','Hãy đánh giá môi trường làm việc QL tạo ra theo thang điểm 10.',1], ['para','Vì sao bạn đánh giá thang điểm này?'],
+    ['one','Nếu kỳ trước bạn đã đánh giá QL này, kỳ này QL có làm tốt hơn chưa?',0,['Có cải thiện','Chưa cải thiện','Kỳ trước chưa đánh giá']],
+    ['one','Quản lý triển khai công việc có dễ hiểu không?',1,['Có','Không']],
+    ['one','QL có đưa chương trình thi đua để trao sao cho nhân viên không?',1,['Mỗi ngày','Có, nhưng không thường xuyên','Không']],
+    ['one','QL có đang làm việc bằng LINE không?',1,['Chỉ dùng LINE','Có dùng thêm Zalo']],
+    ['one','Nếu có cơ hội, bạn có muốn làm việc cùng QL này nữa không?',1,['Có','Không']],
+    ['one','QL có hỗ trợ bạn khi gặp sự cố tại siêu thị không?',1,['Có','Thỉnh thoảng','Không']],
+    ['one','QL đi làm có mặc đúng đồng phục không?',1,['Có','Không']],
+    ['one','QL đang đi ca như thế nào?',0,['Hành chính','Xoay ca','Ca gãy'],1],
+    ['one','QL sắp lịch cho bạn theo ngày, tuần hay tháng?',0,['Theo ngày','Theo tuần','Theo tháng'],1],
+    ['one','QL có triển khai công việc cho từng cá nhân trong ca theo checklist rõ ràng không?',1,['Có','Không']],
+    ['para','Nếu không rõ ràng, bạn mô tả bên dưới (VD: lên ca ai thích làm gì thì làm, QL không chia chuyên doanh, không điều phối công việc).'],
+    ['one','QL có quan tâm đến hình ảnh siêu thị, vệ sinh an toàn thực phẩm không?',1,['Có','Rất ít','Không']],
+    ['para','Đôi dòng GÓP Ý / MONG ĐỢI / GHI NHẬN bạn muốn nhắn gửi đến QL của mình.'],
+    ['sec','PHẦN 2 · MÔI TRƯỜNG LÀM VIỆC TẠI SIÊU THỊ'],
+    ['scale','Về mặt giao tiếp, bạn đánh giá môi trường làm việc của siêu thị mình bao nhiêu điểm?',1], ['para','Vì sao bạn đánh giá thang điểm này?'],
+    ['scale','Siêu thị mình đang làm tốt 6 Giá trị cốt lõi của công ty ở mức nào?',1], ['para','Vì sao bạn đánh giá thang điểm này?'],
+    ['short','Cá nhân bạn đang cảm thấy thế nào về công việc hiện tại?'],
+    ['para','Bạn có góp ý gì để cải thiện môi trường làm việc hiện tại?'],
+    ['para','Siêu thị có đang làm đúng vòng đời Fresh không? Nếu chưa thì ở điểm nào? (cho ví dụ)'],
+    ['sec','PHẦN 3 · TRUNG THỰC & KIỂM SOÁT'],
+    ['one','Siêu thị hiện có âm tiền két thu ngân không?',1,['Không','Ít','Nhiều']],
+    ['one','QL có rõ ràng trong tiền bạc, thu ngân, tiền quỹ không?',1,['Có, rất rõ ràng','Không, rất mập mờ']],
+    ['para','Nếu mập mờ tiền bạc tại siêu thị, vui lòng thông tin chi tiết.'],
+    ['one','QL có triển khai, ép bạn làm sai, không trung thực không? (VD: cố tình kiểm kê sai, kiểm date sai, không huỷ hàng mà đóng lại bán)',1,['Không','Có']],
+    ['para','Nếu có, vui lòng mô tả đầy đủ.'],
+    ['one','QL có quan tâm kiểm soát hàng hoá không? Siêu thị có mất hàng số lượng lớn không?',1,['Có kiểm soát tốt, không mất hàng','Có kiểm soát nhưng vẫn mất hàng','Không quan tâm kiểm soát']],
+    ['para','Mô tả thêm về kiểm soát hàng hoá (nếu có).'],
+    ['sec','PHẦN 4 · BẢN THÂN BẠN'],
+    ['one','Bạn có mong muốn lên vị trí Quản lý không?',1,['Có – muốn được hỗ trợ','Không – muốn làm NV gần nhà']],
+    ['one','Bạn có hiểu rõ chính sách lương & thưởng hiện tại của công ty không?',1,['Rất rõ','Có biết nhưng chưa rõ, cần triển khai lại']],
+    ['para','Bạn góp ý gì thêm cho QL của mình?']
+  ] }];
+function ksFromTpl(T){
+  let n = 0;
+  return { title: T.title, desc: T.desc, scope: 'MIEN', qltp: [], pub: 1, qs: T.qs.map(x => ({ id: 'q' + (++n), t: x[0], q: x[1], req: x[2] ? 1 : 0, o: (x[3] || []).slice(), other: x[4] ? 1 : 0 })) };
+}
 function ksEnd(ms){ const d = new Date(ms); return pad(d.getHours()) + ':' + pad(d.getMinutes()) + ' ' + pad(d.getDate()) + '/' + pad(d.getMonth() + 1); }
 function ksLeft(ms){ const x = ms - Date.now(); if(x <= 0) return 'đã hết hạn'; const h = Math.floor(x / 36e5); return h >= 24 ? 'còn ' + Math.floor(h / 24) + ' ngày' : h >= 1 ? 'còn ' + h + ' giờ' : 'còn ' + Math.max(1, Math.round(x / 6e4)) + ' phút'; }
 function openKsPage(html){ syncHH(); const p = $('ksPage'); p.innerHTML = html; p.classList.remove('hide'); p.scrollTop = 0; document.body.style.overflow = 'hidden'; document.body.classList.add('dopen'); }
@@ -3285,11 +3614,13 @@ function renderKsBox(){
 function openKsAnswer(id){
   const k = (S.ks || []).find(x => x.id === id); if(!k) return;
   const A = JSON.parse(JSON.stringify((k.my && k.my.a) || {}));
-  const isOther = (q, v) => q.other && typeof v === 'string' && v.indexOf('Khác: ') === 0;
+  const isOther = (q, v) => q.other && typeof v === 'string' && v.indexOf('Khác: ') === 0, NUM = ksNum(k.qs);
   const qHTML = (q, i) => {
     const v = A[q.id];
     let body = '';
-    if(q.t === 'para') body = `<textarea class="inp" data-qa="${q.id}" style="min-height:90px" placeholder="Nhập câu trả lời…">${esc(v || '')}</textarea>`;
+    if(q.t === 'sec') return `<div class="kssec">${esc(q.q)}</div>`;
+    if(q.t === 'scale') body = ksScaleHTML(q, v);
+    else if(q.t === 'para') body = `<textarea class="inp" data-qa="${q.id}" style="min-height:90px" placeholder="Nhập câu trả lời…">${esc(v || '')}</textarea>`;
     else if(q.t === 'short') body = `<input class="inp" data-qa="${q.id}" value="${esc(v || '')}" placeholder="Câu trả lời ngắn">`;
     else {
       const many = q.t === 'many', arr = many ? (Array.isArray(v) ? v : []) : [v];
@@ -3297,7 +3628,7 @@ function openKsAnswer(id){
       body = q.o.map(o => { const on = arr.indexOf(o) >= 0; return `<label class="kopt ${on ? 'on' : ''}"><input type="${many ? 'checkbox' : 'radio'}" name="${q.id}" value="${esc(o)}" ${on ? 'checked' : ''}><span>${esc(o)}</span></label>`; }).join('')
         + (q.other ? `<label class="kopt ${oth ? 'on' : ''}"><input type="${many ? 'checkbox' : 'radio'}" name="${q.id}" value="__other" ${oth ? 'checked' : ''}><span>Khác:</span><input class="inp" data-oth="${q.id}" value="${esc(oth ? oth.slice(6) : '')}" placeholder="ghi rõ…"></label>` : '');
     }
-    return `<div class="ksq" id="kq_${q.id}"><div class="qt"><span class="qn">${i + 1}</span>${esc(q.q)}${q.req ? '<i>*</i>' : ''}</div>${body}</div>`;
+    return `<div class="ksq" id="kq_${q.id}"><div class="qt"><span class="qn">${NUM[q.id]}</span>${esc(q.q)}${q.req ? '<i>*</i>' : ''}</div>${body}</div>`;
   };
   openKsPage(`<div class="pg-top"><button class="back" id="kaX">‹</button><b>📝 Khảo sát</b></div><div class="pg">
     <div class="kshead"><small>${esc(k.by ? 'Từ ' + k.by : '')} · hạn ${ksEnd(k.endMs)} (${ksLeft(k.endMs)})</small><h2>${esc(k.title)}</h2>${k.desc ? `<p>${linkify(k.desc)}</p>` : ''}</div>
@@ -3307,8 +3638,10 @@ function openKsAnswer(id){
     <div class="pg-foot"><button class="btn vio block" id="kaOk">${k.my ? '💾 Cập nhật câu trả lời' : '📨 Gửi câu trả lời'}</button></div>`);
   const pg = $('ksPage');
   $('kaX').onclick = closeKsPage;
+  pg.querySelectorAll('.kscale input').forEach(inp => inp.onchange = () => pg.querySelectorAll(`.kscale input[name="${inp.name}"]`).forEach(x => x.parentNode.classList.toggle('on', x.checked)));
   const read = () => {
     k.qs.forEach(q => {
+      if(q.t === 'sec') return;
       if(q.t === 'para' || q.t === 'short'){ const e = pg.querySelector(`[data-qa="${q.id}"]`); A[q.id] = e ? e.value.trim() : ''; return; }
       const ch = [...pg.querySelectorAll(`input[name="${q.id}"]:checked`)].map(x => x.value);
       const ot = pg.querySelector(`[data-oth="${q.id}"]`), otv = ot ? ot.value.trim() : '';
@@ -3342,20 +3675,20 @@ async function openKsList(force){
   const L = S.ksL, b = $('klBody'); if(!b) return;
   b.innerHTML = (L.length ? '' : `<div class="none" style="padding:30px 10px">Chưa có khảo sát nào.<br><button class="btn vio" style="margin-top:12px" id="klNew2">＋ Tạo khảo sát đầu tiên</button></div>`)
     + L.map(k => { const p = k.total ? Math.round(k.done * 100 / k.total) : 0, open = k.st !== 'Đóng' && Date.now() <= k.endMs;
-      return `<button class="kscard" data-kr="${k.id}"><span class="pring" style="--p:${p};--rc:#6b2fb3"><b>${p}%</b></span><div class="t"><b>${esc(k.title)}<span class="kst ${open ? 'on' : 'off'}">${open ? 'Đang mở' : k.st === 'Đóng' ? 'Đã đóng' : 'Hết hạn'}</span></b><small>${k.done}/${k.total} siêu thị đã trả lời · hạn ${ksEnd(k.endMs)}</small><small>👤 ${esc(k.by)} · ${k.scope === 'QLTP' ? '📍 ' + esc(k.qltp.join(', ')) : '🌐 Cả miền'} · ${k.qs.length} câu</small></div></button>`; }).join('');
+      return `<button class="kscard" data-kr="${k.id}"><span class="pring" style="--p:${p};--rc:#6b2fb3"><b>${p}%</b></span><div class="t"><b>${esc(k.title)}<span class="kst ${open ? 'on' : 'off'}">${open ? 'Đang mở' : k.st === 'Đóng' ? 'Đã đóng' : 'Hết hạn'}</span></b><small>${k.done}/${k.total} siêu thị đã trả lời${k.pub ? ' · 🔗 ' + (k.an || 0) + ' ẩn danh' : ''} · hạn ${ksEnd(k.endMs)}</small><small>👤 ${esc(k.by)} · ${k.scope === 'QLTP' ? '📍 ' + esc(k.qltp.join(', ')) : '🌐 Cả miền'} · ${k.qs.length} câu</small></div></button>`; }).join('');
   if($('klNew2')) $('klNew2').onclick = () => openKsBuilder(null);
   b.querySelectorAll('[data-kr]').forEach(x => x.onclick = () => openKsResult(x.dataset.kr));
 }
 function openKsBuilder(k0){
   const today = S.data.today, addD = n => { const x = fromKey(today); x.setDate(x.getDate() + n); return keyOf(x); };
-  const K = k0 ? JSON.parse(JSON.stringify(k0)) : { title:'', desc:'', scope:'MIEN', qltp:[], qs:[{ id:'q1', t:'one', q:'', req:1, o:['', ''], other:0 }] };
+  const K = k0 ? JSON.parse(JSON.stringify(k0)) : { title:'', desc:'', scope:'MIEN', qltp:[], pub:0, qs:[{ id:'q1', t:'one', q:'', req:1, o:['', ''], other:0 }] };
   const e0 = k0 && k0.endMs ? new Date(k0.endMs) : null;
   K.eD = e0 ? keyOf(e0) : addD(2); K.eT = e0 ? pad(e0.getHours()) + ':' + pad(e0.getMinutes()) : '17:00';
   const qsList = S.role === 'ql' ? S.data.qltpList.filter(q => myKV() && norm(q.name) === norm(myKV())) : S.data.qltpList;
   const noKV = S.role === 'ql' && !myKV();
   let nid = K.qs.reduce((m, q) => Math.max(m, +String(q.id).replace(/\D/g, '') || 0), 0);
   const save = () => {
-    K.title = $('kbT').value; K.desc = $('kbD').value; K.eD = $('kbED').value; K.eT = $('kbET').value;
+    K.title = $('kbT').value; K.desc = $('kbD').value; K.eD = $('kbED').value; K.eT = $('kbET').value; K.pub = $('kbPub').checked ? 1 : 0;
     K.qs.forEach(q => {
       const c = $('ksPage').querySelector(`[data-qe="${q.id}"]`); if(!c) return;
       q.q = c.querySelector('[data-f=q]').value;
@@ -3364,17 +3697,18 @@ function openKsBuilder(k0){
       const ot = c.querySelector('[data-f=other]'); q.other = ot && ot.checked ? 1 : 0;
     });
   };
-  const qe = (q, i) => `<div class="qed" data-qe="${q.id}">
-      <div class="qh2"><b>Câu ${i + 1}</b><button class="mini" data-mv="${q.id}|-1" ${i ? '' : 'disabled'} title="Lên">▲</button><button class="mini" data-mv="${q.id}|1" ${i < K.qs.length - 1 ? '' : 'disabled'} title="Xuống">▼</button><button class="mini" data-cp="${q.id}" title="Nhân bản">⧉</button><button class="mini" data-rm="${q.id}" title="Xoá câu" style="color:var(--red)">🗑</button></div>
-      <div class="seg" data-ty="${q.id}">${Object.keys(KS_T).map(t => `<button type="button" data-t="${t}" class="${q.t === t ? 'on' : ''}">${t === 'para' ? '¶ ' : t === 'short' ? '— ' : t === 'one' ? '◉ ' : '☑ '}${KS_T[t]}</button>`).join('')}</div>
-      <textarea class="inp" data-f="q" style="margin-top:8px;min-height:52px" placeholder="Nội dung câu hỏi">${esc(q.q)}</textarea>
+  const qe = (q, i) => `<div class="qed ${q.t === 'sec' ? 'sec' : ''}" data-qe="${q.id}">
+      <div class="qh2"><b>${q.t === 'sec' ? '§ Tiêu đề phần' : 'Câu ' + ksNum(K.qs)[q.id]}</b><button class="mini" data-mv="${q.id}|-1" ${i ? '' : 'disabled'} title="Lên">▲</button><button class="mini" data-mv="${q.id}|1" ${i < K.qs.length - 1 ? '' : 'disabled'} title="Xuống">▼</button><button class="mini" data-cp="${q.id}" title="Nhân bản">⧉</button><button class="mini" data-rm="${q.id}" title="Xoá câu" style="color:var(--red)">🗑</button></div>
+      <div class="seg" data-ty="${q.id}">${Object.keys(KS_T).map(t => `<button type="button" data-t="${t}" class="${q.t === t ? 'on' : ''}">${KS_IC[t]}${KS_T[t]}</button>`).join('')}</div>
+      <textarea class="inp" data-f="q" style="margin-top:8px;min-height:${q.t === 'sec' ? 40 : 52}px" placeholder="${q.t === 'sec' ? 'Tên phần – VD: PHẦN 1 · ĐÁNH GIÁ QUẢN LÝ' : 'Nội dung câu hỏi'}">${esc(q.q)}</textarea>
       ${q.t === 'one' || q.t === 'many' ? `<div>${q.o.map((o, j) => `<div class="orow"><span>${q.t === 'one' ? '○' : '☐'}</span><input class="inp" data-f="o" value="${esc(o)}" placeholder="Lựa chọn ${j + 1}"><button type="button" data-ro="${q.id}|${j}" ${q.o.length > 2 ? '' : 'disabled'}>✕</button></div>`).join('')}
-        <button type="button" class="link" data-ao="${q.id}" style="margin-top:8px">＋ Thêm lựa chọn</button></div>` : `<div class="smut" style="margin-top:6px;font-size:12px">Siêu thị sẽ gõ ${q.t === 'para' ? 'đoạn văn (nhiều dòng)' : 'câu trả lời ngắn (1 dòng)'}.</div>`}
-      <div class="qfoot"><label class="chk"><input type="checkbox" data-f="req" ${q.req ? 'checked' : ''}> Bắt buộc</label>${q.t === 'one' || q.t === 'many' ? `<label class="chk"><input type="checkbox" data-f="other" ${q.other ? 'checked' : ''}> Thêm ô "Khác…"</label>` : ''}</div></div>`;
+        <button type="button" class="link" data-ao="${q.id}" style="margin-top:8px">＋ Thêm lựa chọn</button></div>` : q.t === 'scale' ? `<div class="kscale mini">${Array.from({ length: 10 }, (_, j) => `<label><span>${j + 1}</span></label>`).join('')}</div>` : q.t === 'sec' ? `<div class="smut" style="margin-top:6px;font-size:12px">Dòng tiêu đề chia phần, không cần trả lời.</div>` : `<div class="smut" style="margin-top:6px;font-size:12px">Người trả lời sẽ gõ ${q.t === 'para' ? 'đoạn văn (nhiều dòng)' : 'câu trả lời ngắn (1 dòng)'}.</div>`}
+      <div class="qfoot ${q.t === 'sec' ? 'hide' : ''}"><label class="chk"><input type="checkbox" data-f="req" ${q.req ? 'checked' : ''}> Bắt buộc</label>${q.t === 'one' || q.t === 'many' ? `<label class="chk"><input type="checkbox" data-f="other" ${q.other ? 'checked' : ''}> Thêm ô "Khác…"</label>` : ''}</div></div>`;
   const paint = () => {
     const y = $('ksPage').scrollTop;
     openKsPage(`<div class="pg-top"><button class="back" id="kbX">‹</button><b>${k0 ? '✎ Sửa khảo sát' : '📝 Tạo khảo sát'}</b></div><div class="pg">
       <div class="fby">👤 Người tạo: <b>${esc(k0 ? k0.by : (S.me ? S.me.name : ''))}</b>${k0 && k0.done ? ` <small>· đã có ${k0.done} siêu thị trả lời – sửa câu hỏi có thể làm lệch kết quả cũ</small>` : ''}</div>
+      ${k0 ? '' : `<button class="btn line block kbtpl" id="kbTpl" type="button">📋 Dùng mẫu có sẵn</button>`}
       <div class="field"><input id="kbT" class="inp big2" value="${esc(K.title)}" placeholder="Tên khảo sát – VD: Khảo sát tình trạng tủ mát"></div>
       <div class="field"><textarea id="kbD" class="inp" style="min-height:70px" placeholder="Mô tả / lời nhắn cho siêu thị (không bắt buộc)">${esc(K.desc)}</textarea></div>
       <div class="fsec">⏰ Hạn trả lời</div>
@@ -3383,6 +3717,7 @@ function openKsBuilder(k0){
       <div class="fsec">👥 Gửi cho</div>
       <div class="seg" id="kbScope"><button data-v="MIEN" class="${K.scope === 'MIEN' ? 'on' : ''}">🌐 Cả miền</button>${noKV ? '' : `<button data-v="QLTP" class="${K.scope === 'QLTP' ? 'on' : ''}">${S.role === 'ql' ? '👤 KV ' + esc(myKV()) : '👤 Chọn QLTP'}</button>`}</div>
       <div class="qchips ${K.scope === 'QLTP' && S.role !== 'ql' ? '' : 'hide'}" id="kbQ">${qsList.map(q => `<button data-q="${esc(q.name)}" class="${K.qltp.some(z => norm(z) === norm(q.name)) ? 'on' : ''}">${esc(q.name)}</button>`).join('')}</div>
+      <label class="kpub"><input type="checkbox" id="kbPub" ${K.pub ? 'checked' : ''}><span><b>🔗 Tạo link ẩn danh</b><small>Gửi link cho nhân viên trả lời không cần đăng nhập, không ghi tên. Siêu thị trong app vẫn trả lời như thường.</small></span></label>
       <div class="fsec">❓ Câu hỏi (${K.qs.length})</div>
       ${K.qs.map(qe).join('')}
       <button class="btn line block" id="kbAdd" style="border-style:dashed">＋ Thêm câu hỏi</button>
@@ -3391,6 +3726,16 @@ function openKsBuilder(k0){
     $('ksPage').scrollTop = y;
     const pg = $('ksPage');
     $('kbX').onclick = () => k0 ? openKsResult(k0.id) : openKsList();
+    if($('kbTpl')) $('kbTpl').onclick = () => {
+      $('modal').innerHTML = `<div class="ov"><div class="sheet" style="max-width:460px"><h3><span>📋 Mẫu khảo sát</span><button class="x" id="tpX">✕</button></h3>
+        ${KS_TPL.map((T, i) => `<button class="kscard" data-tp="${i}"><span style="font-size:28px">${T.icon}</span><div class="t"><b>${esc(T.name)}</b><small>${T.qs.filter(x => x[0] !== 'sec').length} câu · ${T.qs.filter(x => x[0] === 'sec').length} phần · link ẩn danh, chọn siêu thị từ danh sách app</small></div></button>`).join('')}</div></div>`;
+      $('tpX').onclick = () => $('modal').innerHTML = '';
+      $('modal').querySelectorAll('[data-tp]').forEach(b => b.onclick = () => {
+        save(); const nk = ksFromTpl(KS_TPL[+b.dataset.tp]);
+        if(K.qs.some(q => q.q.trim()) && !confirm('Thay các câu hỏi đang soạn bằng mẫu?')) return;
+        Object.assign(K, nk); nid = K.qs.length; $('modal').innerHTML = ''; paint(); toast('📋 Đã nạp mẫu – sửa lại tuỳ ý rồi bấm Tạo', 2500);
+      });
+    };
     pg.querySelectorAll('#kbEq [data-d]').forEach(b => b.onclick = () => { save(); K.eD = b.dataset.d; paint(); });
     pg.querySelectorAll('#kbScope [data-v]').forEach(b => b.onclick = () => { save(); K.scope = b.dataset.v; if(S.role === 'ql' && K.scope === 'QLTP') K.qltp = [myKV()]; paint(); });
     pg.querySelectorAll('#kbQ [data-q]').forEach(b => b.onclick = () => { const q = b.dataset.q, i = K.qltp.findIndex(z => norm(z) === norm(q)); if(i >= 0) K.qltp.splice(i, 1); else K.qltp.push(q); b.classList.toggle('on', i < 0); });
@@ -3408,10 +3753,10 @@ function openKsBuilder(k0){
       if(!K.eD) return err('Chưa chọn hạn trả lời.');
       if(K.scope === 'QLTP' && !K.qltp.length) return err('Chọn ít nhất 1 QLTP.');
       const bad = K.qs.findIndex(q => !q.q.trim() || ((q.t === 'one' || q.t === 'many') && q.o.filter(o => o.trim()).length < 2));
-      if(bad >= 0) return err('Câu ' + (bad + 1) + ': ' + (!K.qs[bad].q.trim() ? 'chưa nhập nội dung câu hỏi.' : 'cần ít nhất 2 lựa chọn.'));
+      if(bad >= 0) return err((K.qs[bad].t === 'sec' ? 'Tiêu đề phần' : 'Câu ' + ksNum(K.qs)[K.qs[bad].id]) + ': ' + (!K.qs[bad].q.trim() ? 'chưa nhập nội dung câu hỏi.' : 'cần ít nhất 2 lựa chọn.'));
       loading(true, 'Đang lưu khảo sát…');
       try{
-        const r = await api('saveSurvey', { id: k0 ? k0.id : '', title: K.title, desc: K.desc, scope: K.scope, qltp: K.qltp, end: K.eD + 'T' + (K.eT || '17:00'),
+        const r = await api('saveSurvey', { id: k0 ? k0.id : '', title: K.title, desc: K.desc, scope: K.scope, qltp: K.qltp, pub: K.pub, end: K.eD + 'T' + (K.eT || '17:00'),
           qs: K.qs.map(q => ({ id: q.id, t: q.t, q: q.q, req: q.req, other: q.other, o: q.o.filter(o => o.trim()) })) }, S.auth);
         loading(false); S.ksL = null; toast(k0 ? '✅ Đã lưu khảo sát' : '📨 Đã gửi khảo sát tới siêu thị', 2200);
         openKsResult(r.id);
@@ -3425,8 +3770,18 @@ async function openKsResult(id){
   $('krX').onclick = () => openKsList(true);
   let R; try{ R = await api('getSurveyResult', id, S.auth); }catch(e){ $('krBody').innerHTML = `<div class="none">⚠️ ${esc(e)}</div>`; return; }
   const k = R.k, n = R.ans.length, p = R.total ? Math.round(n * 100 / R.total) : 0, open = k.st !== 'Đóng' && Date.now() <= k.endMs;
+  const AN = (R.anon || []).map(a => Object.assign({}, a, { shop: a.short || '', ma: '🕶', short: (a.short || 'ẩn danh') + (a.a && a.a._who ? ' · ' + a.a._who : '') }));
+  const NUM = ksNum(k.qs), SCQ = k.qs.filter(q => q.t === 'scale');
+  R.ans = R.ans.concat(AN);
   const qBlock = (q, i) => {
-    let h = `<div class="ksq"><div class="qt"><span class="qn">${i + 1}</span>${esc(q.q)} <small class="smut">· ${KS_T[q.t]}</small></div>`;
+    if(q.t === 'sec') return `<div class="kssec">${esc(q.q)}</div>`;
+    let h = `<div class="ksq"><div class="qt"><span class="qn">${NUM[q.id]}</span>${esc(q.q)} <small class="smut">· ${KS_T[q.t]}</small></div>`;
+    if(q.t === 'scale'){
+      const v = R.ans.map(a => +a.a[q.id]).filter(x => x >= 1 && x <= 10), avg = v.length ? v.reduce((x, y) => x + y, 0) / v.length : 0;
+      const mx = Math.max(1, ...Array.from({ length: 10 }, (_, j) => v.filter(x => x === j + 1).length));
+      h += v.length ? `<div class="ksavg"><b class="${avg >= 8 ? 'g' : avg >= 6 ? 'o' : 'r'}">${avg.toFixed(1)}</b><span>/10 điểm TB · ${v.length} lượt</span></div><div class="ksdist">${Array.from({ length: 10 }, (_, j) => { const c = v.filter(x => x === j + 1).length; return `<div><i style="height:${Math.round(c * 100 / mx)}%"></i><em>${c || ''}</em><span>${j + 1}</span></div>`; }).join('')}</div>` : '<div class="smut">Chưa có câu trả lời.</div>';
+      return h + '</div>';
+    }
     if(q.t === 'one' || q.t === 'many'){
       const cnt = {}; let oth = [];
       R.ans.forEach(a => { const v = a.a[q.id]; (Array.isArray(v) ? v : v ? [v] : []).forEach(x => { if(String(x).indexOf('Khác: ') === 0) oth.push([a, x.slice(6)]); else cnt[x] = (cnt[x] || 0) + 1; }); });
@@ -3440,8 +3795,16 @@ async function openKsResult(id){
     return h + '</div>';
   };
   $('krBody').innerHTML = `<div class="kshead"><small>👤 ${esc(k.by)} · ${k.scope === 'QLTP' ? '📍 ' + esc(k.qltp.join(', ')) : '🌐 Cả miền'} · hạn ${ksEnd(k.endMs)} · ${open ? 'đang mở' : k.st === 'Đóng' ? 'đã đóng' : 'hết hạn'}</small><h2>${esc(k.title)}</h2>${k.desc ? `<p>${linkify(k.desc)}</p>` : ''}</div>
-    <div class="hstrip" style="margin-top:10px"><div><b style="color:#6b2fb3">${n}/${R.total}</b><small>Đã trả lời</small></div><div><b>${p}%</b><small>Hoàn thành</small></div><div><b class="r">${R.pend.length}</b><small>Chưa trả lời</small></div><div><b>${k.qs.length}</b><small>Câu hỏi</small></div></div>
+    <div class="hstrip" style="margin-top:10px"><div><b style="color:#6b2fb3">${n}/${R.total}</b><small>Đã trả lời</small></div><div><b>${p}%</b><small>Hoàn thành</small></div><div><b class="r">${R.pend.length}</b><small>Chưa trả lời</small></div><div><b>${k.pub ? AN.length : k.qs.length}</b><small>${k.pub ? 'Ẩn danh' : 'Câu hỏi'}</small></div></div>
+    ${R.link ? `<div class="kslink"><b>🔗 Link ẩn danh</b><small>Ai có link đều trả lời được, không cần đăng nhập · mỗi máy 1 câu trả lời (gửi lại sẽ ghi đè)</small><div class="kslr"><input class="inp" readonly value="${esc(R.link)}" id="krLk"><button class="btn vio" id="krLc">Sao chép</button><button class="btn line" id="krLst" title="Link riêng từng siêu thị – NV không cần chọn ST">🏪 Theo ST</button>${navigator.share ? '<button class="btn line" id="krLs">📤</button>' : ''}</div></div>` : ''}
     <div class="ksacts">${R.mine ? `<button class="btn line" id="krEd">✎ Sửa</button><button class="btn line" id="krSt">${k.st === 'Đóng' ? '🔓 Mở lại' : '🔒 Đóng'}</button>` : ''}<button class="btn line" id="krCp">📋 Sao chép kết quả</button>${R.pend.length ? '<button class="btn line" id="krPd">📋 DS chưa trả lời</button>' : ''}${R.mine ? '<button class="btn danger" id="krRm">🗑 Xoá</button>' : ''}</div>
+    ${AN.length && SCQ.length ? (() => {
+      const G = {}; AN.forEach(a => { const key = a.shop || 'Không rõ ST'; (G[key] = G[key] || []).push(a); });
+      const av = (L, q) => { const v = L.map(a => +a.a[q.id]).filter(x => x >= 1 && x <= 10); return v.length ? v.reduce((x, y) => x + y, 0) / v.length : null; };
+      const rows = Object.keys(G).map(key => { const cols = SCQ.map(q => av(G[key], q)), ok = cols.filter(x => x !== null); return { key, n: G[key].length, cols, tot: ok.length ? ok.reduce((x, y) => x + y, 0) / ok.length : 0 }; }).sort((a, b) => a.tot - b.tot);
+      const cl = x => x === null ? '' : x >= 8 ? 'g' : x >= 6 ? 'o' : 'r';
+      return `<div class="ksq"><div class="qt">📊 Điểm trung bình theo siêu thị <small class="smut">(ẩn danh · thấp nhất lên đầu)</small></div><div class="kstb-w"><table class="kstb"><thead><tr><th>Siêu thị</th><th>Lượt</th>${SCQ.map(q => `<th title="${esc(q.q)}">C${NUM[q.id]}</th>`).join('')}<th>TB</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(r.key)}</td><td>${r.n}</td>${r.cols.map(x => `<td class="${cl(x)}">${x === null ? '–' : x.toFixed(1)}</td>`).join('')}<td class="${cl(r.tot)}"><b>${r.tot.toFixed(1)}</b></td></tr>`).join('')}</tbody></table></div><div class="smut" style="font-size:11.5px;margin-top:6px">${SCQ.map(q => `C${NUM[q.id]}: ${esc(q.q)}`).join(' · ')}</div></div>`;
+    })() : ''}
     ${k.qs.map(qBlock).join('')}
     ${R.pend.length ? `<div class="ksq"><div class="qt">🕒 Chưa trả lời (${R.pend.length})</div>${groupQ(R.pend, x => x[2]).map(g => `<div class="qh">👤 ${esc(g.q)} <em>${g.items.length}</em></div><div class="chips">${g.items.map(x => `<span class="sc">${esc(x[0])} ${esc(x[1])}</span>`).join('')}</div>`).join('')}</div>` : ''}`;
   const b = $('krBody');
@@ -3449,16 +3812,311 @@ async function openKsResult(id){
   if($('krEd')) $('krEd').onclick = () => openKsBuilder(Object.assign({}, k, { done: n }));
   if($('krSt')) $('krSt').onclick = async () => { try{ await api('setSurveyState', k.id, k.st === 'Đóng' ? 'Mở' : 'Đóng', S.auth); S.ksL = null; toast(k.st === 'Đóng' ? '🔓 Đã mở lại khảo sát' : '🔒 Đã đóng khảo sát'); openKsResult(k.id); }catch(e){ toast('⚠️ ' + e, 3000); } };
   if($('krRm')) $('krRm').onclick = async () => { if(!confirm('Xoá khảo sát "' + k.title + '"?\nCâu trả lời cũ vẫn còn trên sheet KS_TRA_LOI.')) return; try{ await api('setSurveyState', k.id, 'Xoá', S.auth); S.ksL = null; toast('🗑 Đã xoá khảo sát'); openKsList(true); }catch(e){ toast('⚠️ ' + e, 3000); } };
+  if($('krLc')) $('krLc').onclick = () => copyText(R.link);
+  if($('krLst')) $('krLst').onclick = () => {
+    const kv = S.me && S.me.role !== 'admin' && !R.mine ? norm(myKV()) : '';
+    const L = (S.boot.shops || []).filter(r => (k.scope !== 'QLTP' || k.qltp.some(q => norm(q) === norm(r[3]))) && (!kv || norm(r[3]) === kv));
+    copyText('📝 ' + k.title + ' – link riêng từng siêu thị (ẩn danh):\n' + groupQ(L, r => r[3]).map(g => '👤 ' + g.q + '\n' + g.items.map(r => r[0] + ' ' + r[1] + ': ' + R.link + '&st=' + r[0]).join('\n')).join('\n\n'));
+  };
+  if($('krLs')) $('krLs').onclick = () => navigator.share({ title: k.title, text: '📝 ' + k.title + ' – mời bạn trả lời khảo sát (ẩn danh):', url: R.link }).catch(() => {});
+  if($('krLk')) $('krLk').onclick = e => e.target.select();
   $('krCp').onclick = () => {
-    const out = ['📝 ' + k.title + ' – ' + n + '/' + R.total + ' ST đã trả lời'];
+    const out = ['📝 ' + k.title + ' – ' + n + '/' + R.total + ' ST đã trả lời' + (AN.length ? ' · ' + AN.length + ' ẩn danh' : '')];
     k.qs.forEach((q, i) => {
-      out.push('', (i + 1) + '. ' + q.q);
+      if(q.t === 'sec'){ out.push('', '■ ' + q.q); return; }
+      out.push('', NUM[q.id] + '. ' + q.q);
+      if(q.t === 'scale'){ const v = R.ans.map(a => +a.a[q.id]).filter(x => x >= 1 && x <= 10); out.push('   ⭐ TB ' + (v.length ? (v.reduce((x, y) => x + y, 0) / v.length).toFixed(1) : '–') + '/10 · ' + v.length + ' lượt'); return; }
       if(q.t === 'one' || q.t === 'many'){ const cnt = {}; R.ans.forEach(a => { const v = a.a[q.id]; (Array.isArray(v) ? v : v ? [v] : []).forEach(x => { const kx = String(x).indexOf('Khác: ') === 0 ? 'Khác' : x; cnt[kx] = (cnt[kx] || 0) + 1; }); }); Object.keys(cnt).sort((a, b2) => cnt[b2] - cnt[a]).forEach(o => out.push('   • ' + o + ': ' + cnt[o])); }
       else R.ans.filter(a => a.a[q.id]).forEach(a => out.push('   • ' + a.ma + ' ' + a.short + ': ' + a.a[q.id]));
     });
     copyText(out.join('\n'));
   };
   if($('krPd')) $('krPd').onclick = () => copyText('🕒 Chưa trả lời khảo sát "' + k.title + '" (' + R.pend.length + ' ST):\n' + groupQ(R.pend, x => x[2]).map(g => '👤 ' + g.q + '\n' + g.items.map(x => '   ' + x[0] + ' ' + x[1]).join('\n')).join('\n'));
+}
+
+/* ================= CAM KẾT TRUNG THỰC ================= */
+const COMMIT_TXT = 'Tôi cam kết đã thực hiện đúng và trung thực, không làm gian dối. Nếu sai, tôi chịu kỷ luật từ QLTP.';
+function askCommit(t, ok){
+  $('modal').innerHTML = `<div class="ov" id="cmOv"><div class="sheet">
+    <h3><span>✓ Xác nhận hoàn tất</span><button class="x" id="cmX">✕</button></h3>
+    <div class="ph-t">${esc(t.title)}</div>
+    <label class="commit"><input type="checkbox" id="cmCk"><span>${COMMIT_TXT}</span></label>
+    <button class="btn pri block" id="cmOk" disabled>✓ Hoàn tất công việc</button></div></div>`;
+  const close = () => { $('modal').innerHTML = ''; };
+  $('cmX').onclick = close; $('cmOv').onclick = e => { if(e.target.id === 'cmOv') close(); };
+  $('cmCk').onchange = e => { $('cmOk').disabled = !e.target.checked; };
+  $('cmOk').onclick = () => { close(); ok(); };
+}
+
+/* ================= NHẮC VIỆC: ST chưa làm theo CV của KV ================= */
+function remindTasks(){
+  if(!S.dash || S.dash.error) return [];
+  const kv = norm(myKV() || S.st.dq || '');
+  return dashTasks().map(x => ({ t: x.t, tot: x.tot, done: x.done, pend: x.pend.filter(p => !kv || norm(p[2]) === kv) })).filter(x => x.pend.length)
+    .sort((a, b) => (isRSM(b.t) - isRSM(a.t)) || (a.t.endMs - b.t.endMs));
+}
+function remindText(x){
+  const k = dashDay(x.t.id) || S.data.today, D = dlParts(x.t, k);
+  return `🔔 NHẮC VIỆC: ${x.t.title}\n⏰ Hạn ${D.time} ${D.lb.toLowerCase()} (${D.dm})\n🏪 Còn ${x.pend.length} siêu thị chưa làm:\n` + groupQ(x.pend, p => p[2]).map(g => (myKV() ? '' : '👤 ' + g.q + '\n') + g.items.map(p => '   • ' + p[0] + ' ' + p[1]).join('\n')).join('\n') + '\n👉 Các bạn hoàn tất trên app Checklist giúp anh nhé!';
+}
+function openRemind(){
+  if(!S.dash){ loadDash(); toast('⏳ Đang tải tiến độ…'); setTimeout(openRemind, 1500); return; }
+  const L = remindTasks(), kv = myKV() || S.st.dq || '';
+  openKsPage(`<div class="pg-top"><button class="back" id="rmX">‹</button><b>🔔 Nhắc việc ${kv ? '· KV ' + esc(kv) : '· toàn miền'}</b>${L.length ? '<button class="tbtn" id="rmAll">📋 Tất cả</button>' : ''}</div><div class="pg">
+    ${L.length ? `<div class="smut" style="font-size:12.5px">${L.length} CV còn ${L.reduce((a, x) => a + x.pend.length, 0)} lượt siêu thị chưa làm. Bấm 📋 để sao chép tin nhắc, dán vào Zalo/LINE; bấm tên siêu thị để hoàn tất thay.</div>` : '<div class="none" style="padding:30px">🎉 Mọi siêu thị trong KV đã làm xong các CV đang chạy.</div>'}
+    ${L.map((x, i) => { const D = dlParts(x.t, dashDay(x.t.id) || S.data.today); return `<div class="ksq rmq ${isRSM(x.t) ? 'rsm' : ''}">
+      <div class="qt" style="display:flex;gap:8px;align-items:flex-start"><span style="flex:1">${isRSM(x.t) ? '<span class="stk r">RSM</span> ' : ''}${esc(x.t.title)}</span><button class="btn line" data-rc="${i}" style="padding:6px 10px;font-size:12.5px">📋 Sao chép</button></div>
+      <div class="tdl ${D.ms < Date.now() ? 'late' : D.diff === 0 ? 'soon' : ''}" style="margin-bottom:8px"><b>${D.time}</b><span><em>${D.lb}</em> ${D.dm} · còn <b style="font-size:13px">${x.pend.length}</b>/${x.tot} ST chưa làm</span></div>
+      ${groupQ(x.pend, p => p[2]).map(g => `${kv ? '' : `<div class="qh">👤 ${esc(g.q)} <em>${g.items.length}</em></div>`}<div class="chips">${g.items.map(p => `<span class="sc ${p[3]==='m'?'m':p[3]==='s'?'s':''}${canLead(x.t, p[0]) ? ` dfs" data-dfs="${x.t.id}|${esc(p[0])}|${dashDay(x.t.id)}` : ''}">${esc(p[0])} ${esc(p[1])}</span>`).join('')}</div>`).join('')}
+    </div>`; }).join('')}</div>`);
+  $('rmX').onclick = closeKsPage;
+  $('ksPage').querySelectorAll('[data-rc]').forEach(b => b.onclick = () => copyText(remindText(L[+b.dataset.rc])));
+  if($('rmAll')) $('rmAll').onclick = () => copyText(L.map(remindText).join('\n\n────────\n\n'));
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('[data-rmd]'); if(!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const [id, k] = b.dataset.rmd.split('|'), t = taskById(id), pr = S.prog[k] && S.prog[k][id];
+  if(!t || !pr) return;
+  const kv = norm(myKV() || S.st.dq || ''), pend = (pr.pending || []).filter(p => !kv || norm(p[2]) === kv);
+  if(!pend.length){ toast('🎉 KV đã làm đủ CV này'); return; }
+  copyText(remindText({ t, pend: pend.map(p => [p[0], p[1], p[2], '']) }));
+}, true);
+
+/* ================= LƯU TRỮ CV CŨ ================= */
+async function doArchive(ids, on, after){
+  if(on && !confirm(`Lưu trữ ${ids.length} công việc?\nCV sẽ ẩn khỏi mọi giao diện (lịch, dashboard, siêu thị). Dữ liệu vẫn còn, khôi phục được bất cứ lúc nào.`)) return;
+  loading(true, on ? 'Đang lưu trữ…' : 'Đang khôi phục…');
+  try{
+    const r = await api('archiveTask', ids, on, S.auth);
+    loading(false); toast(on ? `📦 Đã lưu trữ ${r.n} CV` : `↩ Đã khôi phục ${r.n} CV`, 2200);
+    S.dash = null; S.prog = {}; S.rq = null; S.rqTotal = undefined;
+    if(after) after(); await reload(true);
+  }catch(e){ loading(false); toast('⚠️ ' + String(e).replace(/^Error:\s*/, ''), 3500); }
+}
+async function openArchive(){
+  const now = Date.now();
+  const ended = (S.data.tasks || []).filter(t => canEdit(t) && t.endMs < now).sort((a, b) => a.endMs - b.endMs);
+  const sel = new Set(ended.filter(t => now - t.endMs > 3 * 864e5).map(t => t.id));
+  openKsPage(`<div class="pg-top"><button class="back" id="arX">‹</button><b>📦 Lưu trữ công việc</b></div><div class="pg">
+    <div class="smut" style="font-size:12.5px">CV lưu trữ sẽ <b>ẩn khỏi mọi giao diện</b> (lịch, dashboard, nhắc việc, siêu thị) cho gọn; dữ liệu và ảnh vẫn còn trên sheet, khôi phục được.</div>
+    <div class="fsec">CV đã kết thúc (${ended.length})</div>
+    ${ended.length ? `<div class="arl">${ended.map(t => `<label class="arr"><input type="checkbox" data-ar="${t.id}" ${sel.has(t.id) ? 'checked' : ''}><span><b>${esc(t.title)}</b><small>${isRSM(t) ? 'RSM · ' : ''}${t.repeat ? '🔁 lặp lại · ' : ''}kết thúc ${dm(t.endKey)} · ${esc(t.by)}</small></span></label>`).join('')}</div>
+      <button class="btn pri block" id="arGo" style="margin-top:10px">📦 Lưu trữ CV đã chọn</button>` : '<div class="none">Không có CV nào đã kết thúc.</div>'}
+    <div class="fsec">Đã lưu trữ</div><div id="arOld"><div class="none">⏳ Đang tải…</div></div></div>`);
+  $('arX').onclick = closeKsPage;
+  const pg = $('ksPage');
+  pg.querySelectorAll('[data-ar]').forEach(c => c.onchange = () => { c.checked ? sel.add(c.dataset.ar) : sel.delete(c.dataset.ar); $('arGo').textContent = `📦 Lưu trữ ${sel.size} CV đã chọn`; });
+  if($('arGo')){ $('arGo').textContent = `📦 Lưu trữ ${sel.size} CV đã chọn`; $('arGo').onclick = () => { if(!sel.size) return toast('Chưa chọn CV nào'); doArchive([...sel], true, () => openArchive()); }; }
+  try{
+    const old = await api('listArchived', S.auth), box = $('arOld'); if(!box) return;
+    box.innerHTML = old.length ? old.map(t => `<div class="arr"><span><b>${esc(t.title)}</b><small>${t.rep ? '🔁 ' : ''}${t.end ? 'kết thúc ' + esc(t.end) + ' · ' : ''}${esc(t.by)}</small></span><button class="btn line" data-un="${esc(t.id)}" style="padding:6px 10px;font-size:12.5px">↩ Khôi phục</button></div>`).join('') : '<div class="none">Chưa có CV nào được lưu trữ.</div>';
+    box.querySelectorAll('[data-un]').forEach(b => b.onclick = () => doArchive([b.dataset.un], false, () => openArchive()));
+  }catch(e){ const box = $('arOld'); if(box) box.innerHTML = `<div class="none">⚠️ ${esc(e)}</div>`; }
+}
+
+/* ================= XEM NHƯ SIÊU THỊ (giả lập) ================= */
+function pickPreview(){
+  const kv = norm(myKV() || S.st.dq || '');
+  const list = (S.boot && S.boot.shops || []).filter(r => !kv || norm(r[3]) === kv);
+  $('modal').innerHTML = `<div class="ov" id="pvOv"><div class="sheet">
+    <h3><span>👁 Xem như siêu thị</span><button class="x" id="pvX">✕</button></h3>
+    <div class="note">Giả lập đúng giao diện siêu thị đang thấy (CV, hạn, khảo sát) để kiểm tra có quá tải không. Chỉ xem – không hoàn tất, không ghi dữ liệu.</div>
+    <div class="field"><input class="inp" id="pvQ" placeholder="Tìm mã / tên siêu thị${kv ? ' trong KV' : ''}…"></div>
+    <div id="pvL" class="pvl"></div></div></div>`;
+  const paint = q => { q = norm(q || ''); $('pvL').innerHTML = list.filter(r => !q || norm(r[0] + ' ' + r[1]).includes(q)).slice(0, 60).map(r => `<button class="arr" data-pv="${esc(r[0])}"><span><b>${esc(r[0])} · ${esc(r[1])}</b><small>${esc(r[3] || '')}</small></span><i>›</i></button>`).join('') || '<div class="none">Không thấy siêu thị.</div>';
+    $('pvL').querySelectorAll('[data-pv]').forEach(b => b.onclick = () => { $('modal').innerHTML = ''; startPreview(b.dataset.pv); }); };
+  paint(''); $('pvQ').oninput = e => paint(e.target.value);
+  $('pvX').onclick = () => { $('modal').innerHTML = ''; }; $('pvOv').onclick = e => { if(e.target.id === 'pvOv') $('modal').innerHTML = ''; };
+}
+async function startPreview(ma){
+  const r = (S.boot.shops || []).find(x => String(x[0]) === String(ma)); if(!r) return;
+  closeKsPage(); if(S.detail) closeDetail();
+  S.pv = { me: S.me, auth: S.auth, role: S.role, admin: S.admin, mode: S.mode, qf: S.qf, view: S.view, data: S.data, dash: S.dash, prog: S.prog, ks: S.ks };
+  S.me = null; S.auth = null; S.role = ''; S.admin = false; S.mode = 'shop'; S.token = null; S.prog = {}; S.dash = null; S.ks = [];
+  S.shop = { ma: r[0], short: r[1], full: r[1], qltp: r[3] }; S.view = 'home';
+  document.body.classList.add('pvmode');
+  let bar = $('pvBar'); if(!bar){ bar = document.createElement('div'); bar.id = 'pvBar'; document.body.appendChild(bar); }
+  bar.innerHTML = `<span>👁 Đang xem như <b>${esc(r[0])} ${esc(r[1])}</b></span><button id="pvOff">Thoát ✕</button>`;
+  $('pvOff').onclick = stopPreview;
+  renderHeader(); render(); await reload();
+}
+function stopPreview(){
+  if(!S.pv) return;
+  const p = S.pv; S.pv = null;
+  Object.assign(S, { me: p.me, auth: p.auth, role: p.role, admin: p.admin, mode: p.mode, qf: p.qf, view: p.view, data: p.data, dash: p.dash, prog: p.prog, ks: p.ks });
+  S.shop = null; S.token = null;
+  document.body.classList.remove('pvmode'); const bar = $('pvBar'); if(bar) bar.remove();
+  closeKsPage(); if(S.detail) closeDetail();
+  renderHeader(); render(); toast('↩ Đã về giao diện quản lý');
+}
+
+/* ================= QUYỀN RIÊNG TƯ ================= */
+const PV_SHORT = 'App ghi lại việc hoàn tất CV, ảnh bạn nộp (kèm giờ, mã ST), câu trả lời khảo sát và lượt truy cập để giao việc và nghiệm thu. App chỉ xin quyền thông báo, camera và ảnh khi bạn dùng; không lấy vị trí, danh bạ hay dữ liệu khác trong máy. Dữ liệu chỉ QLTP phụ trách và Ban quản lý Miền xem, không chia sẻ ra ngoài.';
+const PV_FULL = [
+  ['📱 Quyền trên thiết bị', 'Thông báo: nhắc việc mới, sắp/đã trễ hạn. Camera: chụp ảnh nộp CV (có dấu giờ chụp). Ảnh trong máy: chỉ ảnh bạn tự chọn, được đóng dấu "ẢNH TẢI LÊN". Bộ nhớ trình duyệt: ghi nhớ đăng nhập và cài đặt hiển thị. Từ chối quyền nào thì app vẫn chạy, chỉ thiếu tính năng đó. App KHÔNG lấy vị trí GPS, micro, danh bạ, tin nhắn.'],
+  ['🗂 Dữ liệu được ghi', 'Tài khoản (mã kho / mã NV, tên, QLTP, mật khẩu đã mã hoá – không ai đọc được). Hoàn tất CV: thời điểm, ghi chú, báo trễ, cam kết trung thực, hoàn tất thay bởi QLTP. Ảnh nộp và kết quả nghiệm thu. Câu trả lời khảo sát. Lượt mở app trong ngày và nhật ký thao tác quản trị.'],
+  ['🎯 Mục đích', 'Chỉ dùng cho vận hành siêu thị: giao – nhắc – theo dõi tiến độ, nghiệm thu bằng ảnh, tổng hợp khảo sát, bảo vệ tài khoản. Không bán, không chia sẻ cho bên ngoài công ty, không dùng quảng cáo, không theo dõi khi bạn không mở app.'],
+  ['👥 Ai được xem', 'Siêu thị: dữ liệu của chính mình. QLTP / QL: các siêu thị trong KV phụ trách. Admin / RSM: toàn Miền. Người nhận "Link sếp": tiến độ của đúng 1 CV, chỉ xem. Link thư mục ảnh do QLTP gửi: xem ảnh của CV đó.'],
+  ['💾 Lưu trữ & bảo mật', 'Lưu trên Google Sheet / Drive của tài khoản quản trị Miền; giao diện GitHub không chứa dữ liệu. Đăng xuất là xoá phiên khỏi máy. CV cũ được lưu trữ hoặc xoá định kỳ theo quyết định Ban quản lý Miền.'],
+  ['🧩 Ứng dụng nhúng', 'Mục Ứng dụng mở các web app nội bộ khác ngay trong Checklist; chỉ gửi kèm tên KV để vào đúng khu vực, không gửi mật khẩu. App nhúng có thể tự xin quyền riêng.'],
+  ['⚖️ Quyền của bạn', 'Được biết, đồng ý hoặc rút lại đồng ý, xem – yêu cầu sửa – yêu cầu xoá dữ liệu của mình, khiếu nại khi dữ liệu bị dùng sai mục đích (Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Nghị định 356/2025/NĐ-CP). Liên hệ Admin 42995 qua QLTP phụ trách.']
+];
+function pvKey(){ return 'lcv_pv_' + (S.me ? 'q' + (S.me.code || S.me.name) : S.shop ? 's' + S.shop.ma : ''); }
+function openPrivacy(asConsent){
+  const full = false;
+  $('modal').innerHTML = `<div class="ov" id="pvcOv"><div class="sheet pvs">
+    <h3><span>🔒 Quyền riêng tư</span>${asConsent ? '' : '<button class="x" id="pvcX">✕</button>'}</h3>
+    <p class="pvt">${PV_SHORT}</p>
+    <button class="link" id="pvcMore">Xem đầy đủ ▾</button>
+    <div class="pvfull hide" id="pvcFull">${PV_FULL.map(([h, b]) => `<details><summary>${h}</summary><p>${b}</p></details>`).join('')}</div>
+    ${asConsent ? '<button class="btn pri block" id="pvcOk" style="margin-top:12px">Đồng ý & tiếp tục</button><div class="smut" style="font-size:11.5px;text-align:center;margin-top:6px">Xem lại bất cứ lúc nào ở Menu ☰ → Quyền riêng tư</div>' : ''}
+  </div></div>`;
+  $('pvcMore').onclick = () => { const f = $('pvcFull'), on = f.classList.toggle('hide'); $('pvcMore').textContent = on ? 'Xem đầy đủ ▾' : 'Thu gọn ▴'; };
+  if($('pvcX')){ $('pvcX').onclick = () => { $('modal').innerHTML = ''; }; $('pvcOv').onclick = e => { if(e.target.id === 'pvcOv') $('modal').innerHTML = ''; }; }
+  if($('pvcOk')) $('pvcOk').onclick = () => { store.set(pvKey(), String(Date.now())); $('modal').innerHTML = ''; };
+}
+function askPrivacyOnce(){ if(S.pv) return; const k = pvKey(); if(k.length > 8 && !store.get(k)) setTimeout(() => { if(!$('modal').innerHTML) openPrivacy(true); }, 900); }
+
+/* ================= ỦNG HỘ DỰ ÁN ================= */
+const DONATE = { bank: 'MB Bank', bankFull: 'Ngân hàng TMCP Quân đội (MB)', acc: '555111518', note: 'Ung ho Checklist' };
+function openDonate(){
+  const q1 = `https:\/\/img.vietqr.io/image/MB-${DONATE.acc}-compact2.png?addInfo=${encodeURIComponent(DONATE.note)}`;
+  const q2 = `https:\/\/qr.sepay.vn/img?acc=${DONATE.acc}&bank=MBBank&des=${encodeURIComponent(DONATE.note)}&template=compact`;
+  $('modal').innerHTML = `<div class="ov" id="dnOv"><div class="sheet dn">
+    <h3><span>☕ Ủng hộ dự án</span><button class="x" id="dnX">✕</button></h3>
+    <p class="dn-lead">App được làm và duy trì ngoài giờ. Nếu thấy hữu ích, bạn có thể mời người làm app một ly cà phê – tuỳ tâm, không bắt buộc 💚</p>
+    <div class="dn-qr"><img id="dnImg" src="${q1}" alt="Mã QR chuyển khoản MB Bank ${DONATE.acc}" referrerpolicy="no-referrer"><div class="dn-fb hide" id="dnFb">Không tải được ảnh QR – dùng số tài khoản bên dưới.</div></div>
+    <div class="dn-row"><div><small>Ngân hàng</small><b>${DONATE.bank}</b><em>${DONATE.bankFull}</em></div></div>
+    <div class="dn-row"><div><small>Số tài khoản</small><b class="dn-acc">${DONATE.acc}</b></div><button class="btn line" id="dnCp">📋 Sao chép</button></div>
+    <div class="dn-row"><div><small>Nội dung</small><b>${DONATE.note}</b></div><button class="btn line" id="dnCn">📋</button></div>
+    <div class="row2" style="margin-top:12px"><a class="btn line" id="dnSave" href="${q1}" target="_blank" rel="noopener" download="QR-ung-ho.png">⬇ Lưu ảnh QR</a><button class="btn pri" id="dnBank">📲 Mở app ngân hàng</button></div>
+    <div class="smut dn-help hide" id="dnHelp">Đã sao chép STK <b>${DONATE.acc}</b>. Mở app ngân hàng → <b>Chuyển tiền</b> → chọn <b>MB</b> → dán số tài khoản. Hoặc trong app chọn <b>Quét QR → Thư viện ảnh</b> và chọn ảnh QR vừa lưu.</div>
+  </div></div>`;
+  const im = $('dnImg'); let tried = 0;
+  im.onerror = () => { if(!tried++){ im.src = q2; $('dnSave').href = q2; } else { im.classList.add('hide'); $('dnFb').classList.remove('hide'); } };
+  $('dnX').onclick = () => { $('modal').innerHTML = ''; };
+  $('dnOv').onclick = e => { if(e.target.id === 'dnOv') $('modal').innerHTML = ''; };
+  $('dnCp').onclick = () => copyText(DONATE.acc);
+  $('dnCn').onclick = () => copyText(DONATE.note);
+  $('dnBank').onclick = () => {
+    copyText(DONATE.acc); $('dnHelp').classList.remove('hide');
+    if(navigator.share && /Android|iPhone|iPad/i.test(navigator.userAgent)) navigator.share({ title: 'Ủng hộ dự án Checklist', text: `${DONATE.bank} – STK ${DONATE.acc} – ND: ${DONATE.note}` }).catch(() => {});
+  };
+}
+
+/* ================= TRẢI NGHIỆM THỬ (không cần tài khoản) =================
+ * Dữ liệu mẫu chạy hoàn toàn trên máy: không gọi máy chủ, không lưu gì, tải lại trang là xoá sạch. */
+function demoData(){
+  const now = new Date(), today = keyOf(now), at = (dh, dd) => { const x = new Date(now); x.setDate(x.getDate() + (dd || 0)); x.setHours(dh, 0, 0, 0); return x; };
+  const hm = x => pad(x.getHours()) + ':' + pad(x.getMinutes()), iso = x => keyOf(x) + 'T' + hm(x);
+  const mk = (id, o) => { const s = o.s || at(7), e = o.e; return Object.assign({ id, nhom:'VH', nguon:'Miền', desc:'', startKey: keyOf(s), endKey: keyOf(e), startMs: s.getTime(), endMs: e.getTime(), startTime: hm(s), endTime: hm(e), startIn: iso(s), endIn: iso(e), scope:'MIEN', qltp:[], rep:null, repeat:false, prio:'Thường', link:'', by:'RSM Miền', steps:[], imgs:[], photo:0, folder:'' }, o); };
+  const rel = hrs => { const x = new Date(now.getTime() + hrs * 36e5); x.setMinutes(x.getMinutes() < 30 ? 30 : 0, 0, 0); if(x.getMinutes() === 0) x.setHours(x.getHours() + 1); return x; };
+  const tasks = [
+    mk('D1', { title:'Kiểm quỹ đầu ca & bàn giao két', s: rel(-6), e: rel(2), steps:['Đếm quỹ đầu ca cùng thu ngân','Ghi sổ bàn giao, 2 bên ký'] }),
+    mk('D2', { title:'Treo POSM chương trình khuyến mãi tháng', nhom:'CTKM', s: rel(-6), e: rel(5), photo:1, desc:'Treo đúng vị trí cửa ra vào và quầy thu ngân.', steps:['Treo standee ngoài cửa','Dán decal quầy thu ngân','Chụp 1 ảnh toàn cảnh'] }),
+    mk('D3', { title:'Báo cáo hàng cận date ngành sữa', scope:'QLTP', qltp:['QLTP mẫu'], nguon:'QLTP', by:'QLTP mẫu', prio:'Cao', s: rel(-6), e: rel(3) }),
+    mk('D4', { title:'Vệ sinh kho mát, sắp xếp FIFO', scope:'QLTP', qltp:['QLTP mẫu'], nguon:'QLTP', by:'QLTP mẫu', s: rel(-6), e: rel(26) }),
+    mk('D5', { title:'Kiểm tra giá khuyến mãi cuối tuần', nhom:'CTKM', scope:'QLTP', qltp:['QLTP mẫu'], nguon:'QLTP', by:'QLTP mẫu', s: rel(-6), e: rel(50) }),
+    mk('D6', { title:'Đếm tồn rau củ cuối ngày', s: rel(-8), e: rel(1) })
+  ];
+  const done = {}; done['D6|'] = { at: Date.now() - 3 * 36e5, photos: [], nt: 'Đạt', ntNote: '' };
+  return { now: Date.now(), today, shop: S.shop, tasks, done, qltpList: [{ name:'QLTP mẫu', count: 12 }], tenApp: 'Checklist', tenMien: 'Chế độ trải nghiệm', shopCount: 12 };
+}
+const DEMO_KS = () => [{ id:'KSD', title:'Khảo sát mẫu: tình trạng thiết bị', desc:'Đây là khảo sát mẫu để bạn thử giao diện trả lời.', endMs: Date.now() + 2 * 864e5, by:'RSM Miền', open: true, my: null,
+  qs: [{ id:'q1', t:'one', q:'Tủ mát của siêu thị đang thế nào?', req:1, o:['Hoạt động tốt','Kém lạnh','Hỏng, cần sửa'], other:1 }, { id:'q2', t:'many', q:'Ngành hàng nào đang thiếu?', req:0, o:['Thịt','Cá','Rau củ','Trái cây'] }, { id:'q3', t:'para', q:'Góp ý thêm', req:0, o:[] }] }];
+function demoApi(fn, args){
+  const wait = v => new Promise(r => setTimeout(() => r(v), 250));
+  if(fn === 'getData') return wait(S.demoData || (S.demoData = demoData()));
+  if(fn === 'toggleDone'){ const [id, , dk, isDone, , photos] = args; const t = S.demoData.tasks.find(x => x.id === id); const key = id + '|' + (t && t.repeat ? dk : '');
+    if(isDone) S.demoData.done[key] = { at: Date.now(), photos: photos || [], nt: '', ntNote: '' }; else delete S.demoData.done[key]; return wait({ ok: true, at: Date.now(), photos: photos || [] }); }
+  if(fn === 'uploadShopPhoto') return wait('data:image/jpeg;base64,' + args[3]);
+  if(fn === 'getShopSurveys') return wait(S.demoKs || (S.demoKs = DEMO_KS()));
+  if(fn === 'submitSurvey') return wait({ ok: true, at: Date.now() });
+  if(/^getAppLink/.test(fn)) return Promise.reject('Chế độ trải nghiệm không mở ứng dụng nội bộ.');
+  if(/^(changeShopPass|setShopPass|resetShopPass|saveTask|deleteTask)/.test(fn)) return Promise.reject('Chế độ trải nghiệm – không lưu thay đổi.');
+  return wait(null);
+}
+function startDemo(){
+  S.demo = true; S.demoData = null; S.demoKs = null;
+  S.shop = { ma: 'DEMO', short: 'Siêu thị mẫu', full: 'Siêu thị mẫu (trải nghiệm)', qltp: 'QLTP mẫu' }; S.token = 'demo';
+  document.body.classList.add('pvmode');
+  let bar = $('pvBar'); if(!bar){ bar = document.createElement('div'); bar.id = 'pvBar'; document.body.appendChild(bar); }
+  bar.innerHTML = `<span>👀 <b>Trải nghiệm thử</b> · dữ liệu mẫu, không lưu</span><button id="dmOff">Thoát ✕</button>`;
+  $('dmOff').onclick = () => { location.reload(); };
+  enterApp('shop');
+  setTimeout(() => toast('👋 Bấm vòng tròn trên thẻ để hoàn tất, bấm thẻ để xem hướng dẫn', 3500), 900);
+}
+
+/* ---- Loại ST khỏi 1 CV ---- */
+function canExclude(t, ma){
+  if(!S.me || S.pv || !can('LOAI_ST')) return false;
+  if(S.me.role === 'admin' || norm(t.by) === norm(S.me.name)) return true;
+  const kv = myKV(); return !!kv && norm(shopInfo(ma).qltp) === norm(kv);
+}
+function exList(t){
+  const kv = S.me && S.me.role !== 'admin' && norm(t.by) !== norm(S.me.name) ? norm(myKV()) : '';
+  return (t.ex || []).map(ma => ({ ma, short: shopInfo(ma).short || '', q: shopInfo(ma).qltp || '' })).filter(r => !kv || norm(r.q) === kv);
+}
+async function setExclude(id, ma, on){
+  const t = taskById(id); if(!t) return;
+  if(on && !confirm(`Loại ${ma} ${shopInfo(ma).short || ''} khỏi CV "${t.title}"?\nST sẽ không thấy CV này và không bị tính chưa làm. Đưa lại được bất cứ lúc nào.`)) return;
+  loading(true, on ? 'Đang loại ST…' : 'Đang đưa ST lại…');
+  try{
+    const r = await api('setTaskExclude', id, [ma], on, S.auth);
+    [S.data && S.data.tasks, S.boot && S.boot.tasks].forEach(L => { const x = (L || []).find(z => z.id === id); if(x) x.ex = r.ex; });
+    S.dash = null; S.prog = {}; loading(false);
+    toast(on ? `🚫 Đã loại ${ma} khỏi CV` : `↩ Đã đưa ${ma} lại vào CV`, 2000);
+    render();
+  }catch(e){ loading(false); toast('⚠️ ' + String(e).replace(/^Error:\s*/, ''), 3500); }
+}
+
+/* ---- Nhắc riêng QL 1 siêu thị: soạn sẵn tin nhắn các CV chưa hoàn tất ---- */
+function remindShop(ma, si, mine){
+  const k0 = S.data.today;
+  const L = mine.slice().sort((a, b) => (b.ch === 'm') - (a.ch === 'm') || deadlineOf(a.t, a.t.repeat ? (dashDay(a.t.id) || k0) : a.t.endKey) - deadlineOf(b.t, b.t.repeat ? (dashDay(b.t.id) || k0) : b.t.endKey));
+  const line = (z, i) => { const D = dlParts(z.t, z.t.repeat ? (dashDay(z.t.id) || k0) : z.t.endKey); return `${i + 1}. ${z.t.title} – hạn ${D.time} ${D.lb.toLowerCase()} ${D.dm}${z.ch === 'm' ? ' ❗QUÁ HẠN' : ''}`; };
+  const txt = () => [`📣 Nhắc việc – ST ${ma} ${si.short || ''}`, `Còn ${L.length} việc chưa hoàn tất trên app Checklist:`, ...L.map(line), '', ($('rmNote') && $('rmNote').value.trim()) || 'Nhờ QL shop sắp xếp hoàn tất và báo cáo trên app sớm. Cảm ơn!', S.me ? '– ' + S.me.name : ''].filter(x => x !== null).join('\n').trim();
+  $('modal').innerHTML = `<div class="ov"><div class="sheet" style="max-width:480px">
+    <h3><span>📣 Nhắc QL ${esc(ma)} ${esc(si.short || '')}</span><button class="x" id="rmX">✕</button></h3>
+    <div class="field"><input class="inp" id="rmNote" maxlength="200" placeholder="Lời nhắn thêm (không bắt buộc)"></div>
+    <pre class="rmpv" id="rmPv"></pre>
+    <div class="row2"><button class="btn pri" id="rmCp">📋 Sao chép</button>${navigator.share ? '<button class="btn line" id="rmSh">📤 Gửi Zalo / LINE</button>' : '<button class="btn line" id="rmBk">‹ Quay lại</button>'}</div>
+  </div></div>`;
+  const pv = () => { $('rmPv').textContent = txt(); };
+  pv(); $('rmNote').oninput = pv;
+  $('rmX').onclick = () => $('modal').innerHTML = '';
+  $('rmCp').onclick = () => copyText(txt());
+  if($('rmSh')) $('rmSh').onclick = () => navigator.share({ text: txt() }).catch(() => {});
+  if($('rmBk')) $('rmBk').onclick = () => shopSheet(ma);
+}
+
+/* ================= BANNER CÀI APP RA MÀN HÌNH CHÍNH =================
+ * Hiện ở 10 lần mở app đầu tiên của mỗi phiên bản; ẩn khi đã cài (mở từ màn hình chính) hoặc bấm "Không hiện lại". */
+let INST_EVT = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); INST_EVT = e; const b = $('instGo'); if(b) b.textContent = '⬇ Cài ngay'; });
+window.addEventListener('appinstalled', () => { store.set('lcv_inst_off', 'all'); const b = $('instBar'); if(b) b.remove(); toast('✅ Đã cài Checklist ra màn hình chính', 2500); });
+function isStandalone(){ try{ return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; }catch(e){ return false; } }
+function installBanner(){
+  if(IS_GAS || isStandalone() || store.get('lcv_inst_off') === 'all' || store.get('lcv_inst_off') === APP_VER || $('instBar')) return;
+  const k = 'lcv_inst_n_' + APP_VER, n = +(store.get(k) || 0) + 1; store.set(k, String(n));
+  if(n > 10) return;
+  const ua = navigator.userAgent, ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document), inApp = /Zalo|FBAN|FBAV|Line\/|Instagram/i.test(ua);
+  const el = document.createElement('div'); el.id = 'instBar'; el.className = 'instb';
+  el.innerHTML = `<div class="appicon instb-ic"></div><div class="instb-t"><b>Cài Checklist ra màn hình chính</b><small>Mở nhanh như app thật, nhận nhắc việc, không cần gõ link</small></div>
+    <div class="instb-a"><button class="btn pri" id="instGo">${INST_EVT ? '⬇ Cài ngay' : 'Hướng dẫn'}</button><button class="instb-x" id="instX" aria-label="Đóng">✕</button></div>
+    <div class="instb-h hide" id="instH">${inApp ? '⚠️ Bạn đang mở trong Zalo / Facebook. Bấm <b>⋯</b> góc trên → <b>Mở bằng trình duyệt</b> (Chrome / Safari) rồi làm theo bước dưới.<br>' : ''}${ios
+      ? '1. Mở bằng <b>Safari</b> · 2. Bấm nút <b>Chia sẻ ⬆</b> ở thanh dưới · 3. Chọn <b>Thêm vào MH chính</b> · 4. Bấm <b>Thêm</b>.'
+      : '1. Mở bằng <b>Chrome</b> · 2. Bấm <b>⋮</b> góc trên phải · 3. Chọn <b>Cài đặt ứng dụng</b> hoặc <b>Thêm vào màn hình chính</b> · 4. Bấm <b>Cài đặt</b>.'}
+      <div class="instb-f"><button class="link" id="instNo">Không hiện lại</button><span>Còn hiện ${10 - n} lần</span></div></div>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('on'));
+  $('instGo').onclick = async () => {
+    if(INST_EVT){ INST_EVT.prompt(); try{ const r = await INST_EVT.userChoice; if(r && r.outcome === 'accepted'){ store.set('lcv_inst_off', 'all'); el.remove(); } }catch(e){} INST_EVT = null; return; }
+    $('instH').classList.toggle('hide');
+  };
+  $('instX').onclick = () => el.remove();
+  $('instNo').onclick = () => { store.set('lcv_inst_off', APP_VER); el.remove(); };
 }
 
 /* ================= PHÁO HOA CHÚC MỪNG ================= */
@@ -3723,7 +4381,7 @@ function openForm(t){
     <div class="fsum" id="fSum"></div>
 
     <div class="fsec">👥 Giao cho</div>
-    <div class="seg" id="fScope"><button data-v="MIEN">🌐 Cả miền</button>${noKV ? '' : `<button data-v="QLTP">${S.role === 'ql' ? '👤 KV ' + esc(myKV()) : '👤 Chọn QLTP'}</button>`}</div>
+    <div class="seg" id="fScope">${can('GIAO_MIEN') || !S.me ? '<button data-v="MIEN">🌐 Cả miền</button>' : ''}${noKV || (S.me && !can('GIAO_KV')) ? '' : `<button data-v="QLTP">${S.role === 'ql' ? '👤 KV ' + esc(myKV()) : '👤 Chọn QLTP'}</button>`}</div>
     <div class="qchips ${F.scope==='QLTP'?'':'hide'}" id="fQ">${qs.map(q=>`<button data-q="${esc(q.name)}">${esc(q.name)}</button>`).join('')}</div>
     <div class="fopt">
       <label class="chk"><input type="checkbox" id="fPrio" ${t.prio==='Cao'?'checked':''}>🔥 Ưu tiên</label>
@@ -3742,7 +4400,7 @@ function openForm(t){
     <div class="err" id="fErr"></div>
   </div><div class="pg-foot">${!isNew && canEdit(t) ? `<div class="ffoot"><button class="btn danger" id="fDel">🗑 Xoá CV</button><button class="btn pri" id="fSave">✓ Lưu thay đổi</button></div>` : `<button class="btn pri block" id="fSave">${isNew?'✓ Giao việc':'✓ Lưu thay đổi'}</button>`}</div>`;
   $('formPage').classList.remove('hide'); $('formPage').scrollTop = 0; document.body.style.overflow='hidden';
-  if(isNew && S.role !== 'admin'){ F.scope = 'MIEN'; F.qltp = []; }
+  if(isNew && S.role !== 'admin'){ F.scope = can('GIAO_MIEN') ? 'MIEN' : 'QLTP'; F.qltp = F.scope === 'QLTP' && myKV() ? [myKV()] : []; }
   $('fSD').value = F.sD; $('fST').value = F.sT; $('fED').value = F.eD; $('fET').value = F.eT; $('fRD').value = F.sD; $('fRT').value = F.eT;
   const adv = () => { const o = !$('fAdv').classList.contains('hide'); $('fMore').querySelector('span').textContent = o ? '▲' : '▼'; };
   $('fMore').onclick = () => { $('fAdv').classList.toggle('hide'); adv(); };
@@ -3899,6 +4557,8 @@ $('btnSetPass').onclick = savePass;
 $('inNew2').onkeydown = e => { if(e.key==='Enter') savePass(); };
 $('ldCancel').onclick = forceUnload;
 $('btnAll').onclick = () => enterApp('all');
+$('btnDemo').onclick = () => startDemo();
+$('btnDonate').onclick = () => openDonate();
 $('connRetry').onclick = () => { S.boot = null; boot(); };
 $('btnBack2').onclick = () => { showStep('stepMa'); $('inMa').focus(); };
 $('rgDist').onchange = regPreview;
@@ -3910,7 +4570,7 @@ $('btnReg').onclick = register;
 $('btnReload').onclick = () => reload();
 $('btnBell').onclick = toggleNotif;
 $('btnMenu').onclick = openDrawer;
-$('btnLead').onclick = () => { if(S.admin) openForm(null); };
+$('btnLead').onclick = () => { if(S.admin && (!S.me || canGiao())) openForm(null); };
 $('fab').onclick = () => openForm(null);
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => { S.view = b.dataset.v; if(S.view==='month'){ const d=fromKey(S.sel); S.y=d.getFullYear(); S.m=d.getMonth(); } render(); });
 $('mPrev').onclick = () => { S.m--; if(S.m<0){S.m=11;S.y--;} renderMonth(); };
