@@ -1154,6 +1154,37 @@ body.pgmode .detail>.pg-top,body.pgmode .detail .pg-top,body.pgmode .appv-h{disp
 .agrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 6px;background:#fff;border:1.5px solid var(--edge,#cfdcd4);border-radius:18px;padding:14px 8px;box-shadow:var(--sh,0 3px 0 #d3dfd8)}
 @media(min-width:560px){.agrid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 .agrid .tnm{font-size:11.5px;line-height:1.25;text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%}
+/* ===== bản 23 ===== */
+.hlogo{width:34px;height:34px;border-radius:10px}
+.hlogo i{width:15px;height:15px;font-size:9px;right:-3px;bottom:-3px}
+.tb{gap:8px}
+.tb .ttl b{font-size:14px;line-height:1.2}
+.tb .ttl small{font-size:10.5px;line-height:1.25}
+.mtg{flex:none;position:relative;width:58px;height:28px;border-radius:999px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45);color:#fff;font-size:10.5px;font-weight:800;padding:0;transition:background .2s}
+.mtg i{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:left .2s}
+.mtg span{position:absolute;top:0;bottom:0;right:7px;display:flex;align-items:center;letter-spacing:.2px}
+.mtg.on{background:#ffd84d;border-color:#ffd84d;color:#4a3700}
+.mtg.on i{left:32px}
+.mtg.on span{right:auto;left:7px}
+.mtg:active i{width:26px}
+.dacts{gap:5px;padding:6px 10px 10px}
+.dab{display:inline-flex;align-items:center;gap:3px;height:28px;padding:0 9px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px;font-weight:700;color:#34433a;white-space:nowrap}
+.dab span{font-size:11.5px}
+.dab.pri{background:#0b7a3b;border-color:#0b7a3b;color:#fff}
+.dab.on{background:#fde8e6;border-color:#f3b6b0;color:#a42a20}
+.dab.chot{border-color:#c9cfd6;color:#44544b;background:#f3f5f7}
+.dab:active{transform:scale(.95)}
+.dsec{display:flex;align-items:center;gap:8px;margin:16px 2px 6px;font-weight:800;font-size:14px}
+.dsec span{flex:1}
+.dsec em{font-style:normal;background:#e8f5ec;color:#0b7a3b;border-radius:999px;padding:1px 8px;font-size:12px}
+.dsec small{color:var(--mut);font-weight:600;font-size:11.5px}
+.dsec.km em{background:#fff1dc;color:#9a5a00}
+.arr.arc{flex-wrap:wrap}
+.arb{display:flex;gap:6px;flex:none}
+.arb .btn{padding:6px 10px;font-size:12px}
+.arsel{margin-top:16px;background:#f7f9f8;border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+.arsel summary{font-weight:700;font-size:13px;cursor:pointer}
+@media(max-width:380px){.arr.arc .arb{width:100%}.arr.arc .arb .btn{flex:1}.dab{padding:0 8px}}
 </style>
 </head>
 <body>
@@ -1233,7 +1264,7 @@ body.pgmode .detail>.pg-top,body.pgmode .detail .pg-top,body.pgmode .appv-h{disp
       <div class="tb">
         <button class="hlogo" id="btnMenu" aria-label="Mở trình đơn"><span class="appicon"></span><i class="hmenu"></i></button>
         <div class="ttl"><b id="hdTitle">Lịch Công Việc</b><small id="hdSub"></small></div>
-        <button class="lead" id="btnLead">＋ Giao việc</button>
+        <button class="mtg hide" id="btnMode" role="switch" aria-checked="false"><i></i><span></span></button>
         <button class="ib hide" id="btnAdmin" title="Thoát chế độ leader"></button>
         <button class="ib hide" id="btnBell" title="Bật thông báo"></button>
         <button class="ib" id="btnReload" title="Tải lại"></button>
@@ -1365,7 +1396,7 @@ const isExec = u => /^https:\/\/script\.google\.com\/(a\/[^\/]+\/)?macros\/s\/[\
 const API_META = ((document.querySelector('meta[name="api-url"]')||{}).content || '').trim();
 let API_URL = isExec(API_META) ? API_META : (isExec(store.get('lcv_api')) ? store.get('lcv_api') : '');
 const IS_GAS = !!(window.google && google.script && google.script.run);
-const APP_VER = '22';
+const APP_VER = '23';
 async function resolveApi(){
   if(IS_GAS || isExec(API_META)) return;
   try{
@@ -1591,6 +1622,8 @@ async function loginQ(code, pw){
 /* Quyền theo sheet PHAN_QUYEN (máy chủ vẫn kiểm lại) – admin luôn đủ quyền */
 function can(k){ return !!S.me && (S.me.role === 'admin' || !S.me.perms || !!S.me.perms[k]); }
 function canV(k){ return !S.me || can(k); }
+function canChot(){ return !!S.me && (['admin','qltp','ql'].includes(S.me.role) || can('LUU_TRU')); }
+function canChotT(t){ return canChot() && !!t && (S.me.role === 'admin' || norm(t.by) === norm(S.me.name)); }
 function canGiao(){ return can('GIAO_MIEN') || can('GIAO_KV'); }
 function adminQ(){ return !!(S.me && S.me.role === 'admin' && store.get('lcv_asq') === '1'); }
 function myKV(){ return S.me ? (S.me.kv || (S.me.role === 'qltp' || adminQ() ? S.me.name : '')) : (S.shop ? S.shop.qltp || '' : ''); }
@@ -1609,6 +1642,51 @@ function enterQ(){
   S.st.dq = S.qf;
   S.nt.q = adminQ() ? myKV() : ''; S.ntData = null;
   enterApp('all');
+  if(S.me.st && !S.mgAuto && store.get('lcv_mgst') === '1'){ S.mgAuto = 1; setTimeout(toShopMode, 400); }
+}
+/* ===== Nút gạt chế độ trên đầu trang =====
+   Admin: Miền ⇄ KV của mình · Quản lý có gán mã kho: Quản trị ⇄ Siêu thị của mình */
+function modeSw(){
+  if(S.pv) return null;
+  if(S.mg) return { on: true, a: 'QL', b: 'ST', tip: 'Đang làm CV siêu thị ' + (S.shop ? S.shop.ma : '') + ' – gạt để về Quản trị' };
+  if(S.me && S.me.st && S.mode !== 'shop') return { on: false, a: 'QL', b: 'ST', tip: 'Đang ở Quản trị – gạt để làm CV siêu thị ' + S.me.st };
+  if(S.me && S.me.role === 'admin') return { on: adminQ(), a: 'Miền', b: 'KV', tip: adminQ() ? 'Chế độ KV ' + myKV() + ' – gạt để xem toàn miền' : 'Đang xem toàn miền – gạt để chỉ xem KV của anh' };
+  return null;
+}
+function paintModeSw(){
+  const b = $('btnMode'); if(!b) return; const m = modeSw();
+  b.classList.toggle('hide', !m); if(!m) return;
+  b.classList.toggle('on', m.on); b.setAttribute('aria-checked', m.on ? 'true' : 'false'); b.title = m.tip;
+  b.querySelector('span').textContent = m.on ? m.b : m.a;
+}
+function flipMode(){
+  const m = modeSw(); if(!m) return;
+  if(S.mg) return toMgrMode();
+  if(S.me && S.me.st) return toShopMode();
+  if(S.me && S.me.role === 'admin') setAdminQ(!adminQ());
+}
+async function toShopMode(){
+  if(!S.me || !S.me.st || S.mg) return;
+  loading(true, 'Đang chuyển sang siêu thị ' + S.me.st + '…');
+  try{
+    const r = await api('mgrShopLogin', S.auth);
+    closeKsPage(); if(S.detail) closeDetail();
+    S.mg = { me: S.me, auth: S.auth, role: S.role, admin: S.admin, qf: S.qf };
+    S.me = null; S.auth = null; S.role = ''; S.admin = false; S.qf = '';
+    S.shop = r.shop; S.token = r.token; S.prog = {}; S.dash = null; S.ks = null; S.ksL = null; S.stats = {}; S.ntData = null;
+    store.set('lcv_mgst', '1'); loading(false);
+    await enterApp('shop');
+    toast('🏪 Đang làm CV siêu thị ' + r.shop.ma + ' – gạt nút để về Quản trị', 2600);
+  }catch(e){ loading(false); store.set('lcv_mgst', '0'); toast('⚠️ ' + String(e).replace(/^Error:\s*/, ''), 4000); }
+}
+function toMgrMode(){
+  const p = S.mg; if(!p) return;
+  closeKsPage(); if(S.detail) closeDetail();
+  S.mg = null; S.shop = null; S.token = null; S.ks = null; S.prog = {}; S.dash = null; S.stats = {};
+  Object.assign(S, { me: p.me, auth: p.auth, role: p.role, admin: p.admin });
+  store.set('lcv_mgst', '0');
+  enterQ();
+  toast('🧑‍💼 Đã về chế độ Quản trị', 1800);
 }
 function showNewPass(kind){
   S.newKind = kind;
@@ -1757,6 +1835,7 @@ function openDrawer(){
     <div class="drw-h"><div class="drw-logo appicon"></div><div><b>${esc((S.data && S.data.tenApp) || 'Lịch Công Việc Miền')}</b><small>${esc((S.data && S.data.tenMien) || '')}</small></div><button class="drw-x" id="drX" aria-label="Đóng">${svg('x',20)}</button></div>
     <div class="drw-me"><span class="av">${shop ? '🏪' : me ? (S.role==='admin'?'👑':S.role==='ql'?'🧑‍💼':'👤') : '🌐'}</span><div><b>${shop ? esc(shop.ma + ' · ' + (shop.short || shop.full)) : me ? esc(me.name) : 'Khách'}</b><small>${shop ? 'QLTP ' + esc(shop.qltp || '—') : me ? roleTxt(S.role) : 'Xem toàn miền'}</small></div></div>
     ${me && me.role === 'admin' && !S.pv ? `<div class="drw-sw"><span>Chế độ xem</span><div class="seg sm"><button data-asq="0" class="${adminQ() ? '' : 'on'}">👑 Admin</button><button data-asq="1" class="${adminQ() ? 'on' : ''}">${svg('user',12)} QLTP · ${esc(me.kv || me.name)}</button></div><small>${adminQ() ? 'Chỉ hiện dữ liệu KV của anh cho gọn – quyền admin vẫn giữ.' : 'Đang xem toàn miền.'}</small></div>` : ''}
+    ${S.mg ? `<button class="drw-i" data-act="mgback"><i>${svg('team',19)}</i><span>Về chế độ Quản trị (${esc(S.mg.me.name)})</span></button>` : me && me.st && !S.pv ? `<button class="drw-i" data-act="mgshop"><i>🏪</i><span>Làm CV siêu thị ${esc(me.st)}</span></button>` : ''}
     <div class="drw-sec">Điều hướng</div>
     ${nav.map(n => `<button class="drw-i ${S.view===n[0]?'on':''}" data-go="${n[0]}"><i>${svg(n[1],19)}</i><span>${n[2]}</span></button>`).join('')}
     ${S.admin && (!S.me || canGiao()) ? `<button class="drw-i" data-act="new"><i>${svg('plus',19)}</i><span>Giao việc mới</span></button>` : ''}
@@ -1768,7 +1847,7 @@ function openDrawer(){
     ${(shop || me) ? `<button class="drw-i" data-act="acc"><i>${svg('user',19)}</i><span>Tài khoản & mật khẩu</span></button>` : ''}
     ${S.me && can('RESET_MK_ST') ? `<button class="drw-i" data-act="shopreset"><i>${svg('lock',19)}</i><span>Reset mật khẩu siêu thị</span></button>` : ''}
     ${S.me && can('QL_TAI_KHOAN') ? `<button class="drw-i" data-act="users"><i>${svg('team',19)}</i><span>Quản lý tài khoản</span></button>` : ''}
-    ${S.me && can('LUU_TRU') ? `<button class="drw-i" data-act="archive"><i>${svg('trash',19)}</i><span>Lưu trữ CV cũ</span></button>` : ''}${S.me && can('XEM_NHU_ST') ? `<button class="drw-i" data-act="preview"><i>${svg('phone',19)}</i><span>Xem như siêu thị</span></button>` : ''}
+    ${canChot() ? `<button class="drw-i" data-act="archive"><i>${svg('lock',19)}</i><span>CV đã chốt</span></button>` : ''}${S.me && can('XEM_NHU_ST') ? `<button class="drw-i" data-act="preview"><i>${svg('phone',19)}</i><span>Xem như siêu thị</span></button>` : ''}
     <button class="drw-i" data-act="privacy"><i>${svg('shield',19)}</i><span>Quyền riêng tư</span></button>
     <button class="drw-i" data-act="donate"><i>${svg('heart',19)}</i><span>Ủng hộ dự án</span></button>
     <button class="drw-i" data-act="reload"><i>${svg('sync',19)}</i><span>Tải lại dữ liệu</span></button>
@@ -1784,7 +1863,7 @@ function openDrawer(){
     const a = b.dataset.act; closeDrawer();
     if(a === 'new') openForm(null); else if(a === 'bell') toggleNotif(); else if(a === 'acc') openAccount();
     else if(a === 'users') openAccounts(); else if(a === 'shopreset') openShopReset(); else if(a === 'reload') reload(); else if(a === 'out') logout(true);
-    else if(a === 'archive') openArchive(); else if(a === 'preview') pickPreview(); else if(a === 'privacy') openPrivacy(false);
+    else if(a === 'archive') openArchive(); else if(a === 'mgback') toMgrMode(); else if(a === 'mgshop') toShopMode(); else if(a === 'preview') pickPreview(); else if(a === 'privacy') openPrivacy(false);
   });
   let x0 = null; const p = el.querySelector('.drw-p');
   p.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive:true });
@@ -1850,9 +1929,9 @@ async function openAccounts(){
   const draw = () => {
     const g = { admin:[], qltp:[], ql:[], lock:[] }; list.forEach(a => (g[a.role] || g.qltp).push(a));
     $('uaBody').innerHTML = `<button class="btn pri block" id="uaNew">➕ Cấp tài khoản mới</button><div id="uaForm"></div>
-      <p class="note" style="margin:8px 0 0">Vai trò <b>Quản lý</b>: giao việc cả miền hoặc KV mặc định; sửa/xoá việc mình tạo. Mật khẩu lần đầu = chính mã đăng nhập.</p>
+      <p class="note" style="margin:8px 0 0">Vai trò <b>Quản lý</b>: quyền quản trị theo QLTP được gán (giao việc, nghiệm thu, chốt CV KV đó); gán thêm <b>mã kho</b> để vừa làm CV của siêu thị mình – gạt nút trên đầu trang để chuyển Quản trị ⇄ Siêu thị. Mật khẩu lần đầu = chính mã đăng nhập.</p>
       ${['ql','admin','qltp','lock'].filter(k => g[k].length).map(k => `<div class="ua-g">${RL[k]} <em>${g[k].length}</em></div>${g[k].map(a => `
-        <div class="ua-r"><div class="ua-m"><b>${esc(a.code)}</b> · ${esc(a.name)}${a.rn && BASEN.indexOf(norm(a.rn)) < 0 && a.role !== 'lock' ? ` <span class="sp rlc">🏷 ${esc(a.rn)}</span>` : ''}${a.kv ? ` <span class="sp n">KV ${esc(a.kv)}</span>` : ''}<small>${a.hasPass ? '🔐 đã đổi mật khẩu' : '🔓 MK = mã đăng nhập'}</small></div>
+        <div class="ua-r"><div class="ua-m"><b>${esc(a.code)}</b> · ${esc(a.name)}${a.rn && BASEN.indexOf(norm(a.rn)) < 0 && a.role !== 'lock' ? ` <span class="sp rlc">🏷 ${esc(a.rn)}</span>` : ''}${a.kv ? ` <span class="sp n">KV ${esc(a.kv)}</span>` : ''}${a.st ? ` <span class="sp n">🏪 ST ${esc(a.st)}</span>` : ''}<small>${a.hasPass ? '🔐 đã đổi mật khẩu' : '🔓 MK = mã đăng nhập'}</small></div>
         <div class="ua-b"><button data-ued="${esc(a.code)}">✎</button>${a.code === S.me.code ? '' : `<button data-urs="${esc(a.code)}" title="Đặt lại mật khẩu">↺</button><button class="d" data-udl="${esc(a.code)}" title="${a.role==='ql'?'Xoá':'Khoá'}">🗑</button>`}</div></div>`).join('')}`).join('')}
       <div class="err" id="uaErr"></div>`;
     $('uaNew').onclick = () => form(null);
@@ -1867,22 +1946,25 @@ async function openAccounts(){
     });
   };
   const form = a => {
-    const x = a || { code:'', name:'', role:'ql', kv:'' };
+    const x = a || { code:'', name:'', role:'ql', kv:'', st:'' };
     $('uaForm').innerHTML = `<div class="ua-f">
       <div class="row2"><div class="field"><label>Mã đăng nhập (user)</label><input class="inp" id="uaC" value="${esc(x.code)}" ${a ? 'disabled' : ''} placeholder="VD: linh.ql" autocapitalize="none"></div>
       <div class="field"><label>Tên hiển thị</label><input class="inp" id="uaN" value="${esc(x.name)}" placeholder="VD: Nguyễn Thuỳ Linh"></div></div>
       <div class="seg" id="uaR">${[['QL','🧑‍💼 Quản lý'],['QLTP','👤 QLTP'],['ADMIN','👑 Admin'],['KHOÁ','🔒 Khoá']].map(r => `<button data-v="${r[0]}" class="${(x.role==='lock'?'KHOÁ':x.role.toUpperCase())===r[0]?'on':''}">${r[1]}</button>`).join('')}</div>
       ${custom().length ? `<div class="smut" style="font-size:12px;margin:8px 0 4px">Vai trò theo bộ phận (sheet PHAN_QUYEN):</div><div class="qchips" id="uaRC">${custom().map(r => `<button data-v="${esc(r.name)}">🏷 ${esc(r.name)}</button>`).join('')}</div>` : ''}
       <div class="field" id="uaKVf"><label>KV mặc định (QLTP) – để trống = chỉ giao cả miền</label><select class="inp" id="uaK"><option value="">— Không có (chỉ cả miền) —</option>${kvs.map(k => `<option ${norm(k)===norm(x.kv)?'selected':''}>${esc(k)}</option>`).join('')}</select></div>
+      <div class="field" id="uaSTf"><label>🏪 Mã kho siêu thị của người này (nếu là quản lý siêu thị) – để trống nếu không</label><input class="inp" id="uaS" inputmode="numeric" maxlength="5" value="${esc(x.st || '')}" placeholder="VD: 31405"><small class="smut" id="uaSn"></small></div>
       <div class="row2"><button class="btn line" id="uaCancel">Huỷ</button><button class="btn pri" id="uaSave">✓ ${a ? 'Lưu' : 'Tạo tài khoản'}</button></div></div>`;
     let role = x.role === 'lock' ? 'KHOÁ' : (x.rn && BASEN.indexOf(norm(x.rn)) < 0 ? x.rn : x.role.toUpperCase());
     const baseOf = r => { const c = roles.find(z => norm(z.name) === norm(r)); return c ? c.base.toUpperCase() : r; };
-    const paint = () => { $('modal').querySelectorAll('#uaR button,#uaRC button').forEach(b => b.classList.toggle('on', b.dataset.v === role)); $('uaKVf').classList.toggle('hide', baseOf(role) !== 'QL'); };
+    const paint = () => { $('modal').querySelectorAll('#uaR button,#uaRC button').forEach(b => b.classList.toggle('on', b.dataset.v === role)); $('uaKVf').classList.toggle('hide', baseOf(role) !== 'QL'); $('uaSTf').classList.toggle('hide', baseOf(role) !== 'QL'); };
+    const stN = () => { const v = $('uaS').value.trim(), r = v && (S.boot && S.boot.shops || []).find(z => String(z[0]) === v); $('uaSn').textContent = !v ? '' : r ? '✓ ' + r[1] + (r[3] ? ' · QLTP ' + r[3] : '') : '⚠️ Không thấy mã kho này'; };
+    $('uaS').oninput = stN; stN();
     $('modal').querySelectorAll('#uaR button,#uaRC button').forEach(b => b.onclick = () => { role = b.dataset.v; paint(); }); paint();
     $('uaCancel').onclick = () => $('uaForm').innerHTML = '';
     $('uaSave').onclick = async () => {
       loading(true, 'Đang lưu tài khoản…');
-      try{ const r = await api('saveAccount', { code: $('uaC').value, name: $('uaN').value, role, kv: baseOf(role) === 'QL' ? $('uaK').value : '' }, S.auth);
+      try{ const r = await api('saveAccount', { code: $('uaC').value, name: $('uaN').value, role, kv: baseOf(role) === 'QL' ? $('uaK').value : '', st: baseOf(role) === 'QL' ? $('uaS').value.trim() : '' }, S.auth);
         loading(false); toast(a ? '✅ Đã lưu ' + r.code : '✅ Đã tạo ' + r.code + ' · MK lần đầu: ' + r.code, 4000);
         if(S.boot && S.boot.qltpCodes && S.boot.qltpCodes.indexOf(r.code) < 0) S.boot.qltpCodes.push(r.code); load(); }
       catch(e){ loading(false); $('uaErr').textContent = e; }
@@ -1951,14 +2033,15 @@ function logout(full){
   if(full){
     if(S.mode==='shop' && S.shop) store.del('lcv_tok_' + S.shop.ma);
     if(S.me) store.del('lcv_qtok_' + S.me.code);
-    store.del('lcv_role');
+    if(S.mg && S.mg.me) store.del('lcv_qtok_' + S.mg.me.code);
+    store.del('lcv_role'); store.del('lcv_mgst');
   }
   $('app').classList.add('hide'); $('login').classList.remove('hide');
   S.askedN=false; const nb=document.querySelector('.nask'); if(nb) nb.remove();
   if(S.pv) stopPreview();
   S.ks=null; S.ksL=null; closeKsPage();
   for(const k in APPL) delete APPL[k]; closeAppView(true); const kp = $('appKeep'); if(kp) kp.remove();
-  S.shop=null; S.data=null; S.token=null; S.auth=null; S.me=null; S.admin=false; S.role=''; S.qf=''; S.stats={}; S.ntData=null;
+  S.mg=null; S.mgAuto=0; S.shop=null; S.data=null; S.token=null; S.auth=null; S.me=null; S.admin=false; S.role=''; S.qf=''; S.stats={}; S.ntData=null;
   S.view='home'; document.body.classList.remove('dopen');
   $('inPw').value = ''; showStep('stepMa'); setRole(store.get('lcv_role')==='qltp' ? 'qltp' : (S.role0 || 'shop')); $('inMa').focus();
 }
@@ -1974,7 +2057,7 @@ function renderHeader(){
     $('hdSub').textContent = S.me ? S.me.name + ' · ' + (S.role==='admin' ? (adminQ() ? 'Admin · chế độ QLTP' : 'Admin') : S.role==='ql' ? 'Quản lý' + (S.me.kv ? ' KV ' + S.me.kv : '') : 'QLTP') : (d.tenMien || 'Toàn miền') + ' · ' + d.shopCount + ' ST';
   }
   $('btnAdmin').classList.add('hide');
-  $('btnLead').classList.toggle('hide', !S.admin || (S.me && !canGiao()));
+  paintModeSw();
   $('btnBell').classList.toggle('hide', !(S.mode==='shop' || S.me)); paintBell();
   $('fab').classList.add('hide');
   /* Shop chờ duyệt: banner gọn dưới đầu trang */
@@ -2370,7 +2453,7 @@ function renderDashTask(){
   const all = list.reduce((x, y) => ({ tot: x.tot + y.tot, done: x.done + y.done, miss: x.miss + y.miss, soon: x.soon + y.soon }), { tot:0, done:0, miss:0, soon:0 });
   h += `<div class="sumcard"><div><small>Hoàn thành</small><b class="${pctCls(pctOf(all.done, all.tot))}">${pctOf(all.done, all.tot)}%</b></div><div><small>Đầu việc</small><b>${list.length}</b></div><div><small>Quá hạn</small><b class="r">${all.miss}</b></div><div><small>Sắp trễ</small><b class="o">${all.soon}</b></div></div>`;
   if(!list.length) return h + '<div class="none">Không có công việc đang chạy.</div>';
-  h += list.map(x => {
+  const card = x => {
     const t = x.t, p = pctOf(x.done, x.tot), open = S.st.open === 'T' + t.id;
     let det = '';
     if(open){
@@ -2382,7 +2465,7 @@ function renderDashTask(){
         : `<span class="sc ${p[3]==='m'?'m':p[3]==='s'?'s':''}${canLead(t, p[0]) ? ` dfs" data-dfs="${t.id}|${esc(p[0])}|${dashDay(t.id)}" title="Bấm để hoàn tất thay` : ''}">${esc(p[0])} ${esc(p[1])}</span>`).join('')}</div>`).join('')}</div>`;
       const exL = exList(t);
       if(exL.length) det += `<div class="dpend exl"><div class="ntgh">🚫 Đã loại khỏi CV (${exL.length}) <small>– bấm ↩ để đưa lại</small></div><div class="chips">${exL.map(r => `<span class="sc">${esc(r.ma)} ${esc(r.short)}${canExclude(t, r.ma) ? `<button class="exr" data-exr="${t.id}|${esc(r.ma)}" title="Đưa lại vào CV">↩</button>` : ''}</span>`).join('')}</div></div>`;
-      det += `<div class="dacts">${S.me ? `<button class="btn pri" data-rl="${t.id}">🔗 Link dashboard gửi sếp</button><button class="btn line" data-fl="${t.id}">📁 Thư mục ảnh</button>` : ''}${canEdit(t) ? `<button class="btn line" data-ed="${t.id}">✎ Sửa CV</button>` : ''}${S.me ? `<button class="btn line" data-gnt="${t.id}">✅ Nghiệm thu</button>` : ''}<button class="btn line" data-cp="${t.id}">📋 Sao chép DS chưa làm</button>${S.me && x.pend.some(p => canExclude(t, p[0])) ? `<button class="btn line ${exm ? 'on' : ''}" data-exm="${t.id}">${exm ? '✓ Xong' : '✂ Loại ST khỏi CV'}</button>` : ''}</div>`;
+      det += `<div class="dacts">${S.me ? `<button class="dab pri" data-rl="${t.id}" title="Link dashboard gửi sếp">🔗<span>Link sếp</span></button><button class="dab" data-fl="${t.id}" title="Thư mục ảnh">📁<span>Ảnh</span></button>` : ''}${canEdit(t) ? `<button class="dab" data-ed="${t.id}" title="Sửa CV">✎<span>Sửa</span></button>` : ''}${S.me ? `<button class="dab" data-gnt="${t.id}" title="Nghiệm thu">✅<span>NT</span></button>` : ''}<button class="dab" data-cp="${t.id}" title="Sao chép DS chưa làm">📋<span>Copy DS</span></button>${S.me && x.pend.some(p => canExclude(t, p[0])) ? `<button class="dab ${exm ? 'on' : ''}" data-exm="${t.id}" title="Loại ST khỏi CV">${exm ? '✓<span>Xong</span>' : '✂<span>Loại ST</span>'}</button>` : ''}${canChotT(t) ? `<button class="dab chot" data-chot="${t.id}" title="Chốt CV – ẩn khỏi mọi giao diện">🔒<span>Chốt</span></button>` : ''}</div>`;
     }
     return `<div class="ntc ${open?'open':''} ${t.scope!=='QLTP'?'rsmc':''}"><div class="ntc-h" data-dt="${t.id}">
       <div class="lt">${svg(t.nhom==='CTKM'?'target':'cog',16)} ${esc(t.title)}</div>
@@ -2390,9 +2473,13 @@ function renderDashTask(){
       <div class="ntbar"><i class="g" style="width:${pctOf(x.done - x.late, x.tot)}%"></i><i class="o" style="width:${pctOf(x.late, x.tot)}%"></i><i class="r" style="width:${pctOf(x.miss, x.tot)}%"></i></div>
       <div class="ntn"><span class="pp ${pctCls(p)}">${p}%</span><span>✅ ${x.done}/${x.tot} shop</span>${x.miss?`<span class="r">❌ ${x.miss} quá hạn</span>`:''}${x.soon?`<span class="o">⏳ ${x.soon} sắp trễ</span>`:''}<span class="chev">${open?'▲':'▼'}</span></div>
     </div>${det}</div>`;
-  }).join('');
+  };
+  const vh = list.filter(x => x.t.nhom !== 'CTKM'), km = list.filter(x => x.t.nhom === 'CTKM');
+  const sec = (L, ic, nm, cls) => L.length ? `<div class="dsec ${cls}"><span>${ic} ${nm}</span><em>${L.length}</em><small>${pctOf(L.reduce((a, x) => a + x.done, 0), L.reduce((a, x) => a + x.tot, 0))}% xong</small></div>` + L.map(card).join('') : '';
+  h += sec(vh, '⚙️', 'CV vận hành', 'vh') + sec(km, '🎯', 'CV khuyến mãi (CTKM)', 'km');
   return h;
 }
+function todoShort(t, pend){ return t.title + '\n' + pend.map(p => p[0] + ' ' + p[1]).join('\n'); }
 function todoText(list, title){
   const now = new Date();
   let out = `📝 DS CHƯA LÀM – ${title} – ${pad(now.getDate())}/${pad(now.getMonth()+1)} ${pad(now.getHours())}:${pad(now.getMinutes())}\n`;
@@ -2465,7 +2552,8 @@ function bindDash(){
   v.querySelectorAll('[data-fl]').forEach(b => b.onclick = ev => { ev.stopPropagation(); shareFolder(b.dataset.fl); });
   v.querySelectorAll('[data-ed]').forEach(b => b.onclick = ev => { ev.stopPropagation(); const t = taskById(b.dataset.ed); if(t) openForm(t); });
   v.querySelectorAll('[data-gnt]').forEach(b => b.onclick = ev => { ev.stopPropagation(); S.view = 'nt'; S.nt.mode = 'list'; S.nt.f = 'all'; S.nt.open = b.dataset.gnt; render(); window.scrollTo(0, 0); });
-  v.querySelectorAll('[data-cp]').forEach(b => b.onclick = ev => { ev.stopPropagation(); const t = taskById(b.dataset.cp); copyText(todoText(todoList(b.dataset.cp), t ? t.title : '')); });
+  v.querySelectorAll('[data-cp]').forEach(b => b.onclick = ev => { ev.stopPropagation(); const x = dashTasks().find(z => z.t.id === b.dataset.cp); if(!x) return; if(!x.pend.length) return toast('✓ Không còn siêu thị chưa làm'); copyText(todoShort(x.t, x.pend)); });
+  v.querySelectorAll('[data-chot]').forEach(b => b.onclick = ev => { ev.stopPropagation(); doArchive([b.dataset.chot], true); });
   if($('cpTodo')) $('cpTodo').onclick = () => { const t = S.st.dt ? taskById(S.st.dt) : null; copyText(todoText(todoList(S.st.dt || ''), t ? t.title : 'tất cả đầu việc')); };
   v.querySelectorAll('[data-apv]').forEach(b => b.onclick = async () => {
     const [ma, st] = b.dataset.apv.split('|');
@@ -3179,7 +3267,7 @@ function renderDetail(){
           : `<div class="none">Đang tải…</div>`}
       </div>
       ${S.me?`<button class="btn line block" style="margin-top:14px" id="dtRep">🔗 Link dashboard gửi sếp</button><button class="btn line block" style="margin-top:8px" id="dtFold">📁 Thư mục ảnh của CV</button>`:''}
-      ${canEdit(t)?`<button class="btn line block" style="margin-top:8px" id="dtEdit">✎ Sửa công việc</button><button class="btn line block" style="margin-top:8px" id="dtArc">📦 Lưu trữ – ẩn khỏi app</button><button class="btn danger block" style="margin-top:8px" id="dtHide">🗑 Xoá công việc này</button>`:''}
+      ${canEdit(t)?`<button class="btn line block" style="margin-top:8px" id="dtEdit">✎ Sửa công việc</button>${canChotT(t)?'<button class="btn line block" style="margin-top:8px" id="dtArc">🔒 Chốt CV – ẩn khỏi mọi giao diện</button>':''}<button class="btn danger block" style="margin-top:8px" id="dtHide">🗑 Xoá công việc này</button>`:''}
     </div>
     ${S.mode==='shop'?`<div class="pg-foot"><button class="btn block ${done?'line':'pri'}" id="dtDone">${done?'↺ Bỏ đánh dấu hoàn tất':t.photo?'📷 Chụp ảnh & hoàn tất':'✓ Đánh dấu hoàn tất'}</button></div>`:''}`;
   $('detail').innerHTML = h;
@@ -3333,11 +3421,11 @@ const UP = new Map();
 function retryUp(fn, n){
   return fn().catch(e => (n > 1 && !/đăng nhập|không hợp lệ|quyền/i.test(String(e))) ? new Promise(r => setTimeout(r, 1200 * (4 - n))).then(() => retryUp(fn, n - 1)) : Promise.reject(e));
 }
-function upKick(d, t, ma, lead, onChange){
+function upKick(d, t, ma, lead, onChange, k){
   const o0 = UP.get(d); if(o0 && o0.st !== 'err') return o0.p;
   const o = { st: 'up' }, b64 = d.split(',')[1];
   const name = `${ma}_${(t.title||'').slice(0,30)}_${keyOf(new Date())}_${Date.now().toString(36)}${lead ? '_thay' : ''}`;
-  o.p = retryUp(() => lead ? api('uploadLeadPhoto', ma, name, b64, t.id, S.auth) : api('uploadShopPhoto', ma, S.token, name, b64, t.id), 3)
+  o.p = retryUp(() => lead ? api('uploadLeadPhoto', ma, name, b64, t.id, S.auth, t.repeat ? k || '' : '') : api('uploadShopPhoto', ma, S.token, name, b64, t.id, t.repeat ? k || '' : ''), 3)
     .then(u => { o.st = 'ok'; o.u = u; onChange && onChange(); return u; }, e => { o.st = 'err'; o.e = e; onChange && onChange(); throw e; });
   UP.set(d, o); return o.p;
 }
@@ -3347,7 +3435,7 @@ function openPhotoSheet(t, k, lead){
   const ma = lead ? lead.shop.ma : (S.shop && S.shop.ma);
   const close = () => { $('modal').innerHTML = ''; S.phShop = null; };
   const mark = () => shots.forEach((d, i) => { const el = $('modal').querySelector(`[data-ps="${i}"]`); if(el){ const o = UP.get(d); el.dataset.up = o ? o.st : 'up'; } });
-  const add = d => { if(shots.length < MAX){ shots.push(d); paint(); if(!S.demo) upKick(d, t, ma, lead, mark).catch(() => {}); } };
+  const add = d => { if(shots.length < MAX){ shots.push(d); paint(); if(!S.demo) upKick(d, t, ma, lead, mark, k).catch(() => {}); } };
   const addFiles = async (files, upload) => {
     for(const f of files.slice(0, MAX - shots.length)){
       try{ add(await stampFile(f, t, upload)); }catch(e){ $('phErr').textContent = String(e); }
@@ -3387,15 +3475,15 @@ function openPhotoSheet(t, k, lead){
   };
   paint();
 }
-async function upAll(shots, t, ma, lead){
+async function upAll(shots, t, ma, lead, k){
   const tick = () => { const n = shots.filter(d => (UP.get(d) || {}).st === 'ok').length; loading(true, n < shots.length ? `Đang tải ảnh lên Drive… ${n}/${shots.length}` : 'Đang lưu hoàn tất…'); };
   tick();
-  return Promise.all(shots.map(d => upKick(d, t, ma, lead, tick)));
+  return Promise.all(shots.map(d => upKick(d, t, ma, lead, tick, k)));
 }
 async function submitPhotos(t, k, shots){
   let urls = [];
   try{
-    urls = await upAll(shots, t, S.shop.ma, null);
+    urls = await upAll(shots, t, S.shop.ma, null, k);
     loading(true, 'Đang lưu hoàn tất…');
     await api('toggleDone', t.id, S.shop.ma, t.repeat ? k : '', true, S.token, urls, true);
     S.data.done[doneKey(t, k)] = { at: Date.now(), photos: urls, nt: '', ntNote: '' };
@@ -3415,7 +3503,7 @@ async function submitPhotos(t, k, shots){
 async function submitLead(t, k, shots, lead){
   let urls = []; const ma = lead.shop.ma, dk = t.repeat ? k : '';
   try{
-    urls = shots.length ? await upAll(shots, t, ma, lead) : [];
+    urls = shots.length ? await upAll(shots, t, ma, lead, k) : [];
     loading(true, 'Đang lưu hoàn tất thay…');
     await api('doneForShop', t.id, ma, dk, true, (lead.note || '').trim(), urls, S.auth);
     loading(false); $('modal').innerHTML = ''; S.phShop = null;
@@ -3468,7 +3556,7 @@ function fnList(){
   if(me && can('LINK_SEP')) add('link', 'link', 'Link sếp', '#fff1dc', '#8a4b00', { tile: 1, d: 'Link dashboard gửi sếp, không cần đăng nhập' });
   if(me && can('DASHBOARD')) add('remind', 'bell', 'Nhắc việc', '#fff1dc', '#8a4b00', { tile: 1, badge: dashOk ? remindTasks().reduce((a, x) => a + x.pend.length, 0) : 0, d: 'DS siêu thị chưa làm theo từng CV của KV – sao chép để nhắc' });
   if(me && can('LINK_SEP')) add('folder', 'folder', 'Thư mục ảnh', '#fff1dc', '#8a4b00', { d: 'Xem / gửi link thư mục ảnh của CV' });
-  if(me && can('LUU_TRU')) add('archive', 'trash', 'Lưu trữ CV', '#eef1f4', '#44544b', { d: 'Ẩn CV cũ / dự án đã xong khỏi app · khôi phục' });
+  if(me && canChot()) add('archive', 'lock', 'CV đã chốt', '#eef1f4', '#44544b', { d: 'Tìm CV đã chốt · tiếp tục hoặc khởi chạy lại' });
   if(me && can('XEM_NHU_ST')) add('preview', 'phone', 'Xem như siêu thị', '#e8f3ec', '#0b7a3b', { d: 'Giả lập giao diện của 1 siêu thị trong KV' });
   add('privacy', 'shield', 'Quyền riêng tư', '#eef1f4', '#44544b', { d: 'App thu thập gì, ai được xem' });
   add('donate', 'heart', 'Ủng hộ dự án', '#fff4e0', '#8a4b00', { d: 'QR chuyển khoản MB Bank ủng hộ người làm app' });
@@ -4062,35 +4150,57 @@ document.addEventListener('click', e => {
   copyText(remindText({ t, pend: pend.map(p => [p[0], p[1], p[2], '']) }));
 }, true);
 
-/* ================= LƯU TRỮ CV CŨ ================= */
+/* ================= CHỐT CV (ẩn khỏi mọi giao diện · tìm lại · tiếp tục / khởi chạy lại) ================= */
 async function doArchive(ids, on, after){
-  if(on && !confirm(`Lưu trữ ${ids.length} công việc?\nCV sẽ ẩn khỏi mọi giao diện (lịch, dashboard, siêu thị). Dữ liệu vẫn còn, khôi phục được bất cứ lúc nào.`)) return;
-  loading(true, on ? 'Đang lưu trữ…' : 'Đang khôi phục…');
+  if(on && !confirm(`🔒 Chốt ${ids.length} công việc?\nCV sẽ ẩn khỏi mọi giao diện (lịch, dashboard, nhắc việc, siêu thị) và nằm trong mục "CV đã chốt" ở trình đơn logo. Dữ liệu, ảnh vẫn còn – có thể tiếp tục hoặc khởi chạy lại.`)) return;
+  loading(true, on ? 'Đang chốt CV…' : 'Đang mở lại CV…');
   try{
     const r = await api('archiveTask', ids, on, S.auth);
-    loading(false); toast(on ? `📦 Đã lưu trữ ${r.n} CV` : `↩ Đã khôi phục ${r.n} CV`, 2200);
-    S.dash = null; S.prog = {}; S.rq = null; S.rqTotal = undefined;
-    if(after) after(); await reload(true);
+    loading(false); toast(on ? `🔒 Đã chốt ${r.n} CV` : `▶ Đã mở lại ${r.n} CV`, 2200);
+    S.dash = null; S.prog = {}; S.rq = null; S.rqTotal = undefined; S.arc = null;
+    await reload(true); if(after) after();
   }catch(e){ loading(false); toast('⚠️ ' + String(e).replace(/^Error:\s*/, ''), 3500); }
+}
+function restartCopy(t){
+  const today = S.data.today, span = Math.max(0, daysBetween(t.startKey || today, t.endKey || today));
+  const add = n => { const x = fromKey(today); x.setDate(x.getDate() + n); return keyOf(x); };
+  const sT = (t.startIn || '').slice(11, 16) || '08:00', eT = (t.endIn || '').slice(11, 16) || '17:00';
+  return Object.assign({}, t, { id: '', rs: 1, ex: [], folder: '', by: S.me ? S.me.name : '',
+    startIn: today + 'T' + sT, endIn: (t.repeat ? add(span || 29) : add(span)) + 'T' + eT,
+    qltp: (t.qltp || []).slice(), steps: (t.steps || []).slice(), imgs: (t.imgs || []).slice() });
 }
 async function openArchive(){
   const now = Date.now();
-  const ended = (S.data.tasks || []).filter(t => canEdit(t) && t.endMs < now).sort((a, b) => a.endMs - b.endMs);
+  const ended = (S.data.tasks || []).filter(t => canChotT(t) && t.endMs < now).sort((a, b) => a.endMs - b.endMs);
   const sel = new Set(ended.filter(t => now - t.endMs > 3 * 864e5).map(t => t.id));
-  openKsPage(`<div class="pg-top"><button class="back" id="arX">‹</button><b>📦 Lưu trữ công việc</b></div><div class="pg">
-    <div class="smut" style="font-size:12.5px">CV lưu trữ sẽ <b>ẩn khỏi mọi giao diện</b> (lịch, dashboard, nhắc việc, siêu thị) cho gọn; dữ liệu và ảnh vẫn còn trên sheet, khôi phục được.</div>
-    <div class="fsec">CV đã kết thúc (${ended.length})</div>
-    ${ended.length ? `<div class="arl">${ended.map(t => `<label class="arr"><input type="checkbox" data-ar="${t.id}" ${sel.has(t.id) ? 'checked' : ''}><span><b>${esc(t.title)}</b><small>${isRSM(t) ? 'RSM · ' : ''}${t.repeat ? '🔁 lặp lại · ' : ''}kết thúc ${dm(t.endKey)} · ${esc(t.by)}</small></span></label>`).join('')}</div>
-      <button class="btn pri block" id="arGo" style="margin-top:10px">📦 Lưu trữ CV đã chọn</button>` : '<div class="none">Không có CV nào đã kết thúc.</div>'}
-    <div class="fsec">Đã lưu trữ</div><div id="arOld"><div class="none">⏳ Đang tải…</div></div></div>`);
+  S.arcQ = S.arcQ || ''; S.arcF = S.arcF || '';
+  openKsPage(`<div class="pg-top"><button class="back" id="arX">‹</button><b>🔒 CV đã chốt</b></div><div class="pg">
+    <div class="smut" style="font-size:12.5px">CV đã chốt <b>ẩn khỏi mọi giao diện</b>. Tìm lại để <b>▶ Tiếp tục</b> (giữ nguyên tiến độ, ảnh cũ) hoặc <b>🔁 Khởi chạy lại</b> (tạo CV mới cùng nội dung, ngày mới).</div>
+    <div class="field" style="margin-top:10px"><input class="inp" id="arQ" placeholder="🔎 Tìm tên CV, người giao…" value="${esc(S.arcQ)}"></div>
+    <div class="seg sm" id="arF"><button data-v="">Tất cả</button><button data-v="VH">⚙️ Vận hành</button><button data-v="CTKM">🎯 CTKM</button></div>
+    <div id="arOld" style="margin-top:8px"><div class="none">⏳ Đang tải…</div></div>
+    ${ended.length ? `<details class="arsel"${S.arcQ ? '' : ' open'}><summary>Chốt thêm CV đã kết thúc (${ended.length})</summary><div class="arl">${ended.map(t => `<label class="arr"><input type="checkbox" data-ar="${t.id}" ${sel.has(t.id) ? 'checked' : ''}><span><b>${esc(t.title)}</b><small>${isRSM(t) ? 'RSM · ' : ''}${t.repeat ? '🔁 lặp lại · ' : ''}kết thúc ${dm(t.endKey)} · ${esc(t.by)}</small></span></label>`).join('')}</div>
+      <button class="btn pri block" id="arGo" style="margin-top:10px">🔒 Chốt CV đã chọn</button></details>` : ''}
+  </div>`);
   $('arX').onclick = closeKsPage;
   const pg = $('ksPage');
-  pg.querySelectorAll('[data-ar]').forEach(c => c.onchange = () => { c.checked ? sel.add(c.dataset.ar) : sel.delete(c.dataset.ar); $('arGo').textContent = `📦 Lưu trữ ${sel.size} CV đã chọn`; });
-  if($('arGo')){ $('arGo').textContent = `📦 Lưu trữ ${sel.size} CV đã chọn`; $('arGo').onclick = () => { if(!sel.size) return toast('Chưa chọn CV nào'); doArchive([...sel], true, () => openArchive()); }; }
+  pg.querySelectorAll('[data-ar]').forEach(c => c.onchange = () => { c.checked ? sel.add(c.dataset.ar) : sel.delete(c.dataset.ar); $('arGo').textContent = `🔒 Chốt ${sel.size} CV đã chọn`; });
+  if($('arGo')){ $('arGo').textContent = `🔒 Chốt ${sel.size} CV đã chọn`; $('arGo').onclick = () => { if(!sel.size) return toast('Chưa chọn CV nào'); doArchive([...sel], true, () => openArchive()); }; }
+  const paint = () => {
+    const box = $('arOld'); if(!box || !S.arc) return;
+    pg.querySelectorAll('#arF button').forEach(b => b.classList.toggle('on', b.dataset.v === S.arcF));
+    const q = norm(S.arcQ), L = S.arc.filter(t => (!S.arcF || t.nhom === S.arcF) && (!q || norm(t.title + ' ' + t.by + ' ' + (t.desc || '')).includes(q)));
+    box.innerHTML = L.length ? `<div class="smut" style="font-size:12px;margin:2px 0 6px">${L.length}/${S.arc.length} CV</div>` + L.slice(0, 120).map(t => `<div class="arr arc"><span><b>${t.nhom === 'CTKM' ? '🎯' : '⚙️'} ${esc(t.title)}</b><small>${t.repeat ? svg('repeat',12) + ' ' + esc(repTxt(t, true)) + ' · ' : ''}${t.end ? 'hạn ' + esc(t.end) + ' · ' : ''}${esc(t.by)}</small></span><div class="arb"><button class="btn line" data-un="${esc(t.id)}" title="Bỏ chốt, giữ nguyên tiến độ & ảnh">▶ Tiếp tục</button><button class="btn pri" data-rs="${esc(t.id)}" title="Tạo CV mới cùng nội dung">🔁 Khởi chạy lại</button></div></div>`).join('')
+      : `<div class="none">${S.arc.length ? 'Không thấy CV khớp.' : 'Chưa có CV nào được chốt.'}</div>`;
+    box.querySelectorAll('[data-un]').forEach(b => b.onclick = () => { const t = S.arc.find(x => x.id === b.dataset.un);
+      doArchive([b.dataset.un], false, () => { closeKsPage(); const n = taskById(b.dataset.un) || t; if(n && n.endMs < Date.now() && canEdit(n)){ toast('▶ CV đã chạy lại – hạn cũ đã qua, chỉnh hạn mới rồi Lưu', 3200); openForm(n); } }); });
+    box.querySelectorAll('[data-rs]').forEach(b => b.onclick = () => { const t = S.arc.find(x => x.id === b.dataset.rs); if(!t) return; closeKsPage(); openForm(restartCopy(t)); toast('🔁 Kiểm tra ngày bắt đầu / hạn rồi bấm Giao việc', 2600); });
+  };
+  $('arQ').oninput = e => { S.arcQ = e.target.value; paint(); };
+  pg.querySelectorAll('#arF button').forEach(b => b.onclick = () => { S.arcF = b.dataset.v; paint(); });
   try{
-    const old = await api('listArchived', S.auth), box = $('arOld'); if(!box) return;
-    box.innerHTML = old.length ? old.map(t => `<div class="arr"><span><b>${esc(t.title)}</b><small>${t.rep ? svg('repeat',12)+' ' : ''}${t.end ? 'kết thúc ' + esc(t.end) + ' · ' : ''}${esc(t.by)}</small></span><button class="btn line" data-un="${esc(t.id)}" style="padding:6px 10px;font-size:12.5px">↩ Khôi phục</button></div>`).join('') : '<div class="none">Chưa có CV nào được lưu trữ.</div>';
-    box.querySelectorAll('[data-un]').forEach(b => b.onclick = () => doArchive([b.dataset.un], false, () => openArchive()));
+    if(!S.arc) S.arc = await api('listArchived', S.auth);
+    paint();
   }catch(e){ const box = $('arOld'); if(box) box.innerHTML = `<div class="none">⚠️ ${esc(e)}</div>`; }
 }
 
@@ -4665,7 +4775,7 @@ async function toggleAdmin(){
 }
 
 function openForm(t){
-  const isNew = !t;
+  const isNew = !t || !t.id, isRs = !!(t && t.rs);
   const today = S.data.today, def = (S.sel && S.sel >= today) ? S.sel : today;
   t = t || { nhom:'VH', nguon:'Miền', title:'', desc:'', startIn:def+'T08:00', endIn:def+'T17:00', scope:'MIEN', qltp:[], repeat:false, prio:'Thường', link:'', steps:[], imgs:[] };
   const body0 = [t.desc || ''].concat((t.steps||[]).map((x,i) => (i+1) + '. ' + x)).filter(Boolean).join('\n');
@@ -4683,7 +4793,7 @@ function openForm(t){
   const addD = n => { const x = fromKey(today); x.setDate(x.getDate() + n); return keyOf(x); };
   const sun = addD((7 - fromKey(today).getDay()) % 7), mon = addD(((8 - fromKey(today).getDay()) % 7) || 7);
   const eom = (() => { const x = fromKey(today); return keyOf(new Date(x.getFullYear(), x.getMonth() + 1, 0)); })();
-  $('formPage').innerHTML = `<div class="pg-top"><button class="back" id="fX">‹</button><b>${isNew?'✍️ Giao việc mới':'✎ Sửa công việc'}</b></div><div class="pg">
+  $('formPage').innerHTML = `<div class="pg-top"><button class="back" id="fX">‹</button><b>${isRs?'🔁 Khởi chạy lại CV':isNew?'✍️ Giao việc mới':'✎ Sửa công việc'}</b></div><div class="pg">
     <div class="fby">${svg('user',12)} Người giao: <b>${esc((isNew ? (S.me ? S.me.name : '') : (t.by || '')))}</b> <small>${isNew?'· tự ghi nhận theo tài khoản':'· giữ nguyên người giao'}</small></div>
     <div class="kind fk" id="fNhom"><button data-v="VH"><i>⚙️</i><b>Vận hành</b></button><button data-v="CTKM"><i>🎯</i><b>CTKM bán hàng</b></button></div>
     <div class="field"><input id="fTitle" class="inp big2" value="${esc(t.title)}" placeholder="Tên công việc – VD: Kiểm kê hàng tươi"></div>
@@ -4734,11 +4844,11 @@ function openForm(t){
     <div class="err" id="fErr"></div>
   </div><div class="pg-foot">${!isNew && canEdit(t) ? `<div class="ffoot"><button class="btn danger" id="fDel">🗑 Xoá CV</button><button class="btn pri" id="fSave">✓ Lưu thay đổi</button></div>` : `<button class="btn pri block" id="fSave">${isNew?'✓ Giao việc':'✓ Lưu thay đổi'}</button>`}</div>`;
   $('formPage').classList.remove('hide'); $('formPage').scrollTop = 0; document.body.style.overflow='hidden';
-  if(isNew && S.role !== 'admin'){ F.scope = can('GIAO_MIEN') ? 'MIEN' : 'QLTP'; F.qltp = F.scope === 'QLTP' && myKV() ? [myKV()] : []; }
+  if(isNew && !isRs && S.role !== 'admin'){ F.scope = can('GIAO_MIEN') ? 'MIEN' : 'QLTP'; F.qltp = F.scope === 'QLTP' && myKV() ? [myKV()] : []; }
   $('fSD').value = F.sD; $('fST').value = F.sT; $('fED').value = F.eD; $('fET').value = F.eT; $('fRD').value = F.sD; $('fRT').value = F.eT;
   const adv = () => { const o = !$('fAdv').classList.contains('hide'); $('fMore').querySelector('span').textContent = o ? '▲' : '▼'; };
   $('fMore').onclick = () => { $('fAdv').classList.toggle('hide'); adv(); };
-  if(!isNew && ((t.imgs && t.imgs.length) || t.link)){ $('fAdv').classList.remove('hide'); adv(); }
+  if((!isNew || isRs) && ((t.imgs && t.imgs.length) || t.link)){ $('fAdv').classList.remove('hide'); adv(); }
 
   /* ---- ngày giờ + lặp ---- */
   const repEnd = () => {
@@ -4905,7 +5015,7 @@ $('btnReload').innerHTML = svg('sync', 20); $('hdBack').innerHTML = svg('back', 
 $('btnReload').onclick = () => reload();
 $('btnBell').onclick = toggleNotif;
 $('btnMenu').onclick = openDrawer;
-$('btnLead').onclick = () => { if(S.admin && (!S.me || canGiao())) openForm(null); };
+$('btnMode').onclick = flipMode;
 $('fab').onclick = () => openForm(null);
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => { S.view = b.dataset.v; if(S.view==='month'){ const d=fromKey(S.sel); S.y=d.getFullYear(); S.m=d.getMonth(); } render(); });
 $('mPrev').onclick = () => { S.m--; if(S.m<0){S.m=11;S.y--;} renderMonth(); };
