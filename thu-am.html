@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Thu bộ giọng đọc – Checklist</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Be Vietnam Pro',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#eef4f0;color:#17251d;font-size:14px;padding:0 0 30px}
+.top{background:linear-gradient(118deg,#0a6e35,#11914a 45%,#0f8f7a);color:#fff;padding:16px 16px 14px}
+.top h1{font-size:19px;font-weight:900}.top p{font-size:12.5px;opacity:.93;margin-top:4px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 12px}
+.card{background:#fff;border:1.5px solid #d9e3dc;border-radius:16px;padding:13px 14px;margin-top:12px;box-shadow:0 2px 0 rgba(16,40,28,.05)}
+.card h3{font-size:14.5px;font-weight:900;margin-bottom:6px}
+label{display:block;font-size:12px;font-weight:800;color:#5d6f65;margin:9px 0 5px}
+textarea,input{width:100%;border:1.5px solid #d9e3dc;border-radius:11px;padding:10px;font:inherit;background:#fbfdfb}
+textarea{min-height:92px;resize:vertical}
+.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:800;font-size:13.5px;background:#0b7a3b;color:#fff}
+.btn.line{background:#fafcfb;color:#2c4034;border:1.5px solid #d9e3dc}
+.btn.red{background:#d63b2f}.btn:disabled{opacity:.45}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:9px}
+.it{border:1.5px solid #e2ebe5;border-radius:14px;padding:11px 12px;margin-top:10px;background:#fbfdfb}
+.it.ok{border-color:#b7e2c7;background:#f2fbf5}
+.fn{font-size:12px;font-weight:900;color:#0b7a3b;font-family:ui-monospace,Menlo,monospace}
+.tx{font-size:14px;margin:5px 0 2px;line-height:1.5}
+.st{font-size:11.5px;color:#6b7a72;font-weight:700}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#d63b2f;margin-right:6px;animation:bl 1s infinite}
+@keyframes bl{50%{opacity:.25}}
+.note{font-size:12.5px;color:#5d6f65;line-height:1.55;margin-top:8px}
+audio{width:100%;margin-top:8px}
+</style></head><body>
+<div class="top"><h1>🎙️ Thu bộ giọng đọc cho app Checklist</h1>
+<p>Mở trang này bằng điện thoại, bấm Thu rồi đọc từng câu. Xong bấm Tải về — file tự đặt đúng tên để thả vào thư mục <b>am-thanh</b>.</p></div>
+<div class="wrap">
+<div class="card">
+  <h3>1. Dán danh sách câu cần đọc</h3>
+  <div class="note">Lấy trong app: gõ <b>giọng đọc</b> ở thanh tìm kiếm → <b>Bộ giọng đọc</b> → <b>Copy danh sách</b> → dán vào ô dưới.</div>
+  <label>Mỗi dòng: tên-file.mp3 — câu cần đọc</label>
+  <textarea id="ds"></textarea>
+  <div class="row"><button class="btn" id="load">Nạp danh sách</button><button class="btn line" id="mau">Dùng mẫu sẵn</button></div>
+</div>
+<div id="list"></div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+const MAU=`ung-ho.mp3 — Ủng hộ nhà phát triển một ly cà phê để duy trì máy chủ nhé.
+hoan-tat.mp3 — Hoàn tất công việc. Làm tốt lắm!
+app-tra-cuu-huy-hang.mp3 — Đang mở Tra cứu huỷ hàng.
+app-suc-khoe-sieu-thi.mp3 — Đang mở Sức khoẻ siêu thị.
+app-checklist-khai-truong.mp3 — Đang mở Checklist khai trương.
+app-goi-y-share-hang.mp3 — Đang mở Gợi ý share hàng.
+app-kiem-ke-mmkk.mp3 — Đang mở Kiểm kê MMKK.`;
+$('mau').onclick=()=>{ $('ds').value=MAU; ve(); };
+$('load').onclick=ve;
+let MR=null, CHUNK=[], DANG=-1;
+function parse(){
+  return $('ds').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{
+    const m=l.split(/\s*[—–-]\s+/); const f=(m[0]||'').replace(/\.(mp3|m4a|wav|webm)$/i,'').trim();
+    return {f:f, t:(m.slice(1).join(' - ')||'').trim()};
+  }).filter(x=>x.f&&x.t);
+}
+function ve(){
+  const L=parse();
+  $('list').innerHTML = L.length? L.map((x,i)=>`<div class="card"><h3>Câu ${i+1}</h3>
+    <div class="it" id="it${i}"><div class="fn" id="fn${i}">${x.f}.___</div>
+    <div class="tx">${x.t.replace(/</g,'&lt;')}</div>
+    <div class="st" id="st${i}">Chưa thu</div>
+    <div class="row">
+      <button class="btn red" data-r="${i}">● Thu</button>
+      <button class="btn line" data-s="${i}" disabled>■ Dừng</button>
+      <button class="btn line" data-d="${i}" disabled>⤓ Tải về</button>
+    </div><div id="pv${i}"></div></div></div>`).join('')
+   : `<div class="card"><h3>Chưa có câu nào</h3><div class="note">Dán danh sách vào ô trên rồi bấm <b>Nạp danh sách</b>.</div></div>`;
+  $('list').querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>thu(+b.dataset.r,L));
+  $('list').querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>dung());
+  $('list').querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>tai(+b.dataset.d,L));
+}
+const BLOB={}, EXT={};
+async function thu(i,L){
+  if(MR) dung();
+  try{
+    const st=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
+    const mt=['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(t=>MediaRecorder.isTypeSupported(t))||'';
+    MR=new MediaRecorder(st, mt?{mimeType:mt,audioBitsPerSecond:128000}:{});
+    CHUNK=[]; DANG=i;
+    MR.ondataavailable=e=>{ if(e.data.size) CHUNK.push(e.data); };
+    MR.onstop=()=>{
+      const b=new Blob(CHUNK,{type:MR.mimeType||'audio/webm'});
+      BLOB[i]=b; EXT[i]=/mp4/.test(b.type)?'m4a':/webm/.test(b.type)?'webm':'wav';
+      $('fn'+i).textContent=L[i].f+'.'+EXT[i];
+      $('st'+i).textContent='Đã thu '+(b.size/1024).toFixed(0)+' KB — nghe thử rồi tải về';
+      $('it'+i).classList.add('ok');
+      $('pv'+i).innerHTML='<audio controls src="'+URL.createObjectURL(b)+'"></audio>';
+      document.querySelector('[data-d="'+i+'"]').disabled=false;
+      st.getTracks().forEach(t=>t.stop()); MR=null; DANG=-1;
+    };
+    MR.start();
+    $('st'+i).innerHTML='<span class="dot"></span>Đang thu… đọc xong bấm Dừng';
+    document.querySelector('[data-s="'+i+'"]').disabled=false;
+  }catch(e){ alert('Không mở được micro: '+(e.message||e)); }
+}
+function dung(){ if(MR&&MR.state!=='inactive') MR.stop(); document.querySelectorAll('[data-s]').forEach(b=>b.disabled=true); }
+function tai(i,L){
+  const b=BLOB[i]; if(!b) return;
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b); a.download=L[i].f+'.'+EXT[i];
+  document.body.appendChild(a); a.click(); a.remove();
+}
+$('ds').value=MAU; ve();
+</script></body></html>
